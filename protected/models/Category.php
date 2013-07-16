@@ -56,6 +56,7 @@ class Category extends CActiveRecord {
         return array(
             'description' => array(self::HAS_ONE, 'CategoryDescription', 'category_id'),
             'products' => array(self::MANY_MANY, 'Product', 'product_to_category(product_id, category_id)'),
+            'activeProducts' => array(self::MANY_MANY, 'Product', 'product_to_category(product_id, category_id)', 'condition'=>'status=1'),
             'childCategories' => array(self::HAS_MANY, 'Category', 'parent_id')
         );
     }

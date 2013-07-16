@@ -82,11 +82,14 @@ class Product extends CActiveRecord {
      */
     public function relations() {
         return array(
+            'manufacturer' => array(self::BELONGS_TO, 'Manufacturer', 'manufacturer_id'),            
             'description' => array(self::HAS_ONE, 'ProductDescription', 'product_id'),
-            'orders' => array(self::HAS_MANY, 'Order', 'customer_id'),            
+            'orders' => array(self::HAS_MANY, 'Order', 'customer_id'),
+            'additionalImages' => array(self::HAS_MANY, 'ProductImage', 'product_id'),
+            'stockStatus' => array(self::BELONGS_TO, 'StockStatus', 'stock_status_id'), // TODO: add language condition
         );
     }
-    
+
     public function scopes() {
         return array(
             'latest' => array(
@@ -137,6 +140,10 @@ class Product extends CActiveRecord {
             'viewed' => 'Viewed',
         );
     }
+    
+    public function hasAdditionalImages(){
+        return count($this->additionalImages) > 0 ? true : false;
+    }
 
     public function getImageWithSize($width, $height) {
         if ($this->image && file_exists(Yii::app()->params['imagePath'] . $this->image)) {
@@ -147,4 +154,10 @@ class Product extends CActiveRecord {
 
         return $_image;
     }
+
+    public function getFormattedPrice() {
+        // TODO: format price
+        return "\${$this->price}";
+    }
+
 }

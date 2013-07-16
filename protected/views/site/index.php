@@ -1,26 +1,3 @@
-
-<div class="span3">
-    <!-- start sidebar -->
-    <ul class="breadcrumb">
-        <li>Categories</span></li>
-    </ul>
-    <div class="span3 product_list">
-        <ul class="nav">
-            <?php foreach($categories as $category): ?>
-            <li>
-                <a class="active" href="#"><?php echo $category->description->name; ?> (<?php echo $category->getProductsCount(); ?>)</a>
-                <?php if($category->hasChildCategories()): ?>
-                <ul>
-                    <?php foreach($category->childCategories as $childCategory): ?>
-                    <li><a href="#"> - <?php echo $childCategory->description->name; ?> (<?php echo $childCategory->getProductsCount(); ?>)</a></li>
-                    <?php endforeach; ?>
-                </ul>
-                <?php endif; ?>
-            </li>
-            <?php endforeach; ?>
-        </ul>
-    </div><!-- end sidebar -->		
-</div>
 <div class="span9">
 
     <div id="myCarousel" class="carousel slide">
@@ -45,7 +22,6 @@
         <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
 </div>
-
 
 
 <div class="span9 popular_products">

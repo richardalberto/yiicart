@@ -22,10 +22,8 @@ class SiteController extends Controller {
     public function actionIndex() {
         $latestProducts = Product::model()->latest()->active()->findAll();
         $banners = Banner::model()->active()->findAll();
-        $categories = Category::model()->firstLevel()->active()->orderBySortOrder()->findAll();
         
-        $this->render('index', array(
-            'categories'=>$categories,          
+        $this->render('index', array( 
             'latestProducts'=>$latestProducts,
             'banners'=>$banners
         ));

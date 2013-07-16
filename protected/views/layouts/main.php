@@ -12,6 +12,7 @@
         <link href="<?php echo Yii::app()->baseUrl; ?>/css/bootstrap-responsive.css" rel="stylesheet" />
         <link href="<?php echo Yii::app()->baseUrl; ?>/css/style.css" rel="stylesheet" />
         <link href="<?php echo Yii::app()->baseUrl; ?>/css/bootstrap-deletethis.css" rel="stylesheet" />
+        <link href="<?php echo Yii::app()->baseUrl; ?>/css/jquery.rating.css" rel="stylesheet" />
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -106,6 +107,7 @@
                 </div>
             </div><!-- end nav -->	
             <div class="row">
+                <?php echo $this->renderPartial('/common/leftMenu'); ?>
                 <?php echo $content; ?>
             </div>
             <footer>
@@ -158,5 +160,6 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.min.js"></script>
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.min.js"></script>
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.rating.pack.js"></script>
     </body>
 </html>
