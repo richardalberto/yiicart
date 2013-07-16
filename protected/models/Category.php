@@ -55,7 +55,8 @@ class Category extends CActiveRecord {
     public function relations() {
         return array(
             'description' => array(self::HAS_ONE, 'CategoryDescription', 'category_id'),
-            'products' => array(self::HAS_MANY, 'Product', 'category_id')
+            'products' => array(self::MANY_MANY, 'Product', 'product_to_category(product_id, category_id)'),
+            'childCategories' => array(self::HAS_MANY, 'Category', 'parent_id')
         );
     }
 
@@ -66,6 +67,12 @@ class Category extends CActiveRecord {
             ),
             'active' => array(
                 'condition' => 'status=1',
+            ),
+            'orderBySortOrder' => array(
+                'order' => 'sort_order ASC',
+            ),
+            'onTop' => array(
+                'condition' => 'top=1',
             )
         );
     }
@@ -87,10 +94,24 @@ class Category extends CActiveRecord {
         );
     }
     
-    public function hasProducts(){
-        // TODO: add child categories to the count
-        $productCount = count($this->products);        
-        return $productCount > 0;
+    public function hasChildCategories(){
+        return count($this->childCategories) > 0 ? true : false;
+    }
+    
+    public function hasProducts(){                
+        return count($this->getProductsCount()) > 0 ? true : false;
+    }
+    
+    public function getProductsCount(){
+        $productsCount = count($this->products);
+        
+        // check childs
+        if($this->hasChildCategories()) {
+            foreach($this->childCategories as $category)
+                $productsCount += count($category->products);
+        }
+                
+        return $productsCount;
     }
 
 }
