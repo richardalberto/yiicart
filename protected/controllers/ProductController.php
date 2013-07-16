@@ -11,5 +11,11 @@ class ProductController extends Controller {
             'product'=>$product,
         ));
     }
+    
+    public function actionCompare(){
+        $this->render('compare', array(
+            
+        ));
+    }
 
 }

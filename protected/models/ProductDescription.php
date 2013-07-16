@@ -77,7 +77,7 @@ class ProductDescription extends CActiveRecord {
     }
     
     public function getDescription() {        
-        return $description;
+        return CHtml::decode($this->description);
     }
 
 }

@@ -91,7 +91,7 @@
                                                     <a href="<?php echo $this->createUrl('/category', array('id' => $category->category_id)); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category->description->name; ?> <b class="caret"></b></a>
                                                     <ul class="dropdown-menu">
                                                         <?php foreach ($category->childCategories as $childCategory): ?>
-                                                            <li><a href="listings.html"><?php echo $childCategory->description->name; ?></a></li>
+                                                            <li><a href="<?php echo $this->createUrl('/category/view', array('id'=>$childCategory->category_id)); ?>"><?php echo $childCategory->description->name; ?></a></li>
                                                     <?php endforeach; ?>
                                                     </ul>
                                                 <?php else: ?>
@@ -107,7 +107,6 @@
                 </div>
             </div><!-- end nav -->	
             <div class="row">
-                <?php echo $this->renderPartial('/common/leftMenu'); ?>
                 <?php echo $content; ?>
             </div>
             <footer>

@@ -1,3 +1,4 @@
+<?php echo $this->renderPartial('/common/leftMenu'); ?>
 <div class="span9">
     <ul class="breadcrumb">
         <li>
@@ -42,7 +43,7 @@
                 <address>
                     <?php if (isset($product->manufacturer)): ?><strong>Brand:</strong> <span><?php echo $product->manufacturer->name; ?></span><br><?php endif; ?>
                     <strong>Product Code:</strong> <span><?php echo $product->model; ?></span><br>
-                    <strong>Reward Points:</strong> <span>0</span><br>
+                    <!--<strong>Reward Points:</strong> <span>0</span><br>-->
                     <strong>Availability:</strong> <span><?php echo $product->stockStatus->name; ?></span><br>
                 </address>
             </div>	
@@ -102,8 +103,7 @@
                 </ul>
                 <div class="tab-content">
                     <div id="1" class="tab-pane active">
-                        <p>Just when you thought iMac had everything, now there's even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife '08, and it's more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.
-                        </p>
+                        <?php echo $product->description->getDescription(); ?>
                     </div>
                     <div id="2" class="tab-pane">
                         <p>There are no reviews for this product.</p>

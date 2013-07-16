@@ -12,7 +12,7 @@
                 <?php if($category->hasChildCategories()): ?>
                 <ul>
                     <?php foreach($category->childCategories as $childCategory): ?>
-                    <li><a href="#"> - <?php echo $childCategory->description->name; ?> (<?php echo $childCategory->getProductsCount(); ?>)</a></li>
+                    <li><a href="<?php echo $this->createUrl('/category/view', array('id'=>$childCategory->category_id)); ?>"> - <?php echo $childCategory->description->name; ?> (<?php echo $childCategory->getProductsCount(); ?>)</a></li>
                     <?php endforeach; ?>
                 </ul>
                 <?php endif; ?>

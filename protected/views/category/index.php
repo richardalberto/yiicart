@@ -1,3 +1,4 @@
+<?php echo $this->renderPartial('/common/leftMenu'); ?>
 <div class="span9">
     <ul class="breadcrumb">
         <li>
@@ -25,13 +26,14 @@
             </div>
             <div class="span2">
                 <p><a href="cart.html" class="btn btn-primary">Add to cart</a></p>
-                <p><a href="#" class="">Add to Wish List</a></p>
-                <p><a href="compare.html" class="">Add to Compare</a></p>
+                <!--<p><a href="#" class="">Add to Wish List</a></p>-->
+                <p><a href="<?php echo $this->createUrl('/product/compare'); ?>" class="">Add to Compare</a></p>
             </div>
         </div>
         <hr />
     <?php endforeach; ?>
-
+        
+    <!--
     <div class="pagination">
         <ul>
             <li><a href="#">Prev</a></li>
@@ -44,5 +46,6 @@
             <li><a href="#">Next</a></li>
         </ul>
     </div>
+    -->
 
 </div>
