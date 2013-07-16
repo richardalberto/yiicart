@@ -40,8 +40,8 @@
                         <a href="#" class="brand"><?php echo Yii::app()->name; ?></a>
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <li class="active"><a href="<?php echo $this->createUrl('/admin'); ?>">Dashboard</a></li>
-                                <li class="dropdown">
+                                <li <?php if($this->action->getController()->getId() == "default"): ?>class="active"<?php endif; ?>><a href="<?php echo $this->createUrl('/admin'); ?>">Dashboard</a></li>
+                                <li class="dropdown <?php if($this->action->getController()->getId() == "products" || $this->action->getController()->getId() == "categories" || $this->action->getController()->getId() == "manufacturers"): ?>active<?php endif; ?>">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Catalog <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->createUrl('/admin/categories'); ?>">Categories</a></li>
