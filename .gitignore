@@ -1,0 +1,13 @@
+# cache directories
+Thumbs.db
+*.DS_Store
+*.empty
+
+
+# runtime and cache directories
+/assets
+
+/protected/runtime
+
+
+
