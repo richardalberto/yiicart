@@ -17,6 +17,11 @@
           <script src="<?php echo Yii::app()->baseUrl; ?>/js/html5shiv.js"></script>
         <![endif]-->
 
+        <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/font-awesome.min.css">
+        <!--[if IE 7]>
+          <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/font-awesome-ie7.min.css">
+        <![endif]-->
+
         <!-- Fav icon -->
         <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/ico/favicon.png">
     </head>
@@ -35,22 +40,22 @@
                         <a href="#" class="brand"><?php echo Yii::app()->name; ?></a>
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <li class="active"><a href="#">Dashboard</a></li>
+                                <li class="active"><a href="<?php echo $this->createUrl('/admin'); ?>">Dashboard</a></li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Catalog <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->createUrl('/admin/categories'); ?>">Categories</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/products'); ?>">Products</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/filters'); ?>">Filters</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/attributes'); ?>">Attributes</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/options'); ?>">Options</a></li>
+                                        <!--<li><a href="<?php echo $this->createUrl('/admin/filters'); ?>">Filters</a></li>-->
+                                        <!--<li><a href="<?php echo $this->createUrl('/admin/attributes'); ?>">Attributes</a></li>-->
+                                        <!--<li><a href="<?php echo $this->createUrl('/admin/options'); ?>">Options</a></li>-->
                                         <li><a href="<?php echo $this->createUrl('/admin/manufacturers'); ?>">Manufacturers</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/downloads'); ?>">Downloads</a></li>
+                                        <!--<li><a href="<?php echo $this->createUrl('/admin/downloads'); ?>">Downloads</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/reviews'); ?>">Reviews</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/information'); ?>">Information</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/information'); ?>">Information</a></li>-->
                                     </ul>
                                 </li>
-                                <li class="dropdown">
+                                <!--<li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Extensions <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->createUrl('/admin/modules'); ?>">Modules</a></li>
@@ -91,7 +96,7 @@
                                         <li><a href="<?php echo $this->createUrl('/admin/reports/customers'); ?>">Customers</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/reports/affiliates'); ?>">Affiliates</a></li>
                                     </ul>
-                                </li>
+                                </li>-->
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Help <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -104,10 +109,10 @@
                                 </li>
                             </ul>
                             <ul class="nav pull-right">
-                                <li><a href="#">Store Front</a></li>
+                                <li><a href="<?php echo $this->createUrl('/'); ?>">Store Front</a></li>
                                 <li class="divider-vertical"></li>
                                 <li class="dropdown">
-                                    <a class="" href="#">Logout</a>
+                                    <a class="" href="<?php echo $this->createUrl('/site/logout'); ?>">Logout</a>
                                 </li>
                             </ul>
                         </div><!-- /.nav-collapse -->
@@ -117,6 +122,7 @@
 
             <?php if (isset($this->breadcrumbs) && count($this->breadcrumbs)): ?>
                 <ul class="breadcrumb">
+                    <li><a href="<?php echo $this->createUrl('/admin'); ?>"><?php echo Yii::t('views.layout.main', 'Home'); ?></a> <span class="divider">/</span></li>
                     <?php foreach ($this->breadcrumbs as $breadcrumb): ?>
                         <?php if ($breadcrumb == end($this->breadcrumbs)): ?>
                             <li class="active"><?php echo $breadcrumb; ?></li>
@@ -126,11 +132,9 @@
                     <?php endforeach; ?><!-- breadcrumbs -->
                 </ul>
             <?php endif ?>
-            
-            <hr />
 
             <?php echo $content; ?>
-            
+
             <hr />
 
             <div class="footer">
