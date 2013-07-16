@@ -54,7 +54,8 @@ class Category extends CActiveRecord {
      */
     public function relations() {
         return array(
-            'description' => array(self::HAS_ONE, 'CategoryDescription', 'category_id')
+            'description' => array(self::HAS_ONE, 'CategoryDescription', 'category_id'),
+            'products' => array(self::HAS_MANY, 'Product', 'category_id')
         );
     }
 
@@ -88,7 +89,8 @@ class Category extends CActiveRecord {
     
     public function hasProducts(){
         // TODO: add child categories to the count
-        $productCount = 
+        $productCount = count($this->products);        
+        return $productCount > 0;
     }
 
 }

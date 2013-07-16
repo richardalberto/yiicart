@@ -78,6 +78,7 @@
                                     <ul class="nav">
                                         <?php $categories = Category::model()->firstLevel()->active()->findAll(); ?>
                                         <?php foreach($categories as $category): ?>
+                                        <?php if(!$category->hasProducts()) continue; ?>
                                         <li class="dropdown">
                                             <a href="category.html" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category->description->name; ?> <b class="caret"></b></a>
                                             <ul class="dropdown-menu">
