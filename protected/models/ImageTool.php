@@ -22,14 +22,14 @@ class ImageTool {
             foreach ($directories as $directory) {
                 $path = $path . '/' . $directory;
 
-                if (!file_exists(DIR_IMAGE . $path)) {
-                    @mkdir(DIR_IMAGE . $path, 0777);
+                if (!file_exists(Yii::app()->params['imagePath'] . $path)) {
+                    @mkdir(Yii::app()->params['imagePath'] . $path, 0777);
                 }
             }
 
-            $image = new Image(DIR_IMAGE . $old_image);
+            $image = new Image(Yii::app()->params['imagePath'] . $old_image);
             $image->resize($width, $height);
-            $image->save(DIR_IMAGE . $new_image);
+            $image->save(Yii::app()->params['imagePath'] . $new_image);
         }
 
         return Yii::app()->baseUrl . '/image/' . $new_image;

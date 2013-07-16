@@ -20,9 +20,15 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
-        $this->render('index');
+        $latestProducts = Product::model()->latest()->active()->findAll();
+        $banners = Banner::model()->active()->findAll();
+        $categories = Category::model()->firstLevel()->active()->orderBySortOrder()->findAll();
+        
+        $this->render('index', array(
+            'categories'=>$categories,          
+            'latestProducts'=>$latestProducts,
+            'banners'=>$banners
+        ));
     }
     
     /**

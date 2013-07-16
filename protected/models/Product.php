@@ -82,7 +82,20 @@ class Product extends CActiveRecord {
      */
     public function relations() {
         return array(
-            'description' => array(self::HAS_ONE, 'ProductDescription', 'product_id')
+            'description' => array(self::HAS_ONE, 'ProductDescription', 'product_id'),
+            'orders' => array(self::HAS_MANY, 'Order', 'customer_id'),            
+        );
+    }
+    
+    public function scopes() {
+        return array(
+            'latest' => array(
+                'order' => 'product_id DESC',
+                'limit' => '8',
+            ),
+            'active' => array(
+                'condition' => 'status=1',
+            ),
         );
     }
 
@@ -131,8 +144,7 @@ class Product extends CActiveRecord {
         } else {
             $_image = ImageTool::resize('no_image.jpg', $width, $height);
         }
-        
+
         return $_image;
     }
-
 }
