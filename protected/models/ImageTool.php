@@ -12,9 +12,10 @@ class ImageTool {
         $extension = $info['extension'];
 
         $old_image = $filename;
-        $new_image = 'cache/' . substr($filename, 0, strrpos($filename, '.')) . '-' . $width . 'x' . $height . '.' . $extension;
+        $new_image = substr($filename, 0, strrpos($filename, '.')) . '-' . $width . 'x' . $height . '.' . $extension;
+        $cache_dir = Yii::app()->assetManager->getBasePath() . "/cache/";
 
-        if (!file_exists(Yii::app()->params['imagePath'] . $new_image) || (filemtime(Yii::app()->params['imagePath'] . $old_image) > filemtime(Yii::app()->params['imagePath'] . $new_image))) {
+        if (!file_exists($cache_dir . $new_image) || (filemtime(Yii::app()->params['imagePath'] . $old_image) > filemtime($cache_dir . $new_image))) {
             $path = '';
 
             $directories = explode('/', dirname(str_replace('../', '', $new_image)));
@@ -22,17 +23,17 @@ class ImageTool {
             foreach ($directories as $directory) {
                 $path = $path . '/' . $directory;
 
-                if (!file_exists(Yii::app()->params['imagePath'] . $path)) {
-                    @mkdir(Yii::app()->params['imagePath'] . $path, 0777);
+                if (!file_exists($cache_dir . $path)) {
+                    @mkdir($cache_dir . $path, 0777);
                 }
             }
 
             $image = new Image(Yii::app()->params['imagePath'] . $old_image);
             $image->resize($width, $height);
-            $image->save(Yii::app()->params['imagePath'] . $new_image);
+            $image->save($cache_dir . $new_image);
         }
 
-        return Yii::app()->baseUrl . '/image/' . $new_image;
+        return Yii::app()->assetManager->getBaseUrl() . '/cache/' . $new_image;
     }
 
 }

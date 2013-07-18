@@ -10,7 +10,7 @@ $this->breadcrumbs = array(
     <div class="span2">
         <div class="btn-group">
             <button class="btn btn-info">Repair</button>
-            <button class="btn btn-success">Insert</button>
+            <button class="btn btn-primary">Insert</button>
             <button class="btn btn-danger">Delete</button>
         </div>
     </div>
@@ -33,7 +33,7 @@ $this->breadcrumbs = array(
                 <td><?php echo CHtml::checkBox('selected[]'); ?></td>
                 <td><?php echo $category->description->name; ?></td>
                 <td><?php echo $category->sort_order; ?></td>
-                <td><button class="btn btn-mini" type="button">Edit</button></td>
+                <td><button class="btn btn-success btn-mini" type="button">Edit</button></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
