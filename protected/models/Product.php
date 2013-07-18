@@ -157,7 +157,7 @@ class Product extends CActiveRecord {
 
     public function getFormattedPrice() {
         // TODO: format price
-        return "\${$this->price}";
+        return "$" . sprintf("%.2f", "{$this->price}");
     }
 
 }

@@ -68,6 +68,13 @@ class ProductDescription extends CActiveRecord {
             'tag' => 'Tag',
         );
     }
+    
+    public function getNameShort($limit = 50){
+        $name = strip_tags(CHtml::decode($this->name));
+        $short = substr($name, 0, $limit);
+        
+        return strip_tags($short) . '...';
+    }
 
     public function getDescriptionShort($limit = 255) { // 255 chars
         $description = strip_tags(CHtml::decode($this->description));
