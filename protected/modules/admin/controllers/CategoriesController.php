@@ -11,5 +11,38 @@ class CategoriesController extends BackendController {
             'categories'=>$categories            
         ));
     }
+    
+    public function actionCreate(){
+        $model = new CategoryForm;
+        
+        $statues = array(
+            0=>Yii::t('common.disabled', 'Disabled'),
+            1=>Yii::t('common.enabled', 'Enabled')
+        );
+        
+        $this->render('create', array(
+            'model'=>$model,
+            'statues'=>$statues
+        ));
+    }
+    
+    public function actionUpdate($id){
+        $model = new CategoryForm;
+        $model->loadDataFromCategory($id);
+        
+        $statues = array(
+            0=>Yii::t('common.disabled', 'Disabled'),
+            1=>Yii::t('common.enabled', 'Enabled')
+        );
+        
+        $this->render('update', array(
+            'model'=>$model,
+            'statues'=>$statues
+        ));        
+    }
+    
+    public function actionDelete($id){
+        
+    }
 
 }

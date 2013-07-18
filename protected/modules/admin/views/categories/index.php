@@ -9,9 +9,9 @@ $this->breadcrumbs = array(
     <div class="span9"><h1><i class="icon-sitemap"></i>&nbsp;<?php echo Yii::t('views.categories.index', 'Category'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
-            <button class="btn btn-info">Repair</button>
-            <button class="btn btn-primary">Insert</button>
-            <button class="btn btn-danger">Delete</button>
+            <a class="btn btn-info">Repair</a>
+            <a href="<?php echo $this->createUrl('create'); ?>" class="btn btn-primary">Insert</a>
+            <a class="btn btn-danger">Delete</a>
         </div>
     </div>
 </div>
@@ -33,7 +33,7 @@ $this->breadcrumbs = array(
                 <td><?php echo CHtml::checkBox('selected[]'); ?></td>
                 <td><?php echo $category->description->name; ?></td>
                 <td><?php echo $category->sort_order; ?></td>
-                <td><button class="btn btn-success btn-mini" type="button">Edit</button></td>
+                <td><a href="<?php echo $this->createUrl('update', array('id'=>$category->category_id)); ?>" class="btn btn-success btn-mini">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

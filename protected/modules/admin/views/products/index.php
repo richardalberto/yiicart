@@ -9,9 +9,9 @@ $this->breadcrumbs = array(
     <div class="span9"><h1><i class="icon-cog"></i>&nbsp;<?php echo Yii::t('views.products.index', 'Products'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
-            <button class="btn btn-success">Insert</button>
-            <button class="btn btn-success">Copy</button>            
-            <button class="btn btn-danger">Delete</button>
+            <a href="<?php echo $this->createUrl('create'); ?>" class="btn btn-success"><?php echo Yii::t('common', 'Insert'); ?></a>
+            <a href="#" class="btn btn-success"><?php echo Yii::t('common', 'Copy'); ?></a>            
+            <a href="#" class="btn btn-danger"><?php echo Yii::t('common', 'Delete'); ?></a>
         </div>
     </div>
 </div>
@@ -38,10 +38,10 @@ $this->breadcrumbs = array(
                 <td><img src="<?php echo $product->getImageWithSize(40, 40); ?>" /></td>
                 <td><?php echo $product->description->name; ?></td>
                 <td><?php echo $product->model; ?></td>
-                <td><?php echo $product->price; ?></td>
+                <td><?php echo $product->getFormattedPrice(); ?></td>
                 <td><?php echo $product->quantity; ?></td>
                 <td><?php echo $product->status; ?></td>
-                <td><button class="btn btn-mini" type="button">Edit</button></td>
+                <td><a class="btn btn-success btn-mini" href="<?php echo $this->createUrl('update', array('id'=>$product->product_id)); ?>"><?php echo Yii::t('common', 'Edit'); ?></a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
