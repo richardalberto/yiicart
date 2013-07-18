@@ -1,12 +1,12 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('views.products.index', 'Products');
+$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('products', 'Products');
 $this->breadcrumbs = array(
-    Yii::t('views.products.index', 'Products'),
+    Yii::t('products', 'Products'),
 );
 ?>
 
 <div class="row-fluid">
-    <div class="span9"><h1><i class="icon-cog"></i>&nbsp;<?php echo Yii::t('views.products.index', 'Products'); ?></h1></div>
+    <div class="span9"><h1><i class="icon-cog"></i>&nbsp;<?php echo Yii::t('products', 'Products'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
             <a href="<?php echo $this->createUrl('create'); ?>" class="btn btn-success"><?php echo Yii::t('common', 'Insert'); ?></a>
@@ -22,13 +22,13 @@ $this->breadcrumbs = array(
     <thead>
         <tr>
             <th style="width: 1px;">&nbsp;</th>
-            <th style="width: 50px;"><?php echo Yii::t('views.products.index', 'Image'); ?></th>
-            <th><?php echo Yii::t('views.products.index', 'Product Name'); ?></th>
-            <th style="width: 80px;"><?php echo Yii::t('views.products.index', 'Model'); ?></th>
-            <th style="width: 80px;"><?php echo Yii::t('views.products.index', 'Price'); ?></th>
-            <th style="width: 80px;"><?php echo Yii::t('views.products.index', 'Quantity'); ?></th>
-            <th style="width: 80px;"><?php echo Yii::t('views.products.index', 'Status'); ?></th>
-            <th style="width: 80px;"><?php echo Yii::t('views.products.index', 'Action'); ?></th>
+            <th style="width: 50px;"><?php echo Yii::t('products', 'Image'); ?></th>
+            <th><?php echo Yii::t('products', 'Product Name'); ?></th>
+            <th style="width: 80px;"><?php echo Yii::t('products', 'Model'); ?></th>
+            <th style="width: 80px;"><?php echo Yii::t('products', 'Price'); ?></th>
+            <th style="width: 80px;"><?php echo Yii::t('products', 'Quantity'); ?></th>
+            <th style="width: 80px;"><?php echo Yii::t('products', 'Status'); ?></th>
+            <th style="width: 80px;"><?php echo Yii::t('products', 'Action'); ?></th>
         </tr>
     </thead>
     <tbody>

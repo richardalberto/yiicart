@@ -37,19 +37,19 @@ class CategoryForm extends CFormModel {
      */
     public function attributeLabels() {
         return array(
-            'name'=>Yii::t('model.CategoryForm', 'Name'),
-            'metaTagDescription'=>Yii::t('model.CategoryForm', 'Meta Tag Description'),       
-            'metaTagKeywords'=>Yii::t('model.CategoryForm', 'Meta Tag Keywords'), 
-            'description'=>Yii::t('model.CategoryForm', 'Description'), 
-            'parent'=>Yii::t('model.CategoryForm', 'Parent'), 
-            'filters'=>Yii::t('model.CategoryForm', 'Filters'), 
-            'stores'=>Yii::t('model.CategoryForm', 'Stores'), 
-            'seoKeyword'=>Yii::t('model.CategoryForm', 'SEO Keyword'), 
-            'image'=>Yii::t('model.CategoryForm', 'Image'), 
-            'top'=>Yii::t('model.CategoryForm', 'Top'), 
-            'columns'=>Yii::t('model.CategoryForm', 'Columns'), 
-            'sortOrder'=>Yii::t('model.CategoryForm', 'Sort Order'), 
-            'status'=>Yii::t('model.CategoryForm', 'Status'), 
+            'name'=>Yii::t('category', 'Name'),
+            'metaTagDescription'=>Yii::t('category', 'Meta Tag Description'),       
+            'metaTagKeywords'=>Yii::t('category', 'Meta Tag Keywords'), 
+            'description'=>Yii::t('category', 'Description'), 
+            'parent'=>Yii::t('category', 'Parent'), 
+            'filters'=>Yii::t('category', 'Filters'), 
+            'stores'=>Yii::t('category', 'Stores'), 
+            'seoKeyword'=>Yii::t('category', 'SEO Keyword'), 
+            'image'=>Yii::t('category', 'Image'), 
+            'top'=>Yii::t('category', 'Top'), 
+            'columns'=>Yii::t('category', 'Columns'), 
+            'sortOrder'=>Yii::t('category', 'Sort Order'), 
+            'status'=>Yii::t('category', 'Status'), 
         );
     }
     

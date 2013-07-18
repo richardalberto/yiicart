@@ -37,13 +37,16 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'description', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textArea($model, 'description', array('class' => 'span6')); ?>
+                <?php $this->widget('application.extensions.yiickeditor.YiiCKEditor', array(
+                    'model'=>$model,
+                    'attribute'=>'description',
+                )); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'productTags', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'productTags', array('class' => 'span3')); ?>
+                <?php echo $form->textField($model, 'productTags', array('class' => 'span6')); ?>
             </div>
         </div>
     </div>

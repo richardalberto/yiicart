@@ -14,8 +14,8 @@ class ProductsController extends BackendController {
         $model = new ProductForm;
         
         $statues = array(
-            0=>Yii::t('common.disabled', 'Disabled'),
-            1=>Yii::t('common.enabled', 'Enabled')
+            0=>Yii::t('common', 'Disabled'),
+            1=>Yii::t('common', 'Enabled')
         );
         
         $this->render('create', array(
@@ -29,8 +29,8 @@ class ProductsController extends BackendController {
         $model->loadDataFromProduct($id);
         
         $statues = array(
-            0=>Yii::t('common.disabled', 'Disabled'),
-            1=>Yii::t('common.enabled', 'Enabled')
+            0=>Yii::t('common', 'Disabled'),
+            1=>Yii::t('common', 'Enabled')
         );        
         
         $this->render('update', array(

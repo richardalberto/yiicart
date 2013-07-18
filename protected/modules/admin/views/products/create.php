@@ -1,7 +1,7 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('views.manufacturers', 'Products');
+$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('products', 'Products');
 $this->breadcrumbs = array(
-    Yii::t('views.products', 'Products'),
+    Yii::t('products', 'Products'),
     Yii::t('common', 'Create'),
 );
 ?>

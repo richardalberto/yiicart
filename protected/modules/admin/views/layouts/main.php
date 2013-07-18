@@ -122,7 +122,7 @@
 
             <?php if (isset($this->breadcrumbs) && count($this->breadcrumbs)): ?>
                 <ul class="breadcrumb">
-                    <li><a href="<?php echo $this->createUrl('/admin'); ?>"><?php echo Yii::t('views.layout.main', 'Home'); ?></a> <span class="divider">/</span></li>
+                    <li><a href="<?php echo $this->createUrl('/admin'); ?>"><?php echo Yii::t('common', 'Home'); ?></a> <span class="divider">/</span></li>
                     <?php foreach ($this->breadcrumbs as $breadcrumb): ?>
                         <?php if ($breadcrumb == end($this->breadcrumbs)): ?>
                             <li class="active"><?php echo $breadcrumb; ?></li>

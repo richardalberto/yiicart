@@ -37,7 +37,10 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'description', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textArea($model, 'description', array('class' => 'span6')); ?>
+                <?php $this->widget('application.extensions.yiickeditor.YiiCKEditor', array(
+                    'model'=>$model,
+                    'attribute'=>'description',
+                )); ?>
             </div>
         </div>
     </div>
