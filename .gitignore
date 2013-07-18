@@ -3,6 +3,9 @@ Thumbs.db
 *.DS_Store
 *.empty
 
+# ignore local config files
+/protected/config/*.php
+
 
 # runtime and cache directories
 /assets/*
