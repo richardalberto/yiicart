@@ -5,7 +5,7 @@ Thumbs.db
 
 
 # runtime and cache directories
-/assets
+/assets/*
 
 /protected/runtime
 
