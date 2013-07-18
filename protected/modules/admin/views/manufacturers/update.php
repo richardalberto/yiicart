@@ -1,13 +1,13 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('views.manufacturers.index', 'Manufacturers');
+$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('manufacturers', 'Manufacturers');
 $this->breadcrumbs = array(
-    Yii::t('views.manufacturers.index', 'Manufacturers'),
+    Yii::t('manufacturers', 'Manufacturers'),
     Yii::t('common', 'Update'),
 );
 ?>
 
 <div class="row-fluid">
-    <div class="span9"><h1><?php echo Yii::t('common', 'Update'); ?></h1></div>
+    <div class="span9"><h1><i class="icon-building"></i>&nbsp;<?php echo Yii::t('manufacturers', 'Manufacturers'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
             <a class="btn btn-primary"><?php echo Yii::t('common', 'Save'); ?></a>

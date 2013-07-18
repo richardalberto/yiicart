@@ -1,16 +1,16 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('views.manufacturers.index', 'Manufacturers');
+$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('manufacturers', 'Manufacturers');
 $this->breadcrumbs = array(
-    Yii::t('views.manufacturers.index', 'Manufacturers'),
+    Yii::t('manufacturers', 'Manufacturers'),
 );
 ?>
 
 <div class="row-fluid">
-    <div class="span9"><h1><i class="icon-building"></i>&nbsp;<?php echo Yii::t('views.manufacturers.index', 'Manufacturers'); ?></h1></div>
+    <div class="span9"><h1><i class="icon-building"></i>&nbsp;<?php echo Yii::t('manufacturers', 'Manufacturers'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
-            <a class="btn btn-primary" href="<?php echo $this->createUrl('create'); ?>">Insert</a>
-            <a class="btn btn-danger">Delete</a>
+            <a class="btn btn-primary" href="<?php echo $this->createUrl('create'); ?>"><?php echo Yii::t('common', 'Insert'); ?></a>
+            <a class="btn btn-danger"><?php echo Yii::t('common', 'Delete'); ?></a>
         </div>
     </div>
 </div>
@@ -21,9 +21,9 @@ $this->breadcrumbs = array(
     <thead>
         <tr>
             <th style="width: 1px;">&nbsp;</th>
-            <th><?php echo Yii::t('views.manufacturers.index', 'Category Name'); ?></th>
-            <th style="width: 80px;"><?php echo Yii::t('views.manufacturers.index', 'Sort Order'); ?></th>
-            <th style="width: 80px;"><?php echo Yii::t('views.manufacturers.index', 'Action'); ?></th>
+            <th><?php echo Yii::t('manufacturers', 'Manufacturer Name'); ?></th>
+            <th style="width: 80px;"><?php echo Yii::t('manufacturers', 'Sort Order'); ?></th>
+            <th style="width: 80px;"><?php echo Yii::t('manufacturers', 'Action'); ?></th>
         </tr>
     </thead>
     <tbody>

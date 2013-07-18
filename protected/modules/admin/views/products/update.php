@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 ?>
 
 <div class="row-fluid">
-    <div class="span9"><h1><?php echo Yii::t('common', 'Update'); ?></h1></div>
+    <div class="span9"><h1><i class="icon-cog"></i>&nbsp;<?php echo Yii::t('products', 'Products'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
             <a class="btn btn-primary"><?php echo Yii::t('common', 'Save'); ?></a>

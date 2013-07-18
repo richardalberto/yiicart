@@ -29,11 +29,11 @@ class ManufacturerForm extends CFormModel {
      */
     public function attributeLabels() {
         return array(
-            'name'=>Yii::t('model.CategoryForm', 'Name'),
-            'stores'=>Yii::t('model.CategoryForm', 'Stores'), 
-            'seoKeyword'=>Yii::t('model.CategoryForm', 'SEO Keyword'), 
-            'image'=>Yii::t('model.CategoryForm', 'Image'),
-            'sortOrder'=>Yii::t('model.CategoryForm', 'Sort Order'),
+            'name'=>Yii::t('manufacturers', 'Name'),
+            'stores'=>Yii::t('manufacturers', 'Stores'), 
+            'seoKeyword'=>Yii::t('manufacturers', 'SEO Keyword'), 
+            'image'=>Yii::t('manufacturers', 'Image'),
+            'sortOrder'=>Yii::t('manufacturers', 'Sort Order'),
         );
     }
     

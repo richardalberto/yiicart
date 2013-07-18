@@ -1,13 +1,13 @@
 <?php
-$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('views.categories.index', 'Category');
+$this->pageTitle = Yii::app()->name . ' - ' . Yii::t('categories', 'Category');
 $this->breadcrumbs = array(
-    Yii::t('views.categories.index', 'Category'),
-    Yii::t('views.categories.create', 'Create'),
+    Yii::t('categories', 'Category'),
+    Yii::t('common', 'Create'),
 );
 ?>
 
 <div class="row-fluid">
-    <div class="span9"><h1><?php echo Yii::t('views.categories.create', 'Create'); ?></h1></div>
+    <div class="span9"><h1><i class="icon-sitemap"></i>&nbsp;<?php echo Yii::t('categories', 'Category'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
             <a class="btn btn-primary">Create</button>
