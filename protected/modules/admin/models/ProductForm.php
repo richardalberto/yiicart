@@ -7,6 +7,7 @@
  */
 class ProductForm extends CFormModel {
 
+    public $id;
     public $name;
     public $metaTagDescription;
     public $metaTagKeywords;
@@ -33,7 +34,7 @@ class ProductForm extends CFormModel {
     public $dimensionL;
     public $dimensionW;
     public $dimensionH;
-    public $lenghtClass;
+    public $lengthClass;
     public $weight;
     public $weightClass;
     public $status;
@@ -88,7 +89,7 @@ class ProductForm extends CFormModel {
             'dimensionL'=>Yii::t('products', 'Dimension L'), 
             'dimensionW'=>Yii::t('products', 'Dimension W'),
             'dimensionH'=>Yii::t('products', 'Dimension H'), 
-            'lenghtClass'=>Yii::t('products', 'Lenght Class'), 
+            'lengthClass'=>Yii::t('products', 'Lenght Class'), 
             'weight'=>Yii::t('products', 'Weight'), 
             'weightClass'=>Yii::t('products', 'Weight Class'), 
             'status'=>Yii::t('products', 'Status'), 
@@ -102,9 +103,17 @@ class ProductForm extends CFormModel {
         );
     }
     
+    public function getProduct(){
+        if(!is_null($this->id)){
+            return Product::model()->findByPk($this->id);
+        }        
+        return null;
+    }
+    
     public function loadDataFromProduct($id){
         $product = Product::model()->findByPk($id);
         if(!is_null($product)){
+            $this->id = $product->product_id;
             $this->name = $product->description->name;
             $this->metaTagDescription = $product->description->meta_description;
             $this->metaTagKeywords = $product->description->meta_keyword;
@@ -122,9 +131,28 @@ class ProductForm extends CFormModel {
             $this->taxClass = $product->tax_class_id;
             $this->quantity = $product->quantity;
             $this->minimumQuantity = $product->minimum;
+            $this->subtractStock = $product->subtract;
+            $this->outOfStockStatus = $product->stock_status_id;
+            $this->requiresShipping = $product->shipping;
+            // TODO: add seo keyword
+            $this->seoKeyword = '';
             $this->image = $product->image;
+            $this->dateAvailable = $product->date_available;
+            $this->dimensionL = $product->length;
+            $this->dimensionW = $product->width;
+            $this->dimensionH = $product->height;
+            $this->lengthClass = $product->length_class_id;
+            $this->weight = $product->weight;
+            $this->weightClass = $product->weight_class_id;
+            $this->weightClass = $product->weight_class_id;
             $this->sortOrder = $product->sort_order;
             $this->status = $product->status;
+            $this->manufacturer = $product->manufacturer_id;
+            // TODO: add categories
+            // TODO: add filters
+            // TODO: add stores
+            // TODO: add downloads
+            // TODO: add related products
         }
     }
 

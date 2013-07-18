@@ -72,7 +72,19 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'image', array('class' => 'control-label')); ?>
             <div class="controls">
-
+                <ul class="thumbnails">
+                  <li class="span2">
+                    <div class="thumbnail">
+                      <img alt="" src="<?php if(!is_null($model->getCategory())) echo $model->getCategory()->getImageWithSize(100, 100); ?>">
+                      <div class="caption">
+                        <p>
+                            <a class="btn btn-mini btn-primary" href="#">Browse</a> 
+                            <a class="btn btn-mini" href="#">Clear</a>
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
             </div>
         </div>
         <div class="control-group">

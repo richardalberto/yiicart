@@ -63,127 +63,122 @@
  * @property string $date_added
  * @property string $date_modified
  */
-class Order extends CActiveRecord
-{
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return Order the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+class Order extends CActiveRecord {
 
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'order';
-	}
+    /**
+     * Returns the static model of the specified AR class.
+     * @param string $className active record class name.
+     * @return Order the static model class
+     */
+    public static function model($className=__CLASS__) {
+        return parent::model($className);
+    }
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('invoice_prefix, store_name, store_url, firstname, lastname, email, telephone, fax, payment_firstname, payment_lastname, payment_company, payment_company_id, payment_tax_id, payment_address_1, payment_address_2, payment_city, payment_postcode, payment_country, payment_country_id, payment_zone, payment_zone_id, payment_address_format, payment_method, payment_code, shipping_firstname, shipping_lastname, shipping_company, shipping_address_1, shipping_address_2, shipping_city, shipping_postcode, shipping_country, shipping_country_id, shipping_zone, shipping_zone_id, shipping_address_format, shipping_method, shipping_code, comment, affiliate_id, commission, language_id, currency_id, currency_code, ip, forwarded_ip, user_agent, accept_language, date_added, date_modified', 'required'),
-			array('invoice_no, store_id, customer_id, customer_group_id, payment_country_id, payment_zone_id, shipping_country_id, shipping_zone_id, order_status_id, affiliate_id, language_id, currency_id', 'numerical', 'integerOnly'=>true),
-			array('invoice_prefix', 'length', 'max'=>26),
-			array('store_name', 'length', 'max'=>64),
-			array('store_url, user_agent, accept_language', 'length', 'max'=>255),
-			array('firstname, lastname, telephone, fax, payment_firstname, payment_lastname, payment_company, payment_company_id, payment_tax_id, shipping_firstname, shipping_lastname, shipping_company', 'length', 'max'=>32),
-			array('email', 'length', 'max'=>96),
-			array('payment_address_1, payment_address_2, payment_city, payment_country, payment_zone, payment_method, payment_code, shipping_address_1, shipping_address_2, shipping_city, shipping_country, shipping_zone, shipping_method, shipping_code', 'length', 'max'=>128),
-			array('payment_postcode, shipping_postcode', 'length', 'max'=>10),
-			array('total, commission, currency_value', 'length', 'max'=>15),
-			array('currency_code', 'length', 'max'=>3),
-			array('ip, forwarded_ip', 'length', 'max'=>40),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('order_id, invoice_no, invoice_prefix, store_id, store_name, store_url, customer_id, customer_group_id, firstname, lastname, email, telephone, fax, payment_firstname, payment_lastname, payment_company, payment_company_id, payment_tax_id, payment_address_1, payment_address_2, payment_city, payment_postcode, payment_country, payment_country_id, payment_zone, payment_zone_id, payment_address_format, payment_method, payment_code, shipping_firstname, shipping_lastname, shipping_company, shipping_address_1, shipping_address_2, shipping_city, shipping_postcode, shipping_country, shipping_country_id, shipping_zone, shipping_zone_id, shipping_address_format, shipping_method, shipping_code, comment, total, order_status_id, affiliate_id, commission, language_id, currency_id, currency_code, currency_value, ip, forwarded_ip, user_agent, accept_language, date_added, date_modified', 'safe', 'on'=>'search'),
-		);
-	}
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName() {
+        return 'order';
+    }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		return array(
-                    'products' => array(self::HAS_MANY, 'OrderProduct', 'order_id')
-		);
-	}
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules() {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('invoice_prefix, store_name, store_url, firstname, lastname, email, telephone, fax, payment_firstname, payment_lastname, payment_company, payment_company_id, payment_tax_id, payment_address_1, payment_address_2, payment_city, payment_postcode, payment_country, payment_country_id, payment_zone, payment_zone_id, payment_address_format, payment_method, payment_code, shipping_firstname, shipping_lastname, shipping_company, shipping_address_1, shipping_address_2, shipping_city, shipping_postcode, shipping_country, shipping_country_id, shipping_zone, shipping_zone_id, shipping_address_format, shipping_method, shipping_code, comment, affiliate_id, commission, language_id, currency_id, currency_code, ip, forwarded_ip, user_agent, accept_language, date_added, date_modified', 'required'),
+            array('invoice_no, store_id, customer_id, customer_group_id, payment_country_id, payment_zone_id, shipping_country_id, shipping_zone_id, order_status_id, affiliate_id, language_id, currency_id', 'numerical', 'integerOnly' => true),
+            array('invoice_prefix', 'length', 'max' => 26),
+            array('store_name', 'length', 'max' => 64),
+            array('store_url, user_agent, accept_language', 'length', 'max' => 255),
+            array('firstname, lastname, telephone, fax, payment_firstname, payment_lastname, payment_company, payment_company_id, payment_tax_id, shipping_firstname, shipping_lastname, shipping_company', 'length', 'max' => 32),
+            array('email', 'length', 'max' => 96),
+            array('payment_address_1, payment_address_2, payment_city, payment_country, payment_zone, payment_method, payment_code, shipping_address_1, shipping_address_2, shipping_city, shipping_country, shipping_zone, shipping_method, shipping_code', 'length', 'max' => 128),
+            array('payment_postcode, shipping_postcode', 'length', 'max' => 10),
+            array('total, commission, currency_value', 'length', 'max' => 15),
+            array('currency_code', 'length', 'max' => 3),
+            array('ip, forwarded_ip', 'length', 'max' => 40),
+            // The following rule is used by search().
+            // Please remove those attributes that should not be searched.
+            array('order_id, invoice_no, invoice_prefix, store_id, store_name, store_url, customer_id, customer_group_id, firstname, lastname, email, telephone, fax, payment_firstname, payment_lastname, payment_company, payment_company_id, payment_tax_id, payment_address_1, payment_address_2, payment_city, payment_postcode, payment_country, payment_country_id, payment_zone, payment_zone_id, payment_address_format, payment_method, payment_code, shipping_firstname, shipping_lastname, shipping_company, shipping_address_1, shipping_address_2, shipping_city, shipping_postcode, shipping_country, shipping_country_id, shipping_zone, shipping_zone_id, shipping_address_format, shipping_method, shipping_code, comment, total, order_status_id, affiliate_id, commission, language_id, currency_id, currency_code, currency_value, ip, forwarded_ip, user_agent, accept_language, date_added, date_modified', 'safe', 'on' => 'search'),
+        );
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'order_id' => 'Order',
-			'invoice_no' => 'Invoice No',
-			'invoice_prefix' => 'Invoice Prefix',
-			'store_id' => 'Store',
-			'store_name' => 'Store Name',
-			'store_url' => 'Store Url',
-			'customer_id' => 'Customer',
-			'customer_group_id' => 'Customer Group',
-			'firstname' => 'Firstname',
-			'lastname' => 'Lastname',
-			'email' => 'Email',
-			'telephone' => 'Telephone',
-			'fax' => 'Fax',
-			'payment_firstname' => 'Payment Firstname',
-			'payment_lastname' => 'Payment Lastname',
-			'payment_company' => 'Payment Company',
-			'payment_company_id' => 'Payment Company',
-			'payment_tax_id' => 'Payment Tax',
-			'payment_address_1' => 'Payment Address 1',
-			'payment_address_2' => 'Payment Address 2',
-			'payment_city' => 'Payment City',
-			'payment_postcode' => 'Payment Postcode',
-			'payment_country' => 'Payment Country',
-			'payment_country_id' => 'Payment Country',
-			'payment_zone' => 'Payment Zone',
-			'payment_zone_id' => 'Payment Zone',
-			'payment_address_format' => 'Payment Address Format',
-			'payment_method' => 'Payment Method',
-			'payment_code' => 'Payment Code',
-			'shipping_firstname' => 'Shipping Firstname',
-			'shipping_lastname' => 'Shipping Lastname',
-			'shipping_company' => 'Shipping Company',
-			'shipping_address_1' => 'Shipping Address 1',
-			'shipping_address_2' => 'Shipping Address 2',
-			'shipping_city' => 'Shipping City',
-			'shipping_postcode' => 'Shipping Postcode',
-			'shipping_country' => 'Shipping Country',
-			'shipping_country_id' => 'Shipping Country',
-			'shipping_zone' => 'Shipping Zone',
-			'shipping_zone_id' => 'Shipping Zone',
-			'shipping_address_format' => 'Shipping Address Format',
-			'shipping_method' => 'Shipping Method',
-			'shipping_code' => 'Shipping Code',
-			'comment' => 'Comment',
-			'total' => 'Total',
-			'order_status_id' => 'Order Status',
-			'affiliate_id' => 'Affiliate',
-			'commission' => 'Commission',
-			'language_id' => 'Language',
-			'currency_id' => 'Currency',
-			'currency_code' => 'Currency Code',
-			'currency_value' => 'Currency Value',
-			'ip' => 'Ip',
-			'forwarded_ip' => 'Forwarded Ip',
-			'user_agent' => 'User Agent',
-			'accept_language' => 'Accept Language',
-			'date_added' => 'Date Added',
-			'date_modified' => 'Date Modified',
-		);
-	}
+    /**
+     * @return array relational rules.
+     */
+    public function relations() {
+        return array(
+            'products' => array(self::HAS_MANY, 'OrderProduct', 'order_id')
+        );
+    }
+
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels() {
+        return array(
+            'order_id' => 'Order',
+            'invoice_no' => 'Invoice No',
+            'invoice_prefix' => 'Invoice Prefix',
+            'store_id' => 'Store',
+            'store_name' => 'Store Name',
+            'store_url' => 'Store Url',
+            'customer_id' => 'Customer',
+            'customer_group_id' => 'Customer Group',
+            'firstname' => 'Firstname',
+            'lastname' => 'Lastname',
+            'email' => 'Email',
+            'telephone' => 'Telephone',
+            'fax' => 'Fax',
+            'payment_firstname' => 'Payment Firstname',
+            'payment_lastname' => 'Payment Lastname',
+            'payment_company' => 'Payment Company',
+            'payment_company_id' => 'Payment Company',
+            'payment_tax_id' => 'Payment Tax',
+            'payment_address_1' => 'Payment Address 1',
+            'payment_address_2' => 'Payment Address 2',
+            'payment_city' => 'Payment City',
+            'payment_postcode' => 'Payment Postcode',
+            'payment_country' => 'Payment Country',
+            'payment_country_id' => 'Payment Country',
+            'payment_zone' => 'Payment Zone',
+            'payment_zone_id' => 'Payment Zone',
+            'payment_address_format' => 'Payment Address Format',
+            'payment_method' => 'Payment Method',
+            'payment_code' => 'Payment Code',
+            'shipping_firstname' => 'Shipping Firstname',
+            'shipping_lastname' => 'Shipping Lastname',
+            'shipping_company' => 'Shipping Company',
+            'shipping_address_1' => 'Shipping Address 1',
+            'shipping_address_2' => 'Shipping Address 2',
+            'shipping_city' => 'Shipping City',
+            'shipping_postcode' => 'Shipping Postcode',
+            'shipping_country' => 'Shipping Country',
+            'shipping_country_id' => 'Shipping Country',
+            'shipping_zone' => 'Shipping Zone',
+            'shipping_zone_id' => 'Shipping Zone',
+            'shipping_address_format' => 'Shipping Address Format',
+            'shipping_method' => 'Shipping Method',
+            'shipping_code' => 'Shipping Code',
+            'comment' => 'Comment',
+            'total' => 'Total',
+            'order_status_id' => 'Order Status',
+            'affiliate_id' => 'Affiliate',
+            'commission' => 'Commission',
+            'language_id' => 'Language',
+            'currency_id' => 'Currency',
+            'currency_code' => 'Currency Code',
+            'currency_value' => 'Currency Value',
+            'ip' => 'Ip',
+            'forwarded_ip' => 'Forwarded Ip',
+            'user_agent' => 'User Agent',
+            'accept_language' => 'Accept Language',
+            'date_added' => 'Date Added',
+            'date_modified' => 'Date Modified',
+        );
+    }
 
 }

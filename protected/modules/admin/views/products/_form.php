@@ -108,7 +108,7 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'taxClass', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'taxClass', array('class' => 'span2')); ?>
+                <?php echo $form->dropDownList($model, 'taxClass', $taxClasses,  array('class' => 'span3')); ?>
             </div>
         </div>
         <div class="control-group">
@@ -126,19 +126,19 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'subtractStock', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'subtractStock', array('class' => 'span3')); ?>
+                <?php echo $form->dropDownList($model, 'subtractStock', $yes_no, array('class' => 'span1')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'outOfStockStatus', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'outOfStockStatus', array('class' => 'span2')); ?>
+                <?php echo $form->dropDownList($model, 'outOfStockStatus', $stockStatuses, array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'requiresShipping', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'requiresShipping', array('class' => 'span2')); ?>
+                <?php echo $form->dropDownList($model, 'requiresShipping', $yes_no, array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
@@ -150,7 +150,19 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'image', array('class' => 'control-label')); ?>
             <div class="controls">
-
+                <ul class="thumbnails">
+                  <li class="span2">
+                    <div class="thumbnail">
+                      <img alt="" src="<?php if(!is_null($model->getProduct())) echo $model->getProduct()->getImageWithSize(100, 100); ?>">
+                      <div class="caption">
+                        <p>
+                            <a class="btn btn-mini btn-primary" href="#">Browse</a> 
+                            <a class="btn btn-mini" href="#">Clear</a>
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
             </div>
         </div>
         <div class="control-group">
@@ -166,27 +178,27 @@ $form = $this->beginWidget('CActiveForm', array(
             </div>
         </div>
         <div class="control-group">
-            <?php echo $form->label($model, 'lenghtClass', array('class' => 'control-label')); ?>
+            <?php echo $form->label($model, 'lengthClass', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'lenghtClass', array('class' => 'span1')); ?>
+                <?php echo $form->dropDownList($model, 'lengthClass', $lengthClasses, array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'weight', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'weight', array('class' => 'span3')); ?>
+                <?php echo $form->textField($model, 'weight', array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'weightClass', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'weightClass', array('class' => 'span3')); ?>
+                <?php echo $form->dropDownList($model, 'weightClass', $weightClasses, array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'status', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->dropDownList($model, 'status', $statues, array('class' => 'span2')); ?>
+                <?php echo $form->dropDownList($model, 'status', $statuses, array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">

@@ -7,6 +7,7 @@
  */
 class CategoryForm extends CFormModel {
 
+    public $id;
     public $name;
     public $metaTagDescription;
     public $metaTagKeywords;
@@ -53,9 +54,17 @@ class CategoryForm extends CFormModel {
         );
     }
     
+    public function getCategory(){
+        if(!is_null($this->id)){
+            return Category::model()->findByPk($this->id);
+        }        
+        return null;
+    }
+    
     public function loadDataFromCategory($id){
         $category = Category::model()->findByPk($id);
         if(!is_null($category)){
+            $this->id = $category->category_id;
             $this->name = $category->description->name;
             $this->metaTagDescription = $category->description->meta_description;
             $this->metaTagKeywords = $category->description->meta_keyword;

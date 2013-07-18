@@ -63,5 +63,15 @@ class Manufacturer extends CActiveRecord {
             'sort_order' => 'Sort Order',
         );
     }
+    
+    public function getImageWithSize($width, $height) {
+        if ($this->image && file_exists(Yii::app()->params['imagePath'] . $this->image)) {
+            $_image = ImageTool::resize($this->image, $width, $height);
+        } else {
+            $_image = ImageTool::resize('no_image.jpg', $width, $height);
+        }
+
+        return $_image;
+    }
 
 }

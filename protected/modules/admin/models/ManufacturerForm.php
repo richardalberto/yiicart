@@ -7,6 +7,7 @@
  */
 class ManufacturerForm extends CFormModel {
 
+    public $id;
     public $name;
     public $stores;
     public $seoKeyword;
@@ -37,9 +38,17 @@ class ManufacturerForm extends CFormModel {
         );
     }
     
+    public function getManufacturer(){
+        if(!is_null($this->id)){
+            return Manufacturer::model()->findByPk($this->id);
+        }        
+        return null;
+    }
+    
     public function loadDataFromManufacturer($id){
         $manufacturer = Manufacturer::model()->findByPk($id);
         if(!is_null($manufacturer)){
+            $this->id = $manufacturer->manufacturer_id;
             $this->name = $manufacturer->name;
             $this->image = $manufacturer->image;
             $this->sortOrder = $manufacturer->sort_order;
