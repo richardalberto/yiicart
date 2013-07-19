@@ -52,6 +52,9 @@ class ProductForm extends CFormModel {
     public function rules() {
         return array(
             array('name, model', 'required'),
+            array('id, price, taxClass, quantity, minimumQuantity, subtractStock, outOfStockStatus, requiresShipping, dimensionW, dimensionH, dimensionL, weight, weightClass, status, sortOrder, manufacturer', 'numerical'),
+            array('dateAvailable', 'date', 'format'=>'yyyy-MM-dd'),
+            array('metaTagDescription, metaTagKeywords, description, productTags, model, sku, upc, ean, jan, isbn, mpn, location, seoKeyword, image, categories, filters, stores, downloadas, relatedProducts', 'safe')
         );
     }
 
@@ -107,7 +110,7 @@ class ProductForm extends CFormModel {
         if(!is_null($this->id)){
             return Product::model()->findByPk($this->id);
         }        
-        return null;
+        return new Product;
     }
     
     public function loadDataFromProduct($id){
@@ -144,7 +147,6 @@ class ProductForm extends CFormModel {
             $this->lengthClass = $product->length_class_id;
             $this->weight = $product->weight;
             $this->weightClass = $product->weight_class_id;
-            $this->weightClass = $product->weight_class_id;
             $this->sortOrder = $product->sort_order;
             $this->status = $product->status;
             $this->manufacturer = $product->manufacturer_id;
@@ -153,6 +155,94 @@ class ProductForm extends CFormModel {
             // TODO: add stores
             // TODO: add downloads
             // TODO: add related products
+        }
+    }
+    
+    public function save(){
+        $product = Product::model()->findByPk($this->id);
+        if(is_null($product)) { // insert   
+            // Product
+            $product = new Product;
+            $product->model = $this->model;
+            $product->sku = $this->sku;
+            $product->upc = $this->upc;
+            $product->ean = $this->ean;
+            $product->jan = $this->jan;
+            $product->isbn = $this->isbn;
+            $product->mpn = $this->mpn;
+            $product->location = $this->location;
+            $product->price = $this->price;
+            $product->tax_class_id = $this->taxClass;
+            $product->quantity = $this->quantity;
+            $product->minimum = $this->minimumQuantity;
+            $product->subtract = $this->subtractStock;
+            $product->stock_status_id = $this->outOfStockStatus;
+            $product->shipping = $this->requiresShipping;
+            $product->image = $this->image;
+            $product->date_available = $this->dateAvailable;
+            $product->length = $this->dimensionL;
+            $product->height = $this->dimensionH;
+            $product->width = $this->dimensionW;
+            $product->weight = $this->weight;
+            $product->weight_class_id = $this->weightClass;
+            $product->sort_order = $this->sortOrder;
+            $product->status = $this->status;
+            $product->manufacturer_id = $this->manufacturer;
+            $product->save();
+            
+            // Description
+            $description = new ProductDescription;
+            $description->product_id = $product->product_id;
+            $description->language_id = 1; // TODO: make this dynamic
+            $description->name = $this->name;
+            $description->meta_description = $this->metaTagDescription;
+            $description->meta_keyword = $this->metaTagKeywords;
+            $description->description = $this->description;
+            $description->tag = $this->productTags;
+            $description->save();
+            
+            // TODO: categories
+            // TODO: seo keywords
+        }
+        else{ // update
+            // Product
+            $product->model = $this->model;
+            $product->sku = $this->sku;
+            $product->upc = $this->upc;
+            $product->ean = $this->ean;
+            $product->jan = $this->jan;
+            $product->isbn = $this->isbn;
+            $product->mpn = $this->mpn;
+            $product->location = $this->location;
+            $product->price = $this->price;
+            $product->tax_class_id = $this->taxClass;
+            $product->quantity = $this->quantity;
+            $product->minimum = $this->minimumQuantity;
+            $product->subtract = $this->subtractStock;
+            $product->stock_status_id = $this->outOfStockStatus;
+            $product->shipping = $this->requiresShipping;
+            $product->image = $this->image;
+            $product->date_available = $this->dateAvailable;
+            $product->length = $this->dimensionL;
+            $product->height = $this->dimensionH;
+            $product->width = $this->dimensionW;
+            $product->weight = $this->weight;
+            $product->weight_class_id = $this->weightClass;
+            $product->sort_order = $this->sortOrder;
+            $product->status = $this->status;
+            $product->manufacturer_id = $this->manufacturer;
+            $product->save();
+                        
+            // Description
+            $product->description->name = $this->name;
+            $product->description->meta_description = $this->metaTagDescription;
+            $product->description->meta_keyword = $this->metaTagKeywords;
+            $product->description->description = $this->description;
+            $product->description->tag = $this->productTags;
+            $product->description->save();
+            
+            // TODO: categories
+            // TODO: seo keywords
         }
     }
 

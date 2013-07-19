@@ -10,7 +10,7 @@ $this->breadcrumbs = array(
     <div class="span9"><h1><i class="icon-cog"></i>&nbsp;<?php echo Yii::t('products', 'Products'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
-            <a class="btn btn-primary"><?php echo Yii::t('common', 'Create'); ?></button>
+            <a id="btnFormSubmit" class="btn btn-primary"><?php echo Yii::t('common', 'Create'); ?></button>
             <a href="<?php echo $this->createUrl('index'); ?>" class="btn btn-danger"><?php echo Yii::t('common', 'Cancel'); ?></a>
         </div>
     </div>
@@ -18,4 +18,12 @@ $this->breadcrumbs = array(
 
 <br />
 
-<?php $this->renderPartial('_form', array('model'=>$model, 'statues'=>$statues)); ?>
+<?php $this->renderPartial('_form', array(
+    'model'=>$model, 
+    'statuses'=>$statuses,
+    'taxClasses'=>$taxClasses,
+    'yes_no'=>$yes_no,
+    'stockStatuses'=>$stockStatuses,
+    'weightClasses'=>$weightClasses,
+    'lengthClasses'=>$lengthClasses,
+)); ?>

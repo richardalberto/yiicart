@@ -37,7 +37,7 @@ class ProductDescription extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('product_id, language_id, name, description, meta_description, meta_keyword, tag', 'required'),
+            array('product_id, language_id, name', 'required'),
             array('product_id, language_id', 'numerical', 'integerOnly' => true),
             array('name, meta_description, meta_keyword', 'length', 'max' => 255),
             // The following rule is used by search().

@@ -1,6 +1,6 @@
 <?php
 $form = $this->beginWidget('CActiveForm', array(
-    'id' => 'category-form',
+    'id' => 'product-form',
     'enableClientValidation' => true,
     'clientOptions' => array(
         'validateOnSubmit' => true,
@@ -8,8 +8,9 @@ $form = $this->beginWidget('CActiveForm', array(
     'htmlOptions' => array(
         'class' => 'form-horizontal',
     )
-        ));
+));
 ?>
+<?php echo $form->hiddenField($model, 'id'); ?>
 <ul class="nav nav-tabs" id="myTab">
     <li class="active"><a data-toggle="tab" href="#general">General</a></li>
     <li><a data-toggle="tab" href="#data">Data</a></li>
@@ -168,7 +169,7 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'dateAvailable', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'seoKeyword', array('class' => 'span2')); ?>
+                <?php echo $form->textField($model, 'dateAvailable', array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
@@ -209,5 +210,11 @@ $form = $this->beginWidget('CActiveForm', array(
         </div>
     </div>
 </div>
-
 <?php $this->endWidget(); ?>
+
+<script>
+    $('#btnFormSubmit').on('click', function(){
+        $('#product-form').submit();
+        return false; 
+    });
+</script>
