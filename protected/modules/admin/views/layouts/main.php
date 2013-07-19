@@ -24,6 +24,11 @@
 
         <!-- Fav icon -->
         <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/ico/favicon.png">
+        
+        <!-- Le javascript -->
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.min.js"></script>
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.min.js"></script>
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/common.js"></script>
     </head>
 
     <body>
@@ -142,12 +147,6 @@
             </div>
 
         </div> <!-- /container -->
-
-        <!-- Le javascript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.min.js"></script>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.min.js"></script>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/common.js"></script>
+        
     </body>
 </html>

@@ -15,7 +15,9 @@
  * @property string $date_modified
  */
 class Category extends CActiveRecord {
-
+    
+    private $cacheId;
+    
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -56,7 +58,7 @@ class Category extends CActiveRecord {
         return array(
             'description' => array(self::HAS_ONE, 'CategoryDescription', 'category_id'),
             'products' => array(self::MANY_MANY, 'Product', 'product_to_category(product_id, category_id)'),
-            'activeProducts' => array(self::MANY_MANY, 'Product', 'product_to_category(product_id, category_id)', 'condition'=>'status=1'),
+            'activeProducts' => array(self::MANY_MANY, 'Product', 'product_to_category(product_id, category_id)', 'condition' => 'status=1'),
             'childCategories' => array(self::HAS_MANY, 'Category', 'parent_id')
         );
     }
@@ -94,27 +96,50 @@ class Category extends CActiveRecord {
             'date_modified' => 'Date Modified',
         );
     }
-    
-    public function hasChildCategories(){
+
+    public function beforeDelete() {
+        $this->cacheId = $this->category_id;
+        return parent::beforeDelete();
+    }
+
+    public function afterDelete() {
+        // delete children
+        $children = Category::model()->findAll("parent_id={$this->cacheId}");
+        foreach ($children as $child)
+            $child->delete();
+        
+        // delete dependencies
+        CategoryPath::model()->deleteAll("category_id={$this->cacheId}");
+        CategoryDescription::model()->deleteAll("category_id={$this->cacheId}");        
+        CategoryFilter::model()->deleteAll("category_id={$this->cacheId}");
+        CategoryToStore::model()->deleteAll("category_id={$this->cacheId}");
+        CategoryToLayout::model()->deleteAll("category_id={$this->cacheId}");
+        ProductToCategory::model()->deleteAll("category_id={$this->cacheId}");
+        UrlAlias::model()->deleteAll("query='category_id={$this->cacheId}'");
+
+        parent::afterDelete();
+    }
+
+    public function hasChildCategories() {
         return count($this->childCategories) > 0 ? true : false;
     }
-    
-    public function hasProducts(){                
+
+    public function hasProducts() {
         return count($this->getProductsCount()) > 0 ? true : false;
     }
-    
-    public function getProductsCount(){
+
+    public function getProductsCount() {
         $productsCount = count($this->products);
-        
+
         // check childs
-        if($this->hasChildCategories()) {
-            foreach($this->childCategories as $category)
+        if ($this->hasChildCategories()) {
+            foreach ($this->childCategories as $category)
                 $productsCount += count($category->products);
         }
-                
+
         return $productsCount;
     }
-    
+
     public function getImageWithSize($width, $height) {
         if ($this->image && file_exists(Yii::app()->params['imagePath'] . $this->image)) {
             $_image = ImageTool::resize($this->image, $width, $height);

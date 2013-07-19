@@ -57,8 +57,17 @@ class CategoriesController extends BackendController {
         ));        
     }
     
-    public function actionDelete($id){
+    public function actionDelete($ids){
+        $ids = explode(',', $ids);
+        if(count($ids) > 0){
+            foreach($ids as $id){
+                // TODO: delete should handle all dependencies
+                $category = Category::model()->findByPk($id);
+                $category->delete();
+            }
+        }
         
+        $this->redirect(array('index'));
     }
 
 }
