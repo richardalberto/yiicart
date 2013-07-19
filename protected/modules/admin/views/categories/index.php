@@ -9,7 +9,6 @@ $this->breadcrumbs = array(
     <div class="span9"><h1><i class="icon-sitemap"></i>&nbsp;<?php echo Yii::t('categories', 'Category'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
-            <a class="btn btn-info">Repair</a>
             <a href="<?php echo $this->createUrl('create'); ?>" class="btn btn-primary">Insert</a>
             <a class="btn btn-danger">Delete</a>
         </div>
@@ -29,12 +28,7 @@ $this->breadcrumbs = array(
     </thead>
     <tbody>
         <?php foreach ($categories as $category): ?>
-            <tr>
-                <td><?php echo CHtml::checkBox('selected[]'); ?></td>
-                <td><?php echo $category->description->name; ?></td>
-                <td><?php echo $category->sort_order; ?></td>
-                <td><a href="<?php echo $this->createUrl('update', array('id'=>$category->category_id)); ?>" class="btn btn-success btn-mini">Edit</a></td>
-            </tr>
+            <?php $this->renderPartial('_view', array('category'=>$category, 'parents'=>array())); ?>
         <?php endforeach; ?>
     </tbody>
 </table>

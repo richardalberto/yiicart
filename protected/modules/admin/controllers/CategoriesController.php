@@ -5,7 +5,7 @@ class CategoriesController extends BackendController {
     public function actionIndex() {
         $criteria = new CDbCriteria;
         $criteria->condition = 'parent_id=0';
-        $criteria->order = 'category_id, parent_id ASC';
+        $criteria->order = 'sort_order, category_id ASC';
         $categories = Category::model()->findAll($criteria);
         
         $this->render('index', array(
@@ -36,7 +36,15 @@ class CategoriesController extends BackendController {
     
     public function actionUpdate($id){
         $model = new CategoryForm;
-        $model->loadDataFromCategory($id);
+        if (isset($_POST['CategoryForm'])) {
+            $model->attributes = $_POST['CategoryForm'];
+            if ($model->validate()) {
+                $model->save();
+                $this->redirect(array('index'));
+            }
+        }
+        else
+            $model->loadDataFromCategory($id);
         
         $statuses = array(
             0=>Yii::t('common', 'Disabled'),
