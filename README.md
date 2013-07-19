@@ -23,6 +23,20 @@ Then, configure to match your system configuration. Configuration file can be fo
 ....
 ```
 
+## Usage
+
+Frontend may be found at:
+
+```
+http://localhost/yiicart/
+```
+
+Backend may be found at:
+
+```
+http://localhost/yiicart/index.php/admin/
+```
+
 
 ## DO NOT USE FOR PRODUCTION !!!
 
