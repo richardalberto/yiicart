@@ -11,6 +11,8 @@
  */
 class Manufacturer extends CActiveRecord {
 
+    private $cacheId;
+
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -64,6 +66,19 @@ class Manufacturer extends CActiveRecord {
         );
     }
     
+    public function beforeDelete() {
+        $this->cacheId = $this->manufacturer_id;
+        return parent::beforeDelete();
+    }
+
+    public function afterDelete() {        
+        // delete dependencies
+        ManufacturerToStore::model()->deleteAll("manufacturer_id={$this->cacheId}");
+        UrlAlias::model()->deleteAll("query='manufacturer_id={$this->cacheId}'");
+
+        parent::afterDelete();
+    }
+
     public function getImageWithSize($width, $height) {
         if ($this->image && file_exists(Yii::app()->params['imagePath'] . $this->image)) {
             $_image = ImageTool::resize($this->image, $width, $height);

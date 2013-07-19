@@ -38,6 +38,8 @@
  */
 class Product extends CActiveRecord {
 
+    private $cacheId;
+    
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -139,6 +141,34 @@ class Product extends CActiveRecord {
             'date_modified' => 'Date Modified',
             'viewed' => 'Viewed',
         );
+    }
+    
+    public function beforeDelete() {
+        $this->cacheId = $this->product_id;
+        return parent::beforeDelete();
+    }
+
+    public function afterDelete() {        
+        // delete dependencies
+        ProductAttribute::model()->deleteAll("product_id={$this->cacheId}");
+        ProductDescription::model()->deleteAll("product_id={$this->cacheId}");
+        ProductDiscount::model()->deleteAll("product_id={$this->cacheId}");
+        ProductFilter::model()->deleteAll("product_id={$this->cacheId}");
+        ProductImage::model()->deleteAll("product_id={$this->cacheId}");
+        ProductOption::model()->deleteAll("product_id={$this->cacheId}");
+        ProductOptionValue::model()->deleteAll("product_id={$this->cacheId}");
+        ProductRelated::model()->deleteAll("product_id={$this->cacheId}");
+        ProductRelated::model()->deleteAll("related_id={$this->cacheId}");
+        ProductReward::model()->deleteAll("product_id={$this->cacheId}");
+        ProductSpecial::model()->deleteAll("product_id={$this->cacheId}");
+        ProductToCategory::model()->deleteAll("product_id={$this->cacheId}");
+        ProductToDownload::model()->deleteAll("product_id={$this->cacheId}");
+        ProductToLayout::model()->deleteAll("product_id={$this->cacheId}");
+        ProductToStore::model()->deleteAll("product_id={$this->cacheId}");
+        Review::model()->deleteAll("product_id={$this->cacheId}");
+        UrlAlias::model()->deleteAll("query='product_id={$this->cacheId}'");
+
+        parent::afterDelete();
     }
     
     public function hasAdditionalImages(){
