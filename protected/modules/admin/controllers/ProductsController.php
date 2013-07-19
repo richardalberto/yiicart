@@ -12,6 +12,13 @@ class ProductsController extends BackendController {
     
     public function actionCreate(){
         $model = new ProductForm;
+        if (isset($_POST['ProductForm'])) {
+            $model->attributes = $_POST['ProductForm'];
+            if ($model->validate()) {
+                $model->save();
+                $this->redirect(array('index'));
+            }
+        }
         
         $statuses = array(
             0=>Yii::t('common', 'Disabled'),
@@ -31,7 +38,15 @@ class ProductsController extends BackendController {
     
     public function actionUpdate($id){
         $model = new ProductForm;
-        $model->loadDataFromProduct($id);
+        if (isset($_POST['ProductForm'])) {
+            $model->attributes = $_POST['ProductForm'];
+            if ($model->validate()) {
+                $model->save();
+                $this->redirect(array('index'));
+            }
+        }
+        else
+            $model->loadDataFromProduct($id);
         
         $statuses = array(
             0=>Yii::t('common', 'Disabled'),
@@ -74,7 +89,15 @@ class ProductsController extends BackendController {
     }
     
     public function actionDelete($id){
+        $ids = explode(',', $ids);
+        if(count($ids) > 0){
+            foreach($ids as $id){
+                $product = Product::model()->findByPk($id);
+                $product->delete();
+            }
+        }
         
+        $this->redirect(array('index'));
     }
 
 }

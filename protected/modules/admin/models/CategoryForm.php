@@ -28,7 +28,7 @@ class CategoryForm extends CFormModel {
     public function rules() {
         return array(
             array('name', 'required'),
-            array('top, columns, sortOrder, parent, status', 'numerical'),
+            array('id, top, columns, sortOrder, parent, status', 'numerical'),
             array('metaTagDescription, metaTagKeywords, description', 'safe')
         );
     }
@@ -116,17 +116,12 @@ class CategoryForm extends CFormModel {
             $category->parent_id = $this->parent;
             $category->save();
             
-            var_dump($category->getErrors());
-            
             // description
             $category->description->name = $this->name;
             $category->description->meta_description = $this->metaTagDescription;
             $category->description->meta_keyword = $this->metaTagKeywords;
             $category->description->description = $this->description;
             $category->description->save();
-            
-            var_dump($category->description->getErrors());
-            die();
         }
     }
 

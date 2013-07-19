@@ -61,7 +61,6 @@ class CategoriesController extends BackendController {
         $ids = explode(',', $ids);
         if(count($ids) > 0){
             foreach($ids as $id){
-                // TODO: delete should handle all dependencies
                 $category = Category::model()->findByPk($id);
                 $category->delete();
             }

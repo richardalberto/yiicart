@@ -36,11 +36,13 @@ $this->breadcrumbs = array(
 <script>
     $(document).ready(function() {
         $('#btnDeleteAll').on('click', function(){   
-            var ids = $('input[name="selected[]"]').map(function(){
-                return this.checked ? this.value : null;
-            }).get();
-    
-            document.location = '<?php echo $this->createUrl('delete'); ?>/?ids=' + ids;
+            if(confirm('<?php echo Yii::t('common', 'Delete/Uninstall cannot be undone! Are you sure you want to do this?'); ?>')){
+                var ids = $('input[name="selected[]"]').map(function(){
+                    return this.checked ? this.value : null;
+                }).get();
+
+                document.location = '<?php echo $this->createUrl('delete'); ?>/?ids=' + ids;
+            }
         });
     });
 </script>

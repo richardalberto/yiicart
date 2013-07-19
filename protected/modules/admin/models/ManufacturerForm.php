@@ -20,6 +20,8 @@ class ManufacturerForm extends CFormModel {
     public function rules() {
         return array(
             array('name', 'required'),
+            array('id, sortOrder', 'numerical'),
+            array('image, seoKeyword, stores', 'safe')
         );
     }
 
@@ -42,7 +44,7 @@ class ManufacturerForm extends CFormModel {
         if(!is_null($this->id)){
             return Manufacturer::model()->findByPk($this->id);
         }        
-        return null;
+        return new Manufacturer;
     }
     
     public function loadDataFromManufacturer($id){
@@ -52,6 +54,23 @@ class ManufacturerForm extends CFormModel {
             $this->name = $manufacturer->name;
             $this->image = $manufacturer->image;
             $this->sortOrder = $manufacturer->sort_order;
+        }
+    }
+    
+    public function save(){
+        $manufacturer = Manufacturer::model()->findByPk($this->id);
+        if(is_null($manufacturer)) { // insert   
+            $manufacturer = new Manufacturer;
+            $manufacturer->name = $this->name;
+            $manufacturer->image = $this->image;
+            $manufacturer->sort_order = $this->sortOrder;
+            $manufacturer->save();
+        }
+        else{ // update
+            $manufacturer->name = $this->name;
+            $manufacturer->image = $this->image;
+            $manufacturer->sort_order = $this->sortOrder;
+            $manufacturer->save();
         }
     }
 

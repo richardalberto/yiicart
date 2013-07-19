@@ -1,6 +1,6 @@
 <?php
 $form = $this->beginWidget('CActiveForm', array(
-    'id' => 'category-form',
+    'id' => 'manufacturer-form',
     'enableClientValidation' => true,
     'clientOptions' => array(
         'validateOnSubmit' => true,
@@ -8,8 +8,9 @@ $form = $this->beginWidget('CActiveForm', array(
     'htmlOptions' => array(
         'class' => 'form-horizontal',
     )
-        ));
+));
 ?>
+<?php echo $form->hiddenField($model, 'id'); ?>
 <ul class="nav nav-tabs" id="myTab">
     <li class="active"><a data-toggle="tab" href="#general">General</a></li>
 </ul>
@@ -91,3 +92,10 @@ function image_upload(field, thumb) {
         return false;
 };
 //--></script>
+
+<script>
+    $('#btnFormSubmit').on('click', function(){
+        $('#manufacturer-form').submit();
+        return false; 
+    });
+</script>
