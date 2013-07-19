@@ -148,5 +148,6 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.min.js"></script>
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.min.js"></script>
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/common.js"></script>
     </body>
 </html>

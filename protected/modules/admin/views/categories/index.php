@@ -20,7 +20,7 @@ $this->breadcrumbs = array(
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th style="width: 1px;">&nbsp;</th>
+            <th style="width: 1px;"><?php echo CHtml::checkBox('checkall', false); ?></th>
             <th><?php echo Yii::t('categories', 'Category Name'); ?></th>
             <th style="width: 80px;"><?php echo Yii::t('categories', 'Sort Order'); ?></th>
             <th style="width: 80px;"><?php echo Yii::t('categories', 'Action'); ?></th>
