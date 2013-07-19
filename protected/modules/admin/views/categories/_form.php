@@ -8,8 +8,9 @@ $form = $this->beginWidget('CActiveForm', array(
     'htmlOptions' => array(
         'class' => 'form-horizontal',
     )
-        ));
+));
 ?>
+<?php echo $form->hiddenField($model, 'id'); ?>
 <ul class="nav nav-tabs" id="myTab">
     <li class="active"><a data-toggle="tab" href="#general">General</a></li>
     <li><a data-toggle="tab" href="#data">Data</a></li>
@@ -108,10 +109,17 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'status', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->dropDownList($model, 'status', $statues, array('class' => 'span2')); ?>
+                <?php echo $form->dropDownList($model, 'status', $statuses, array('class' => 'span2')); ?>
             </div>
         </div>
     </div>
 </div>
 
 <?php $this->endWidget(); ?>
+
+<script>
+    $('#btnFormSubmit').on('click', function(){
+        $('#category-form').submit();
+        return false; 
+    });
+</script>

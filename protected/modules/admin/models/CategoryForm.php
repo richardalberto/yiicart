@@ -28,6 +28,8 @@ class CategoryForm extends CFormModel {
     public function rules() {
         return array(
             array('name', 'required'),
+            array('top, columns, sortOrder, parent, status', 'numerical'),
+            array('metaTagDescription, metaTagKeywords, description', 'safe')
         );
     }
 
@@ -50,7 +52,7 @@ class CategoryForm extends CFormModel {
             'top'=>Yii::t('category', 'Top'), 
             'columns'=>Yii::t('category', 'Columns'), 
             'sortOrder'=>Yii::t('category', 'Sort Order'), 
-            'status'=>Yii::t('category', 'Status'), 
+            'status'=>Yii::t('category', 'Status'),             
         );
     }
     
@@ -58,7 +60,7 @@ class CategoryForm extends CFormModel {
         if(!is_null($this->id)){
             return Category::model()->findByPk($this->id);
         }        
-        return null;
+        return new Category;
     }
     
     public function loadDataFromCategory($id){
@@ -74,6 +76,52 @@ class CategoryForm extends CFormModel {
             $this->columns = $category->column;
             $this->sortOrder = $category->sort_order;
             $this->status = $category->status;
+            $this->parent = $category->parent_id;
+        }
+    }
+    
+    public function save(){
+        $category = Category::model()->findByPk($this->id);
+        if(is_null($category)) { // insert          
+            // category
+            $category = new Category;
+            $category->date_added = date('Y-m-d');
+            $category->date_modified = date('Y-m-d');
+            $category->image = $this->image;
+            $category->top = $this->top;
+            $category->column = $this->columns;
+            $category->sort_order = $this->sortOrder;
+            $category->status = $this->status;
+            $category->parent_id = $this->parent;
+            $category->save();
+            
+            // description
+            $description = new CategoryDescription;
+            $description->category_id = $category->category_id;
+            $description->language_id = 1; // TODO: language must be dynamic
+            $description->name = $this->name;
+            $description->meta_description = $this->metaTagDescription;
+            $description->meta_keyword = $this->metaTagKeywords;
+            $description->description = $this->description;
+            $description->save();
+        }
+        else{ // update
+            // category
+            $category->date_modified = date('Y-m-d');
+            $category->image = $this->image;
+            $category->top = $this->top;
+            $category->column = $this->columns;
+            $category->sort_order = $this->sortOrder;
+            $category->status = $this->status;
+            $category->parent_id = $this->parent;
+            $category->save();
+            
+            // description
+            $category->description->name = $this->name;
+            $category->description->meta_description = $this->metaTagDescription;
+            $category->description->meta_keyword = $this->metaTagKeywords;
+            $category->description->description = $this->description;
+            $category->description->save();
         }
     }
 

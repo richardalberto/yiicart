@@ -10,12 +10,12 @@ $this->breadcrumbs = array(
     <div class="span9"><h1><i class="icon-sitemap"></i>&nbsp;<?php echo Yii::t('categories', 'Category'); ?></h1></div>
     <div class="span2">
         <div class="btn-group">
-            <a class="btn btn-primary">Save</a>
-            <a href="<?php echo $this->createUrl('index'); ?>" class="btn btn-danger">Cancel</a>
+            <a id="btnFormSubmit" class="btn btn-primary"><?php echo Yii::t('common', 'Save'); ?></a>
+            <a href="<?php echo $this->createUrl('index'); ?>" class="btn btn-danger"><?php echo Yii::t('common', 'Cancel'); ?></a>
         </div>
     </div>
 </div>
 
 <br />
 
-<?php $this->renderPartial('_form', array('model'=>$model, 'statues'=>$statues)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model, 'statuses'=>$statuses)); ?>

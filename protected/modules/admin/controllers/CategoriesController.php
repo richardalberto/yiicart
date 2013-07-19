@@ -4,6 +4,7 @@ class CategoriesController extends BackendController {
 
     public function actionIndex() {
         $criteria = new CDbCriteria;
+        $criteria->condition = 'parent_id=0';
         $criteria->order = 'category_id, parent_id ASC';
         $categories = Category::model()->findAll($criteria);
         
@@ -14,15 +15,22 @@ class CategoriesController extends BackendController {
     
     public function actionCreate(){
         $model = new CategoryForm;
+        if (isset($_POST['CategoryForm'])) {
+            $model->attributes = $_POST['CategoryForm'];
+            if ($model->validate()) {
+                $model->save();
+                $this->redirect(array('index'));
+            }
+        }
         
-        $statues = array(
+        $statuses = array(
             0=>Yii::t('common', 'Disabled'),
             1=>Yii::t('common', 'Enabled')
         );
         
         $this->render('create', array(
             'model'=>$model,
-            'statues'=>$statues
+            'statuses'=>$statuses
         ));
     }
     
@@ -30,14 +38,14 @@ class CategoriesController extends BackendController {
         $model = new CategoryForm;
         $model->loadDataFromCategory($id);
         
-        $statues = array(
+        $statuses = array(
             0=>Yii::t('common', 'Disabled'),
             1=>Yii::t('common', 'Enabled')
         );
         
         $this->render('update', array(
             'model'=>$model,
-            'statues'=>$statues
+            'statuses'=>$statuses
         ));        
     }
     
