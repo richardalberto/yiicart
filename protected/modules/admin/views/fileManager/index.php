@@ -287,14 +287,11 @@
 	
                 $('#column-right a').live('dblclick', function() {
                 <?php if ($fckeditor) { ?>
-                window.opener.CKEDITOR.tools.callFunction(<?php echo $fckeditor; ?>, '<?php echo $directory; ?>' + $(this).find('input[name=\'image\']').attr('value'));
-        		
-                self.close();	
+                    window.opener.CKEDITOR.tools.callFunction(<?php echo $fckeditor; ?>, '<?php echo $directory; ?>' + $(this).find('input[name=\'image\']').attr('value'));
+                    self.close();	
                 <?php } else { ?>
-                parent.$('#<?php echo $field; ?>').attr('value', 'data/' + $(this).find('input[name=\'image\']').attr('value'));
-                parent.$('#dialog').dialog('close');
-        		
-                parent.$('#dialog').remove();	
+                    parent.$('#<?php echo $field; ?>').attr('value', 'data/' + $(this).find('input[name=\'image\']').attr('value'));
+                    parent.$('#imageManagerModal').modal('hide');
                 <?php } ?>
         });		
 						

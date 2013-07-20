@@ -80,8 +80,8 @@ $form = $this->beginWidget('CActiveForm', array(
                       <?php echo $form->hiddenField($model, 'image'); ?>
                       <div class="caption">
                         <p>
-                            <a onclick="image_upload('image', 'thumb');" class="btn btn-mini btn-primary" href="#">Browse</a> 
-                            <a onclick="$('#thumb').attr('src', '<?php echo Category::model()->getImageWithSize(100, 100); ?>'); $('#CategoryForm_image').attr('value', '');" class="btn btn-mini" href="#">Clear</a>
+                            <a onclick="image_upload('CategoryForm_image', 'thumb');" class="btn btn-mini btn-primary" href="#">Browse</a> 
+                            <a onclick="image_clear('CategoryForm_image', 'thumb');" class="btn btn-mini" href="#">Clear</a>
                         </p>
                       </div>
                     </div>
