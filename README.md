@@ -21,6 +21,11 @@ Then, configure to match your system configuration. Configuration file can be fo
     'charset' => 'utf8',
 ),
 ....
+
+'params' => array(
+    'imagePath' => '/path/to/YiiCart/image/',
+),
+....
 ```
 
 ## Usage
