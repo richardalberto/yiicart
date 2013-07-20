@@ -23,7 +23,7 @@
         <![endif]-->
 
         <!-- Fav icon -->
-        <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/ico/favicon.png">
+        <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/img/favicon.png">
         
         <!-- Le javascript -->
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.min.js"></script>
@@ -42,7 +42,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </a>
-                        <a href="#" class="brand"><?php echo Yii::app()->name; ?></a>
+                        <a href="#" class="brand"><img alt="<?php echo Yii::app()->name; ?>" src="<?php echo Yii::app()->baseUrl; ?>/img/logo-admin.png" /></a>
                         <div class="nav-collapse">
                             <ul class="nav">
                                 <li <?php if($this->action->getController()->getId() == "default"): ?>class="active"<?php endif; ?>><a href="<?php echo $this->createUrl('/admin'); ?>">Dashboard</a></li>

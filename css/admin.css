@@ -3,6 +3,10 @@ body {
     padding-bottom: 40px;
 }
 
+.brand {
+	padding: 4px 20px !important;
+}
+
 .sidebar-nav {
     padding: 9px 0;
 }

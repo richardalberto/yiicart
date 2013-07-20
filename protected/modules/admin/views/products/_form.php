@@ -12,8 +12,9 @@ $form = $this->beginWidget('CActiveForm', array(
 ?>
 <?php echo $form->hiddenField($model, 'id'); ?>
 <ul class="nav nav-tabs" id="myTab">
-    <li class="active"><a data-toggle="tab" href="#general">General</a></li>
-    <li><a data-toggle="tab" href="#data">Data</a></li>
+    <li class="active"><a data-toggle="tab" href="#general"><?php echo Yii::t('products', 'General'); ?></a></li>
+    <li><a data-toggle="tab" href="#data"><?php echo Yii::t('products', 'Data'); ?></a></li>
+    <li><a data-toggle="tab" href="#links"><?php echo Yii::t('products', 'Links'); ?></a></li>
 </ul>
 <div class="tab-content" id="myTabContent">
     <div id="general" class="tab-pane fade in active">
@@ -206,6 +207,44 @@ $form = $this->beginWidget('CActiveForm', array(
             <?php echo $form->label($model, 'sortOrder', array('class' => 'control-label')); ?>
             <div class="controls">
                 <?php echo $form->textField($model, 'sortOrder', array('class' => 'span1')); ?>
+            </div>
+        </div>
+    </div>
+    <div id="links" class="tab-pane fade">
+        <div class="control-group">
+            <?php echo $form->label($model, 'manufacturer', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'manufacturer', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'categories', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'categories', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'filters', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'filters', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'stores', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'stores', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'downloads', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'downloads', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'relatedProducts', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'relatedProducts', array('class' => 'span2')); ?>
             </div>
         </div>
     </div>

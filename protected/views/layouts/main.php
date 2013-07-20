@@ -18,9 +18,14 @@
         <!--[if lt IE 9]>
           <script src="<?php echo Yii::app()->baseUrl; ?>/js/html5shiv.js"></script>
         <![endif]-->
+		
+		<link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/font-awesome.min.css">
+        <!--[if IE 7]>
+          <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/font-awesome-ie7.min.css">
+        <![endif]-->
 
         <!-- Fav icon -->
-        <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/ico/favicon.png">
+        <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/img/favicon.png">
     </head>
 
     <body>
@@ -28,7 +33,7 @@
             <div class="row"><!-- start header -->
                 <div class="span4 logo">
                     <a href="<?php echo $this->createUrl('/'); ?>">
-                        <h1><?php echo Yii::app()->name; ?></h1>
+                        <img alt="<?php echo Yii::app()->name; ?>" src="<?php echo Yii::app()->baseUrl; ?>/img/logo-home.png" />
                     </a>
                 </div>
                 <div class="span8">
@@ -88,7 +93,7 @@
                                                 continue; ?>
                                             <li class="dropdown">
                                                 <?php if ($category->hasChildCategories()): ?>
-                                                    <a href="<?php echo $this->createUrl('/category', array('id' => $category->category_id)); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category->description->name; ?> <b class="caret"></b></a>
+                                                    <a href="<?php echo $this->createUrl('/category', array('id' => $category->category_id)); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category->description->name; ?> <i class="icon-caret-down"></i></a>
                                                     <ul class="dropdown-menu">
                                                         <?php foreach ($category->childCategories as $childCategory): ?>
                                                             <li><a href="<?php echo $this->createUrl('/category/view', array('id'=>$childCategory->category_id)); ?>"><?php echo $childCategory->description->name; ?></a></li>
