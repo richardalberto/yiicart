@@ -29,7 +29,7 @@ class CategoryForm extends CFormModel {
         return array(
             array('name', 'required'),
             array('id, top, columns, sortOrder, parent, status', 'numerical'),
-            array('metaTagDescription, metaTagKeywords, description', 'safe')
+            array('metaTagDescription, metaTagKeywords, description, image', 'safe')
         );
     }
 
