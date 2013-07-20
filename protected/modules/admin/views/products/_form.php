@@ -154,12 +154,13 @@ $form = $this->beginWidget('CActiveForm', array(
             <div class="controls">
                 <ul class="thumbnails">
                   <li class="span2">
-                    <div class="thumbnail">
-                      <img alt="" src="<?php if(!is_null($model->getProduct())) echo $model->getProduct()->getImageWithSize(100, 100); ?>">
+                  <div class="thumbnail">
+                      <img id="thumb" alt="" src="<?php if(!is_null($model->getProduct())) echo $model->getProduct()->getImageWithSize(100, 100); ?>">
+                      <?php echo $form->hiddenField($model, 'image'); ?>
                       <div class="caption">
                         <p>
-                            <a class="btn btn-mini btn-primary" href="#">Browse</a> 
-                            <a class="btn btn-mini" href="#">Clear</a>
+                            <a onclick="image_upload('ProductForm_image', 'thumb');" class="btn btn-mini btn-primary" href="#">Browse</a> 
+                            <a onclick="image_clear('ProductForm_image', 'thumb');" class="btn btn-mini" href="#">Clear</a>
                         </p>
                       </div>
                     </div>
@@ -250,6 +251,8 @@ $form = $this->beginWidget('CActiveForm', array(
     </div>
 </div>
 <?php $this->endWidget(); ?>
+
+<?php $this->renderPartial('/common/_fileManager'); ?>
 
 <script>
     $('#btnFormSubmit').on('click', function(){
