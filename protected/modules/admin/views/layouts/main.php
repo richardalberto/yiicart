@@ -26,7 +26,7 @@
         <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/img/favicon.png">
         
         <!-- Le javascript -->
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.min.js"></script>
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery-1.7.1.min.js"></script>
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.min.js"></script>
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/common.js"></script>
     </head>

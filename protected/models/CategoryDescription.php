@@ -33,8 +33,6 @@ class CategoryDescription extends CActiveRecord {
      * @return array validation rules for model attributes.
      */
     public function rules() {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
         return array(
             array('category_id, language_id, name', 'required'),
             array('category_id, language_id', 'numerical', 'integerOnly' => true),
@@ -47,9 +45,8 @@ class CategoryDescription extends CActiveRecord {
      * @return array relational rules.
      */
     public function relations() {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
         return array(
+            'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
         );
     }
 
@@ -66,27 +63,13 @@ class CategoryDescription extends CActiveRecord {
             'meta_keyword' => 'Meta Keyword',
         );
     }
+    
+    public function getName() {
+        return CHtml::decode($this->name);
+    }
 
-    /**
-     * Retrieves a list of models based on the current search/filter conditions.
-     * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-     */
-    public function search() {
-        // Warning: Please modify the following code to remove attributes that
-        // should not be searched.
-
-        $criteria = new CDbCriteria;
-
-        $criteria->compare('category_id', $this->category_id);
-        $criteria->compare('language_id', $this->language_id);
-        $criteria->compare('name', $this->name, true);
-        $criteria->compare('description', $this->description, true);
-        $criteria->compare('meta_description', $this->meta_description, true);
-        $criteria->compare('meta_keyword', $this->meta_keyword, true);
-
-        return new CActiveDataProvider($this, array(
-                    'criteria' => $criteria,
-                ));
+    public function getDescription() {
+        return CHtml::decode($this->description);
     }
 
 }

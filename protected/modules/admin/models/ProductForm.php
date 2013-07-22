@@ -53,7 +53,7 @@ class ProductForm extends CFormModel {
         return array(
             array('name, model', 'required'),
             array('id, price, taxClass, quantity, minimumQuantity, subtractStock, outOfStockStatus, requiresShipping, dimensionW, dimensionH, dimensionL, weight, weightClass, status, sortOrder, manufacturer', 'numerical'),
-            array('dateAvailable', 'date', 'format'=>'yyyy-MM-dd'),
+            array('dateAvailable', 'date', 'format' => 'yyyy-MM-dd'),
             array('metaTagDescription, metaTagKeywords, description, productTags, model, sku, upc, ean, jan, isbn, mpn, location, seoKeyword, image, categories, filters, stores, downloadas, relatedProducts', 'safe')
         );
     }
@@ -65,57 +65,57 @@ class ProductForm extends CFormModel {
      */
     public function attributeLabels() {
         return array(
-            'name'=>Yii::t('products', 'Product Name'),
-            'metaTagDescription'=>Yii::t('products', 'Meta Tag Description'),       
-            'metaTagKeywords'=>Yii::t('products', 'Meta Tag Keywords'), 
-            'description'=>Yii::t('products', 'Description'), 
-            'productTags'=>Yii::t('products', 'Product Tags'), 
-            'model'=>Yii::t('products', 'Model'), 
-            'sku'=>Yii::t('products', 'SKU'), 
-            'upc'=>Yii::t('products', 'UPC'), 
-            'ean'=>Yii::t('products', 'EAN'), 
-            'jan'=>Yii::t('products', 'JAN'), 
-            'isbn'=>Yii::t('products', 'ISBN'), 
-            'mpn'=>Yii::t('products', 'MPN'), 
-            'location'=>Yii::t('products', 'Location'),
-            'price'=>Yii::t('products', 'Price'),
-            'taxClass'=>Yii::t('products', 'Tax Class'),
-            'taxClass'=>Yii::t('products', 'Tax Class'),
-            'quantity'=>Yii::t('products', 'Quantity'), 
-            'minimumQuantity'=>Yii::t('products', 'Minimum Quantity'), 
-            'subtractStock'=>Yii::t('products', 'Subtract Stock'), 
-            'outOfStockStatus'=>Yii::t('products', 'Out Of Stock Status'), 
-            'requiresShipping'=>Yii::t('products', 'Requires Shipping'), 
-            'seoKeyword'=>Yii::t('products', 'SEO Keyword'), 
-            'image'=>Yii::t('products', 'Image'), 
-            'dateAvailable'=>Yii::t('products', 'Date Available'), 
-            'dimensionL'=>Yii::t('products', 'Dimension L'), 
-            'dimensionW'=>Yii::t('products', 'Dimension W'),
-            'dimensionH'=>Yii::t('products', 'Dimension H'), 
-            'lengthClass'=>Yii::t('products', 'Lenght Class'), 
-            'weight'=>Yii::t('products', 'Weight'), 
-            'weightClass'=>Yii::t('products', 'Weight Class'), 
-            'status'=>Yii::t('products', 'Status'), 
-            'sortOrder'=>Yii::t('products', 'Sort Order'), 
-            'manufacturer'=>Yii::t('products', 'Manufacturer'), 
-            'categories'=>Yii::t('products', 'Categories'), 
-            'filters'=>Yii::t('products', 'Filters'),
-            'stores'=>Yii::t('products', 'Stores'),
-            'downloads'=>Yii::t('products', 'Downloads'),
-            'relatedProducts'=>Yii::t('products', 'Related Products'),
+            'name' => Yii::t('products', 'Product Name'),
+            'metaTagDescription' => Yii::t('products', 'Meta Tag Description'),
+            'metaTagKeywords' => Yii::t('products', 'Meta Tag Keywords'),
+            'description' => Yii::t('products', 'Description'),
+            'productTags' => Yii::t('products', 'Product Tags'),
+            'model' => Yii::t('products', 'Model'),
+            'sku' => Yii::t('products', 'SKU'),
+            'upc' => Yii::t('products', 'UPC'),
+            'ean' => Yii::t('products', 'EAN'),
+            'jan' => Yii::t('products', 'JAN'),
+            'isbn' => Yii::t('products', 'ISBN'),
+            'mpn' => Yii::t('products', 'MPN'),
+            'location' => Yii::t('products', 'Location'),
+            'price' => Yii::t('products', 'Price'),
+            'taxClass' => Yii::t('products', 'Tax Class'),
+            'taxClass' => Yii::t('products', 'Tax Class'),
+            'quantity' => Yii::t('products', 'Quantity'),
+            'minimumQuantity' => Yii::t('products', 'Minimum Quantity'),
+            'subtractStock' => Yii::t('products', 'Subtract Stock'),
+            'outOfStockStatus' => Yii::t('products', 'Out Of Stock Status'),
+            'requiresShipping' => Yii::t('products', 'Requires Shipping'),
+            'seoKeyword' => Yii::t('products', 'SEO Keyword'),
+            'image' => Yii::t('products', 'Image'),
+            'dateAvailable' => Yii::t('products', 'Date Available'),
+            'dimensionL' => Yii::t('products', 'Dimension L'),
+            'dimensionW' => Yii::t('products', 'Dimension W'),
+            'dimensionH' => Yii::t('products', 'Dimension H'),
+            'lengthClass' => Yii::t('products', 'Lenght Class'),
+            'weight' => Yii::t('products', 'Weight'),
+            'weightClass' => Yii::t('products', 'Weight Class'),
+            'status' => Yii::t('products', 'Status'),
+            'sortOrder' => Yii::t('products', 'Sort Order'),
+            'manufacturer' => Yii::t('products', 'Manufacturer'),
+            'categories' => Yii::t('products', 'Categories'),
+            'filters' => Yii::t('products', 'Filters'),
+            'stores' => Yii::t('products', 'Stores'),
+            'downloads' => Yii::t('products', 'Downloads'),
+            'relatedProducts' => Yii::t('products', 'Related Products'),
         );
     }
-    
-    public function getProduct(){
-        if(!is_null($this->id)){
+
+    public function getProduct() {
+        if (!is_null($this->id)) {
             return Product::model()->findByPk($this->id);
-        }        
+        }
         return new Product;
     }
-    
-    public function loadDataFromProduct($id){
+
+    public function loadDataFromProduct($id) {
         $product = Product::model()->findByPk($id);
-        if(!is_null($product)){
+        if (!is_null($product)) {
             $this->id = $product->product_id;
             $this->name = $product->description->name;
             $this->metaTagDescription = $product->description->meta_description;
@@ -137,8 +137,7 @@ class ProductForm extends CFormModel {
             $this->subtractStock = $product->subtract;
             $this->outOfStockStatus = $product->stock_status_id;
             $this->requiresShipping = $product->shipping;
-            // TODO: add seo keyword
-            $this->seoKeyword = '';
+            $this->seoKeyword = $product->getSEOKeyword();
             $this->image = $product->image;
             $this->dateAvailable = $product->date_available;
             $this->dimensionL = $product->length;
@@ -150,17 +149,42 @@ class ProductForm extends CFormModel {
             $this->sortOrder = $product->sort_order;
             $this->status = $product->status;
             $this->manufacturer = $product->manufacturer_id;
-            // TODO: add categories
-            // TODO: add filters
-            // TODO: add stores
-            // TODO: add downloads
-            // TODO: add related products
+
+            // Categories
+            if (isset($product->categories) && count($product->categories)) {
+                foreach ($product->categories as $category)
+                    $this->categories[$category->category_id] = $category->description->name;
+            }
+
+            // Filters
+            if (isset($product->filters) && count($product->filters)) {
+                foreach ($product->filters as $filter)
+                    $this->filters[$filter->filter_id] = $filter->description->name;
+            }
+
+            // Stores
+            if (isset($product->stores) && count($product->stores)) {
+                foreach ($product->stores as $store)
+                    $this->stores[$store->store_id] = $store->name;
+            }
+
+            // Downloads
+            if (isset($product->downloads) && count($product->downloads)) {
+                foreach ($product->downloads as $download)
+                    $this->downloads[$download->download_id] = $download->description->name;
+            }
+
+            // Related Products
+            if (isset($product->relatedProducts) && count($product->relatedProducts)) {
+                foreach ($product->relatedProducts as $product)
+                    $this->relatedProducts[$product->product_id] = $product->description->name;
+            }
         }
     }
-    
-    public function save(){
+
+    public function save() {
         $product = Product::model()->findByPk($this->id);
-        if(is_null($product)) { // insert   
+        if (is_null($product)) { // insert   
             // Product
             $product = new Product;
             $product->model = $this->model;
@@ -189,7 +213,7 @@ class ProductForm extends CFormModel {
             $product->status = $this->status;
             $product->manufacturer_id = $this->manufacturer;
             $product->save();
-            
+
             // Description
             $description = new ProductDescription;
             $description->product_id = $product->product_id;
@@ -200,11 +224,7 @@ class ProductForm extends CFormModel {
             $description->description = $this->description;
             $description->tag = $this->productTags;
             $description->save();
-            
-            // TODO: categories
-            // TODO: seo keywords
-        }
-        else{ // update
+        } else { // update
             // Product
             $product->model = $this->model;
             $product->sku = $this->sku;
@@ -232,7 +252,7 @@ class ProductForm extends CFormModel {
             $product->status = $this->status;
             $product->manufacturer_id = $this->manufacturer;
             $product->save();
-                        
+
             // Description
             $product->description->name = $this->name;
             $product->description->meta_description = $this->metaTagDescription;
@@ -240,9 +260,44 @@ class ProductForm extends CFormModel {
             $product->description->description = $this->description;
             $product->description->tag = $this->productTags;
             $product->description->save();
-            
-            // TODO: categories
-            // TODO: seo keywords
+        }
+        
+        // SEO Keyword
+        $product->updateSEOKeyword($this->seoKeyword);
+
+        // Filters
+        $product->clearAllFiltersRelations();
+        if (isset($this->filters) && count($this->filters) > 0) {
+            foreach ($this->filters as $filterId)
+                $product->addFilter($filterId);
+        }
+
+        // Categories
+        $product->clearAllCategoriesRelations();
+        if (isset($this->categories) && count($this->categories)) {
+            foreach ($this->categories as $categoryId)
+                $product->addToCategory($categoryId);
+        }
+
+        // Stores
+        $product->clearAllStoresRelations();
+        if (isset($this->stores) && count($this->stores)) {
+            foreach ($this->stores as $storeId)
+                $product->addToStore($storeId);
+        }
+
+        // Downloads
+        $product->clearAllDownloadsRelations();
+        if (isset($this->downloads) && count($this->downloads)) {
+            foreach ($this->downloads as $downloadId)
+                $product->addToDownload($downloadId);
+        }
+
+        // Related Products
+        $product->clearAllRelatedProductsRelations();
+        if (isset($this->relatedProducts) && count($this->relatedProducts)) {
+            foreach ($this->relatedProducts as $relatedId)
+                $product->addRelatedProduct($relatedId);
         }
     }
 

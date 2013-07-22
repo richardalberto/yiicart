@@ -83,7 +83,7 @@ class ProductDescription extends CActiveRecord {
         return strip_tags($short) . '...';
     }
     
-    public function getDescription() {        
+    public function getDescription() {
         return CHtml::decode($this->description);
     }
 

@@ -54,23 +54,34 @@ class ManufacturerForm extends CFormModel {
             $this->name = $manufacturer->name;
             $this->image = $manufacturer->image;
             $this->sortOrder = $manufacturer->sort_order;
+            $this->seoKeyword = $manufacturer->getSEOKeyword();
+            
+            // Stores
+            if (isset($manufacturer->stores) && count($manufacturer->stores)) {
+                foreach ($manufacturer->stores as $store)
+                    $this->stores[$store->store_id] = $store->name;
+            }
         }
     }
     
     public function save(){
         $manufacturer = Manufacturer::model()->findByPk($this->id);
-        if(is_null($manufacturer)) { // insert   
+        if(is_null($manufacturer)) // is insert   
             $manufacturer = new Manufacturer;
-            $manufacturer->name = $this->name;
-            $manufacturer->image = $this->image;
-            $manufacturer->sort_order = $this->sortOrder;
-            $manufacturer->save();
-        }
-        else{ // update
-            $manufacturer->name = $this->name;
-            $manufacturer->image = $this->image;
-            $manufacturer->sort_order = $this->sortOrder;
-            $manufacturer->save();
+        
+        $manufacturer->name = $this->name;
+        $manufacturer->image = $this->image;
+        $manufacturer->sort_order = $this->sortOrder;        
+        $manufacturer->save();
+        
+        // SEO Keyword
+        $manufacturer->updateSEOKeyword($this->seoKeyword);
+
+        // Stores
+        $manufacturer->clearAllStoresRelations();
+        if (isset($this->stores) && count($this->stores)) {
+            foreach ($this->stores as $storeId)
+                $manufacturer->addToStore($storeId);
         }
     }
 

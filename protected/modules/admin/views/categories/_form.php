@@ -49,7 +49,8 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'parent', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'parent', array('class' => 'span8')); ?>
+                <?php echo $form->hiddenField($model, 'parent'); ?>
+                <?php echo CHtml::textField('parent', $model->getCategory()->getParentName(), array('class' => 'span8')); ?>
             </div>
         </div>
         <div class="control-group">
@@ -120,9 +121,21 @@ $form = $this->beginWidget('CActiveForm', array(
 
 <?php $this->renderPartial('/common/_fileManager'); ?>
 
+<?php 
+// typeaheads
+$this->renderPartial('/common/typeahead', array(
+    'autocompleteUrl'=>$this->createUrl('/admin/categories/autocomplete'),
+    'label'=>'#parent',
+    'value'=>'#CategoriesForm_parent',
+));
+?>
+
 <script>
-    $('#btnFormSubmit').on('click', function(){
-        $('#category-form').submit();
-        return false; 
+    $(document).ready(function() {
+        $('#btnFormSubmit').on('click', function(){
+            $('#category-form').submit();
+            return false; 
+        });
     });
+    
 </script>

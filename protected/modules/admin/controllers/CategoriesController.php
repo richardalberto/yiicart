@@ -28,8 +28,12 @@ class CategoriesController extends BackendController {
             1=>Yii::t('common', 'Enabled')
         );
         
+        $stores = CHtml::listData(Store::model()->findAll(), 'store_id' , 'name');
+        $stores[0] = Yii::t('store', 'Default');
+        
         $this->render('create', array(
             'model'=>$model,
+            'stores'=>$stores,
             'statuses'=>$statuses
         ));
     }
@@ -51,8 +55,12 @@ class CategoriesController extends BackendController {
             1=>Yii::t('common', 'Enabled')
         );
         
+        $stores = CHtml::listData(Store::model()->findAll(), 'store_id' , 'name');
+        $stores[0] = Yii::t('store', 'Default');
+        
         $this->render('update', array(
             'model'=>$model,
+            'stores'=>$stores,
             'statuses'=>$statuses
         ));        
     }
@@ -67,6 +75,19 @@ class CategoriesController extends BackendController {
         }
         
         $this->redirect(array('index'));
+    }
+    
+    public function actionAutocomplete($query){
+        $json = array();
+        
+        // TODO: add locale
+        $language_id = 1;
+        $descriptions = CategoryDescription::model()->findAll("name LIKE '%{$query}%' AND language_id={$language_id}");
+        foreach($descriptions as $description){
+            $json[] = array('id'=>$description->category_id, 'value'=>$description->category->getFullname());
+        }
+        
+        echo CJSON::encode($json);
     }
 
 }

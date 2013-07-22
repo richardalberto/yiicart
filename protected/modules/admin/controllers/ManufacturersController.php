@@ -53,4 +53,15 @@ class ManufacturersController extends BackendController {
         
         $this->redirect(array('index'));
     }
+    
+    public function actionAutocomplete($query){
+        $json = array();
+        
+        $manufacturers = Manufacturer::model()->findAll("name LIKE '%{$query}%' ");
+        foreach($manufacturers as $manufacturer){
+            $json[] = array('id'=>$manufacturer->manufacturer_id, 'value'=>$manufacturer->name);
+        }
+        
+        echo CJSON::encode($json);
+    }
 }

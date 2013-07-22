@@ -253,10 +253,12 @@ $form = $this->beginWidget('CActiveForm', array(
 <?php $this->endWidget(); ?>
 
 <?php $this->renderPartial('/common/_fileManager'); ?>
-
+    
 <script>
-    $('#btnFormSubmit').on('click', function(){
-        $('#product-form').submit();
-        return false; 
+    $(document).ready(function() {
+        $('#btnFormSubmit').on('click', function(){
+            $('#product-form').submit();
+            return false; 
+        });
     });
 </script>

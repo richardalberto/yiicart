@@ -39,7 +39,7 @@
 class Product extends CActiveRecord {
 
     private $cacheId;
-    
+
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -47,6 +47,26 @@ class Product extends CActiveRecord {
      */
     public static function model($className=__CLASS__) {
         return parent::model($className);
+    }
+    
+    public function __get($name) {
+        // Override stores relation to include default store
+        if($name == 'stores'){
+            if(ProductToStore::model()->exists("product_id={$this->product_id} AND store_id=0")){
+                $stores = parent::__get($name);
+                
+                $default = new Store;
+                $default->name = Yii::t('stores', 'Default');
+                $default->store_id = 0;
+                $default->ssl = Yii::app()->baseUrl; // TODO: what should i do about ssl?!
+                $default->url = Yii::app()->baseUrl;
+                array_unshift($stores, $default);
+                
+                return $stores;
+            }
+        }
+        else
+            return parent::__get($name);
     }
 
     /**
@@ -84,11 +104,16 @@ class Product extends CActiveRecord {
      */
     public function relations() {
         return array(
-            'manufacturer' => array(self::BELONGS_TO, 'Manufacturer', 'manufacturer_id'),            
+            'manufacturer' => array(self::BELONGS_TO, 'Manufacturer', 'manufacturer_id'),
             'description' => array(self::HAS_ONE, 'ProductDescription', 'product_id'),
             'orders' => array(self::HAS_MANY, 'Order', 'customer_id'),
             'additionalImages' => array(self::HAS_MANY, 'ProductImage', 'product_id'),
             'stockStatus' => array(self::BELONGS_TO, 'StockStatus', 'stock_status_id'), // TODO: add language condition
+            'categories' => array(self::MANY_MANY, 'Category', 'product_to_category(product_id, category_id)'),
+            'filters' => array(self::MANY_MANY, 'Filter', 'product_filter(product_id, filter_id)'),
+            'stores' => array(self::MANY_MANY, 'Store', 'product_to_store(product_id, store_id)'),
+            'downloads' => array(self::MANY_MANY, 'Download', 'product_to_download(product_id, download_id)'),
+            'relatedProducts' => array(self::MANY_MANY, 'Product', 'product_related(product_id, related_id)'),
         );
     }
 
@@ -142,13 +167,13 @@ class Product extends CActiveRecord {
             'viewed' => 'Viewed',
         );
     }
-    
+
     public function beforeDelete() {
         $this->cacheId = $this->product_id;
         return parent::beforeDelete();
     }
 
-    public function afterDelete() {        
+    public function afterDelete() {
         // delete dependencies
         ProductAttribute::model()->deleteAll("product_id={$this->cacheId}");
         ProductDescription::model()->deleteAll("product_id={$this->cacheId}");
@@ -170,8 +195,8 @@ class Product extends CActiveRecord {
 
         parent::afterDelete();
     }
-    
-    public function hasAdditionalImages(){
+
+    public function hasAdditionalImages() {
         return count($this->additionalImages) > 0 ? true : false;
     }
 
@@ -186,8 +211,130 @@ class Product extends CActiveRecord {
     }
 
     public function getFormattedPrice() {
-        // TODO: format price
+        // TODO: format price according to store settings
         return "$" . sprintf("%.2f", "{$this->price}");
+    }
+
+    public function getManufacturerName() {
+        if (isset($this->manufacturer)) {
+            return $this->manufacturer->name;
+        }
+
+        return null;
+    }
+
+    public function addFilter($filterId) {
+        if(!ProductFilter::model()->countByAttributes(array('product_id'=>$this->product_id, 'filter_id'=>$filterId))){
+            $productFilter = new ProductFilter;
+            $productFilter->product_id = $this->product_id;
+            $productFilter->filter_id = $filterId;
+            return $productFilter->save();
+        }
+        
+        return false;
+    }
+    
+    public function addToStore($storeId) {
+        if(!ProductToStore::model()->countByAttributes(array('product_id'=>$this->product_id, 'store_id'=>$storeId))){
+            $productToStore = new ProductToStore;
+            $productToStore->product_id = $this->product_id;
+            $productToStore->store_id = $storeId;
+            return $productToStore->save();
+        }
+        
+        return false;
+    }
+    
+    public function addToCategory($categoryId) {
+        if(!ProductToCategory::model()->countByAttributes(array('product_id'=>$this->product_id, 'category_id'=>$categoryId))){
+            $productToCategory = new ProductToCategory;
+            $productToCategory->product_id = $this->product_id;
+            $productToCategory->category_id = $categoryId;
+            return $productToCategory->save();
+        }
+        
+        return false;
+    }
+    
+    public function addToDownload($downloadId) {
+        if(!ProductToDownload::model()->countByAttributes(array('product_id'=>$this->product_id, 'download_id'=>$downloadId))){
+            $productToDownload = new ProductToDownload;
+            $productToDownload->product_id = $this->product_id;
+            $productToDownload->download_id = $downloadId;
+            return $productToDownload->save();
+        }
+        
+        return false;
+    }
+    
+    public function addRelatedProduct($relatedId) {
+        if(!ProductRelated::model()->countByAttributes(array('product_id'=>$this->product_id, 'related_id'=>$relatedId))){
+            $productRelated = new ProductRelated;
+            $productRelated->product_id = $this->product_id;
+            $productRelated->related_id = $relatedId;
+            return $productRelated->save();
+        }
+        
+        return false;
+    }
+    
+    public function clearAllStoresRelations(){
+        ProductToStore::model()->deleteAllByAttributes(array('product_id'=>$this->product_id));
+    }
+    
+    public function clearAllFiltersRelations(){
+        ProductFilter::model()->deleteAllByAttributes(array('product_id'=>$this->product_id));
+    }
+    
+    public function clearAllCategoriesRelations(){
+        ProductToCategory::model()->deleteAllByAttributes(array('product_id'=>$this->product_id));
+    }
+    
+    public function clearAllDownloadsRelations(){
+        ProductToDownload::model()->deleteAllByAttributes(array('product_id'=>$this->product_id));
+    }
+    
+    public function clearAllRelatedProductsRelations(){
+        ProductRelated::model()->deleteAllByAttributes(array('product_id'=>$this->product_id));
+    }
+    
+    public function getUrlAlias(){
+        return UrlAlias::model()->find("query='product_id={$this->product_id}'");;
+    }
+    
+    public function getSEOKeyword(){
+        $alias = $this->getUrlAlias();
+        if(!is_null($alias)){
+            return $alias->keyword;
+        }
+        return null;
+    }
+    
+    public function updateSEOKeyword($keyword){
+        if(!$this->isNewRecord){
+            $alias = $this->getUrlAlias();
+            
+            // if keyword is empty delete url alias
+            if(empty($keyword) || is_null($keyword)){
+                if(!is_null($alias))
+                    return $alias->delete();
+                
+                return false;
+            }
+            // else update
+            else{
+                if(is_null($alias)){
+                    $alias = new UrlAlias;
+                    $alias->query = "product_id={$this->product_id}";
+                }
+
+                $alias->keyword = $keyword;
+
+                return $alias->save();
+            }
+        }
+        else
+            throw new CException(Yii::t('errors', 'Tried to update SEO Keyword for an object that doesn\'t exists yet.'));
     }
 
 }

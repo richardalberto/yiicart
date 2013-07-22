@@ -29,7 +29,7 @@ class CategoryForm extends CFormModel {
         return array(
             array('name', 'required'),
             array('id, top, columns, sortOrder, parent, status', 'numerical'),
-            array('metaTagDescription, metaTagKeywords, description, image', 'safe')
+            array('metaTagDescription, metaTagKeywords, description, image, stores, filters, seoKeyword', 'safe')
         );
     }
 
@@ -70,20 +70,33 @@ class CategoryForm extends CFormModel {
             $this->name = $category->description->name;
             $this->metaTagDescription = $category->description->meta_description;
             $this->metaTagKeywords = $category->description->meta_keyword;
-            $this->description = $category->description->description;
+            $this->description = $category->description->getDescription();
             $this->image = $category->image;
             $this->top = $category->top;
             $this->columns = $category->column;
             $this->sortOrder = $category->sort_order;
             $this->status = $category->status;
             $this->parent = $category->parent_id;
+            $this->seoKeyword = $category->getSEOKeyword();
+            
+            // Stores
+            if (isset($category->stores) && count($category->stores)) {
+                foreach ($category->stores as $store)
+                    $this->stores[$store->store_id] = $store->name;
+            }
+            
+            // Filters
+            if (isset($category->filters) && count($category->filters)) {
+                foreach ($category->filters as $filter)
+                    $this->filters[$filter->filter_id] = $filter->description->name;
+            }
         }
     }
     
     public function save(){
         $category = Category::model()->findByPk($this->id);
         if(is_null($category)) { // insert          
-            // category
+            // Category
             $category = new Category;
             $category->date_added = date('Y-m-d');
             $category->date_modified = date('Y-m-d');
@@ -95,7 +108,7 @@ class CategoryForm extends CFormModel {
             $category->parent_id = $this->parent;
             $category->save();
             
-            // description
+            // Description
             $description = new CategoryDescription;
             $description->category_id = $category->category_id;
             $description->language_id = 1; // TODO: language must be dynamic
@@ -106,7 +119,7 @@ class CategoryForm extends CFormModel {
             $description->save();
         }
         else{ // update
-            // category
+            // Category
             $category->date_modified = date('Y-m-d');
             $category->image = $this->image;
             $category->top = $this->top;
@@ -116,12 +129,29 @@ class CategoryForm extends CFormModel {
             $category->parent_id = $this->parent;
             $category->save();
             
-            // description
+            // Description
             $category->description->name = $this->name;
             $category->description->meta_description = $this->metaTagDescription;
             $category->description->meta_keyword = $this->metaTagKeywords;
             $category->description->description = $this->description;
             $category->description->save();
+        }
+        
+        // SEO keyword
+        $category->updateSEOKeyword($this->seoKeyword);
+        
+        // Stores
+        $category->clearAllStoresRelations();
+        if (isset($this->stores) && count($this->stores)) {
+            foreach ($this->stores as $storeId)
+                $category->addToStore($storeId);
+        }
+        
+        // Filters
+        $category->clearAllFiltersRelations();
+        if (isset($this->filters) && count($this->filters) > 0) {
+            foreach ($this->filters as $filterId)
+                $category->addFilter($filterId);
         }
     }
 

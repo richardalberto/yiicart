@@ -127,5 +127,15 @@ class ProductsController extends BackendController {
         
         $this->redirect(array('index'));
     }
+    
+    public function actionAutocomplete($query){     
+        $json = array();
+        $descriptions = ProductDescription::model()->findAll("name LIKE '%{$query}%' ");
+        foreach($descriptions as $description){
+            $json[] = array('id'=>$description->product_id, 'value'=>$description->name);
+        }
+        
+        echo CJSON::encode($json);
+    }
 
 }
