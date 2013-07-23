@@ -61,6 +61,6 @@ return array(
     ),
     
     'params' => array(
-        'imagePath' => '/var/www/htdocs/iCart/image/',
+        'imagePath' => '/var/www/htdocs/YiiCart/image/',
     ),
 );
