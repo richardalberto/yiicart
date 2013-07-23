@@ -73,8 +73,8 @@ class Category extends CActiveRecord {
         return array(
             // TODO: add locale
             'description' => array(self::HAS_ONE, 'CategoryDescription', 'category_id'), 
-            'products' => array(self::MANY_MANY, 'Product', 'product_to_category(product_id, category_id)'),
-            'activeProducts' => array(self::MANY_MANY, 'Product', 'product_to_category(product_id, category_id)', 'condition' => 'status=1'),
+            'products' => array(self::MANY_MANY, 'Product', 'product_to_category(category_id, product_id)'),
+            'activeProducts' => array(self::MANY_MANY, 'Product', 'product_to_category(category_id, product_id)', 'condition' => 'status=1'),
             'childCategories' => array(self::HAS_MANY, 'Category', 'parent_id'),
             'parent' => array(self::BELONGS_TO, 'Category', 'parent_id'),            
             'stores' => array(self::MANY_MANY, 'Store', 'category_to_store(category_id, store_id)'),
