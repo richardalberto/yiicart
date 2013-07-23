@@ -5,7 +5,7 @@ Thumbs.db
 
 # ignore local config files
 index-dev.php
-/protected/config/local.php
+/protected/config/dev.php
 
 
 # runtime and cache directories
