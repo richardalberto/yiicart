@@ -4,6 +4,7 @@ Thumbs.db
 *.empty
 
 # ignore local config files
+config-dev.php
 index-dev.php
 /protected/config/dev.php
 
