@@ -1,6 +1,14 @@
 <?php
 
 class OrdersController extends BackendController {
+    
+    public function actionIndex() {
+        $orders = Order::model()->findAll();
+        
+        $this->render('index', array(
+            'orders'=>$orders
+        ));
+    }
 
     public function actionView($id) {
         $order = Order::model()->findByPk($id);
