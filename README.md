@@ -10,7 +10,7 @@ To install restore database found in protected/data/schema.mysql.sql to your loc
 mysql -u[user] -p[password] [database] < protected/data/schema.mysql.sql
 ```
 
-Then, configure to match your system configuration. Configuration file can be found at protected/config/main.php
+Then, configure to match your system configuration. Configuration file can be found at config.php
 
 ```
 'db' => array(
