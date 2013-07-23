@@ -63,9 +63,8 @@
  * @property string $date_added
  * @property string $date_modified
  */
-class Order extends CActiveRecord {
-
-    const ORDER_STATUS_PENDING = 1;
+class Order extends CActiveRecord {    
+    
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -110,6 +109,8 @@ class Order extends CActiveRecord {
             'products' => array(self::HAS_MANY, 'OrderProduct', 'order_id'),
             // TODO: add locale
             'status' => array(self::BELONGS_TO, 'OrderStatus', 'order_status_id', 'condition'=>'language_id=1'),
+            'histories' => array(self::HAS_MANY, 'OrderHistory', 'order_id'),
+            'customerGroup'=> array(self::BELONGS_TO, 'CustomerGroup', 'customer_group_id'),         
         );
     }
 
@@ -183,7 +184,29 @@ class Order extends CActiveRecord {
         return "{$this->firstname} {$this->lastname}"; 
     }
     
-    public function getTotalFormatted(){
+    public function getPaymentCustomerFullname(){
+        return "{$this->payment_firstname} {$this->payment_lastname}"; 
+    }
+    
+    public function getShippingTotal(){
+        // TODO: retrieve shipping total
+        $shippingTotal = 0;
+        
+        // TODO: format total according to store settings
+        return "$" . sprintf("%.2f", "{$shippingTotal}"); 
+    }
+    
+    public function getSubTotal(){
+        $subTotal = 0;
+        foreach($this->products as $product){
+            $subTotal += ($product->total * $product->quantity);
+        }
+        
+        // TODO: format total according to store settings
+        return "$" . sprintf("%.2f", "{$subTotal}"); 
+    }
+    
+    public function getTotal(){
         // TODO: format total according to store settings
         return "$" . sprintf("%.2f", "{$this->total}"); 
     }
@@ -191,6 +214,11 @@ class Order extends CActiveRecord {
     public function getDateAdded($withTime = false){
         // TODO: format date according to localization settings
         return date(($withTime ? 'Y-m-d h:i:s' : 'Y-m-d'), strtotime($this->date_added));
+    }
+    
+    public function getDateModified($withTime = false){
+        // TODO: format date according to localization settings
+        return date(($withTime ? 'Y-m-d h:i:s' : 'Y-m-d'), strtotime($this->date_modified));
     }
     
     public static function getOrdersTotal(){
