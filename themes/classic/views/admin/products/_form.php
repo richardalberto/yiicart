@@ -15,6 +15,7 @@ $form = $this->beginWidget('CActiveForm', array(
     <li class="active"><a data-toggle="tab" href="#general"><?php echo Yii::t('products', 'General'); ?></a></li>
     <li><a data-toggle="tab" href="#data"><?php echo Yii::t('products', 'Data'); ?></a></li>
     <li><a data-toggle="tab" href="#links"><?php echo Yii::t('products', 'Links'); ?></a></li>
+    <li><a data-toggle="tab" href="#images"><?php echo Yii::t('products', 'Images'); ?></a></li>
 </ul>
 <div class="tab-content" id="myTabContent">
     <div id="general" class="tab-pane fade in active">
@@ -279,6 +280,41 @@ $form = $this->beginWidget('CActiveForm', array(
                 ))?>
             </div>
         </div>
+    </div>
+    <div id="images" class="tab-pane fade">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th><?php echo Yii::t('products', 'Image'); ?></th>
+                    <th><?php echo Yii::t('products', 'Sort Order'); ?></th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($model->getProduct()->additionalImages as $image): ?>
+                <tr>
+                    <td>
+                        <ul class="thumbnails">
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <img id="thumb" alt="" src="<?php if (!is_null($model->getProduct())) echo $image->getImageWithSize(100, 100); ?>">
+                                    <?php echo $form->hiddenField($model, 'image'); ?>
+                                    <div class="caption">
+                                        <p>
+                                            <a onclick="image_upload('ProductForm_image', 'thumb');" class="btn btn-mini btn-primary" href="#">Browse</a> 
+                                            <a onclick="image_clear('ProductForm_image', 'thumb');" class="btn btn-mini" href="#">Clear</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </td>
+                    <td><?php $image->sort_order; ?></td>
+                    <td><a href="#" class="btn btn-danger"><?php echo Yii::t('products', 'Remove'); ?></a></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 </div>
 <?php $this->endWidget(); ?>

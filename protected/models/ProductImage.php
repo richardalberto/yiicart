@@ -31,15 +31,10 @@ class ProductImage extends CActiveRecord {
      * @return array validation rules for model attributes.
      */
     public function rules() {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
         return array(
             array('product_id', 'required'),
             array('product_id, sort_order', 'numerical', 'integerOnly' => true),
             array('image', 'length', 'max' => 255),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('product_image_id, product_id, image, sort_order', 'safe', 'on' => 'search'),
         );
     }
 
@@ -62,7 +57,7 @@ class ProductImage extends CActiveRecord {
             'sort_order' => 'Sort Order',
         );
     }
-    
+
     public function getImageWithSize($width, $height) {
         if ($this->image && file_exists(Yii::app()->params['imagePath'] . $this->image)) {
             $_image = ImageTool::resize($this->image, $width, $height);

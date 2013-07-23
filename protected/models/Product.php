@@ -80,8 +80,6 @@ class Product extends CActiveRecord {
      * @return array validation rules for model attributes.
      */
     public function rules() {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
         return array(
             array('model', 'required'),
             array('quantity, stock_status_id, manufacturer_id, shipping, points, tax_class_id, weight_class_id, length_class_id, subtract, minimum, sort_order, status, viewed', 'numerical', 'integerOnly' => true),
@@ -93,9 +91,6 @@ class Product extends CActiveRecord {
             array('image', 'length', 'max' => 255),
             array('price, weight, length, width, height', 'length', 'max' => 15),
             array('date_added, date_modified', 'safe'),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('product_id, model, sku, upc, ean, jan, isbn, mpn, location, quantity, stock_status_id, image, manufacturer_id, shipping, price, points, tax_class_id, date_available, weight, weight_class_id, length, width, height, length_class_id, subtract, minimum, sort_order, status, date_added, date_modified, viewed', 'safe', 'on' => 'search'),
         );
     }
 
