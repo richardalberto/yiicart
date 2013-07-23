@@ -5,8 +5,14 @@ class DefaultController extends BackendController {
     public function actionIndex() {
         if(Yii::app()->user->isGuest)
             $this->redirect(array('/admin/login'));
-        else
-            $this->render('index');
+        else{
+            // latest 10 orders            
+            $orders = Order::model()->findAll(new CDbCriteria(array('limit'=>10)));
+            
+            $this->render('index', array(
+                'orders'=>$orders,                
+            ));
+        }
     }
     
     /**
