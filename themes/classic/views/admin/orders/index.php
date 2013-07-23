@@ -41,7 +41,7 @@ $this->breadcrumbs = array(
             <td><?php echo $order->getDateAdded(); ?></td>
             <td><?php echo $order->getDateModified(); ?></td>
             <td>
-                <a href="#" class="btn btn-success btn-mini"><?php echo Yii::t('common', 'View'); ?></a>
+                <a href="<?php echo $this->createUrl('view', array('id'=>$order->order_id)); ?>" class="btn btn-success btn-mini"><?php echo Yii::t('common', 'View'); ?></a>
                 <a href="#" class="btn btn-success btn-mini"><?php echo Yii::t('common', 'Edit'); ?></a>
             </td>
         </tr>
