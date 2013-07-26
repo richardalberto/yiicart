@@ -7,12 +7,18 @@ class ShoppingCartController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        $this->render('index');
+        $shoppingCart = Yii::app()->user->getShoppingCart();
+        $this->render('index', array(
+            'shoppingCart'=>$shoppingCart            
+        ));
     }
     
     public function actionAdd(){
         if(isset($_POST['product_id']) && isset($_POST['quantity'])){
+            $shoppingCart = Yii::app()->user->getShoppingCart();
+            $shoppingCart->add($_POST['product_id'], $_POST['quantity']);
             
+            echo CJSON::encode(array('success'=>Yii::t('shoppingcart', '<b>Success:</b> You have added iPhone to your shopping cart!')));
         }
     }
 
