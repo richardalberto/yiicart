@@ -132,27 +132,27 @@
                     <div class="span3">
                         <h4><?php echo Yii::t('footer', 'Customer Service'); ?></h4>
                         <ul>
-                            <li><a href="<?php echo $this->createUrl('/site/contact'); ?>">Contact Us</a></li>
-                            <li><a href="<?php echo $this->createUrl('/returns'); ?>">Returns</a></li>
-                            <li><a href="<?php echo $this->createUrl('/site/map'); ?>">Site Map</a></li>
+                            <li><a href="<?php echo $this->createUrl('/site/contact'); ?>"><?php echo Yii::t('footer', 'Contact Us'); ?></a></li>
+                            <li><a href="<?php echo $this->createUrl('/returns'); ?>"><?php echo Yii::t('footer', 'Returns'); ?></a></li>
+                            <li><a href="<?php echo $this->createUrl('/site/map'); ?>"><?php echo Yii::t('footer', 'Site Map'); ?></a></li>
                         </ul>
                     </div>
                     <div class="span3">
                         <h4><?php echo Yii::t('footer', 'Extras'); ?></h4>
                         <ul>
-                            <li><a href="<?php echo $this->createUrl('/manufacturers'); ?>">Brands</a></li>
-                            <li><a href="<?php echo $this->createUrl('/account/vouchers'); ?>">Gift Vouchers</a></li>
-                            <li><a href="<?php echo $this->createUrl('/affiliates'); ?>">Affiliates</a></li>
-                            <li><a href="<?php echo $this->createUrl('/products/specials'); ?>">Specials</a></li>
+                            <li><a href="<?php echo $this->createUrl('/manufacturers'); ?>"><?php echo Yii::t('footer', 'Brands'); ?></a></li>
+                            <li><a href="<?php echo $this->createUrl('/account/vouchers'); ?>"><?php echo Yii::t('footer', 'Gift Vouchers'); ?></a></li>
+                            <li><a href="<?php echo $this->createUrl('/affiliates'); ?>"><?php echo Yii::t('footer', 'Affiliates'); ?></a></li>
+                            <li><a href="<?php echo $this->createUrl('/products/specials'); ?>"><?php echo Yii::t('footer', 'Specials'); ?></a></li>
                         </ul>
                     </div>
                     <div class="span2">
                         <h4><?php echo Yii::t('footer', 'My Account'); ?></h4>
                         <ul>
-                            <li><a href="<?php echo $this->createUrl('/account'); ?>">My Account</a></li>
-                            <li><a href="<?php echo $this->createUrl('/orders'); ?>">Order History</a></li>
-                            <li><a href="<?php echo $this->createUrl('/wishlist'); ?>">Wish List</a></li>
-                            <li><a href="<?php echo $this->createUrl('/newsletter'); ?>">Newsletter</a></li>
+                            <li><a href="<?php echo $this->createUrl('/account'); ?>"><?php echo Yii::t('footer', 'My Account'); ?></a></li>
+                            <li><a href="<?php echo $this->createUrl('/orders'); ?>"><?php echo Yii::t('footer', 'Order History'); ?></a></li>
+                            <li><a href="<?php echo $this->createUrl('/wishlist'); ?>"><?php echo Yii::t('footer', 'Wish List'); ?></a></li>
+                            <li><a href="<?php echo $this->createUrl('/newsletter'); ?>"><?php echo Yii::t('footer', 'Newsletter'); ?></a></li>
                         </ul>
                     </div>
 
