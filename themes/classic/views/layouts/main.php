@@ -8,11 +8,10 @@
         <meta name="author" content="">
 
         <!-- Le styles -->
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" rel="stylesheet" />
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-responsive.css" rel="stylesheet" />
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" rel="stylesheet" />
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-deletethis.css" rel="stylesheet" />
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-responsive.min.css" rel="stylesheet" />
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/jquery.rating.css" rel="stylesheet" />
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" rel="stylesheet" />
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -93,14 +92,14 @@
                                                 continue; ?>
                                             <li class="dropdown">
                                                 <?php if ($category->hasChildCategories()): ?>
-                                                    <a href="<?php echo $this->createUrl('/category', array('id' => $category->category_id)); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category->description->name; ?> <i class="icon-caret-down"></i></a>
+                                                    <a href="<?php echo $this->createUrl('/category/view', array('id' => $category->category_id)); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category->description->name; ?> <i class="icon-caret-down"></i></a>
                                                     <ul class="dropdown-menu">
                                                         <?php foreach ($category->childCategories as $childCategory): ?>
                                                             <li><a href="<?php echo $this->createUrl('/category/view', array('id'=>$childCategory->category_id)); ?>"><?php echo $childCategory->description->name; ?></a></li>
                                                     <?php endforeach; ?>
                                                     </ul>
                                                 <?php else: ?>
-                                                    <a href="<?php echo $this->createUrl('/category', array('id' => $category->category_id)); ?>"><?php echo $category->description->name; ?></a>
+                                                    <a href="<?php echo $this->createUrl('/category/view', array('id' => $category->category_id)); ?>"><?php echo $category->description->name; ?></a>
                                             <?php endif; ?>
                                             </li>
                                         <?php endforeach; ?>
@@ -112,7 +111,10 @@
                 </div>
             </div><!-- end nav -->	
             <div class="row">
-                <?php echo $content; ?>
+                <div class="span12">
+                    <div id="notification"></div>
+                    <?php echo $content; ?>
+                </div>
             </div>
             <footer>
                 <hr />
@@ -164,6 +166,6 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.min.js"></script>
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.min.js"></script>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.rating.pack.js"></script>
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/common.js"></script>
     </body>
 </html>

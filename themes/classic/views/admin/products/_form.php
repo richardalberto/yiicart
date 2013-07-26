@@ -15,6 +15,7 @@ $form = $this->beginWidget('CActiveForm', array(
     <li class="active"><a data-toggle="tab" href="#general"><?php echo Yii::t('products', 'General'); ?></a></li>
     <li><a data-toggle="tab" href="#data"><?php echo Yii::t('products', 'Data'); ?></a></li>
     <li><a data-toggle="tab" href="#links"><?php echo Yii::t('products', 'Links'); ?></a></li>
+    <li><a data-toggle="tab" href="#attributes"><?php echo Yii::t('products', 'Attributes'); ?></a></li>
     <li><a data-toggle="tab" href="#images"><?php echo Yii::t('products', 'Images'); ?></a></li>
 </ul>
 <div class="tab-content" id="myTabContent">
@@ -280,6 +281,34 @@ $form = $this->beginWidget('CActiveForm', array(
                 ))?>
             </div>
         </div>
+    </div>
+    <div id="attributes" class="tab-pane fade">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th><?php echo Yii::t('products', 'Attribute'); ?></th>
+                    <th><?php echo Yii::t('products', 'Text'); ?></th>
+                    <th style="width: 1px;">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($model->getProduct()->attributes as $attribute): ?>
+                <tr>
+                    <td>
+                        <?php $this->widget('TypeaheadSingle', array(
+                            'model' => $attribute,
+                            'attribute' => 'text',
+                            'value' => $attribute->attribute->description->name,
+                            'htmlOptions' => array('class' => 'span3'),
+                            'url'=>$this->createUrl('/admin/attributes/autocomplete')                    
+                        ))?>
+                    </td>
+                    <td><?php echo CHtml::textArea("attributes[]", $attribute->text, array('class'=>'span4')) ; ?></td>
+                    <td><a href="#" class="btn btn-danger"><?php echo Yii::t('products', 'Remove'); ?></a></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
     <div id="images" class="tab-pane fade">
         <table class="table table-striped table-bordered">

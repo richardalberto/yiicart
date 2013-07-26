@@ -99,6 +99,8 @@ class Product extends CActiveRecord {
      */
     public function relations() {
         return array(
+            // TODO: add locale
+            'attributes' => array(self::HAS_MANY, 'ProductAttribute', 'product_id', 'condition'=>'language_id=1'),
             'manufacturer' => array(self::BELONGS_TO, 'Manufacturer', 'manufacturer_id'),
             'description' => array(self::HAS_ONE, 'ProductDescription', 'product_id'),
             'orders' => array(self::HAS_MANY, 'Order', 'customer_id'),

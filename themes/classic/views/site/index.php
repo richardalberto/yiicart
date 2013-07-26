@@ -1,6 +1,4 @@
-<?php echo $this->renderPartial('/common/leftMenu'); ?>
 <div class="span9">
-
     <div id="myCarousel" class="carousel slide">
         <div class="carousel-inner">
             <?php foreach ($banners as $banner): ?>

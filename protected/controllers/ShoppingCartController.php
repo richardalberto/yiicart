@@ -9,5 +9,11 @@ class ShoppingCartController extends Controller {
     public function actionIndex() {
         $this->render('index');
     }
+    
+    public function actionAdd(){
+        if(isset($_POST['product_id']) && isset($_POST['quantity'])){
+            
+        }
+    }
 
 }

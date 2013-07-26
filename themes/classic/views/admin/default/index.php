@@ -20,7 +20,7 @@
                 <td><?php echo $order->getCustomerFullname(); ?></td>
                 <td><?php echo $order->status->name; ?></td>
                 <td><?php echo $order->getDateAdded(); ?></td>
-                <td><?php echo $order->getTotalFormatted(); ?></td>
+                <td><?php echo $order->getTotal(); ?></td>
                 <td><?php echo CHtml::link(Yii::t('common', 'view'), $this->createUrl('/admin/orders/view', array('id'=>$order->order_id)), array('class'=>'btn btn-success btn-mini')); ?></td>
             </tr>
             <?php endforeach; ?>

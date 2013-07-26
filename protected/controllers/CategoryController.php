@@ -1,6 +1,8 @@
 <?php
 
 class CategoryController extends Controller {
+    
+    public $layout='//layouts/column2';
 
     public function actionView($id) {
         $category = Category::model()->findByPk($id);

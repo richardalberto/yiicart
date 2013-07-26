@@ -9,7 +9,7 @@
  * @property integer $sort_order
  */
 class Attribute extends CActiveRecord {
-    
+
     private $cacheId;
 
     /**
@@ -58,7 +58,7 @@ class Attribute extends CActiveRecord {
             'sort_order' => 'Sort Order',
         );
     }
-    
+
     public function beforeDelete() {
         $this->cacheId = $this->attribute_id;
         return parent::beforeDelete();
@@ -69,6 +69,14 @@ class Attribute extends CActiveRecord {
         AttributeDescription::model()->deleteAll("attribute_id={$this->cacheId}");
 
         parent::afterDelete();
+    }
+    
+    public function getName($includeGroup = false){
+        $name = $this->description->name;
+        if($includeGroup) 
+            $name = "{$this->group->description->name} > {$name}"; 
+            
+        return $name;
     }
 
 }

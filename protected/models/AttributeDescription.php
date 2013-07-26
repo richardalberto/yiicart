@@ -42,6 +42,7 @@ class AttributeDescription extends CActiveRecord {
      */
     public function relations() {
         return array(
+            'attribute' => array(self::BELONGS_TO, 'Attribute', 'attribute_id'),
         );
     }
 

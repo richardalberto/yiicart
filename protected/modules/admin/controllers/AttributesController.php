@@ -59,5 +59,18 @@ class AttributesController extends BackendController {
         
         $this->redirect(array('index'));
     }
+    
+    public function actionAutocomplete($query){
+        $json = array();
+        
+        // TODO: add locale
+        $language_id = 1;
+        $descriptions = AttributeDescription::model()->findAll("name LIKE '%{$query}%' AND language_id={$language_id}");
+        foreach($descriptions as $description){
+            $json[] = array('id'=>$description->attribute_id, 'value'=>$description->attribute->getName(true));
+        }
+        
+        echo CJSON::encode($json);
+    }
 
 }
