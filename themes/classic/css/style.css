@@ -170,6 +170,7 @@ a.thumbnail:hover {
     box-shadow: none;
 }
 
+.no_margin_bottom {margin-bottom: 0 !important;}
 .no_margin_left {margin-left: 0;}
 footer h4 {margin-bottom: 8px;}
 .logo {

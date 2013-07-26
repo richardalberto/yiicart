@@ -1,14 +1,17 @@
+<?php 
+$js = 'function updateQuantity(product_id, quantity) { document.location = "' . $this->createUrl('update') . '/?product_id=" + product_id + "&quantity=" + quantity; }';
+Yii::app()->clientScript->registerScript('updateQuantity', $js, CClientScript::POS_END);
+?>
 <div class="row-fluid">
     <div class="span12">
         <h1> Shopping Cart</h1><br>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th style="width: 1px;">&nbsp;</th>
                     <th style="width: 47px;">Image</th>
                     <th>Product Name</th>
                     <th style="width: 150px;">Model</th>
-                    <th style="width: 100px;">Quantity</th>
+                    <th style="width: 180px;">Quantity</th>
                     <th style="width: 100px;">Unit Price</th>
                     <th style="width: 100px;">Total</th>
                 </tr>
@@ -16,7 +19,6 @@
             <tbody>
                 <?php foreach ($shoppingCart->findAllProducts() as $product): ?>
                     <tr>
-                        <td class=""><input type="checkbox" id="optionsCheckbox" value="option1"></td>
                         <td class="muted center_text"><a href="<?php echo $this->createUrl('/product/view', array('id'=>$product->product_id)); ?>"><img src="<?php echo $product->getImageWithSize(47, 47); ?>"></a></td>
                         <td>
                             <a href="<?php echo $this->createUrl('/product/view', array('id'=>$product->product_id)); ?>"><?php echo $product->description->name; ?></a>
@@ -24,7 +26,10 @@
                         </td>
                         <td><?php echo $product->model; ?></td>
                         <td>
-                            <input type="text" class="input-mini" value="<?php echo $shoppingCart->getQuantity($product->product_id); ?>" placeholder="<?php echo $shoppingCart->getQuantity($product->product_id); ?>"></td>
+                            <input id="quantity-<?php echo $product->product_id; ?>" type="text" class="input-mini no_margin_bottom" value="<?php echo $shoppingCart->getQuantity($product->product_id); ?>">
+                            <button onclick="updateQuantity(<?php echo $product->product_id; ?>, $('#quantity-<?php echo $product->product_id; ?>').val());" class="btn btn-primary"><i class="icon-refresh"></i></button>
+                            <button onclick="updateQuantity(<?php echo $product->product_id; ?>, 0);" class="btn btn-danger"><i class="icon-remove-circle"></i></button>
+                        </td>
                         <td><?php echo $product->getFormattedPrice(); ?></td>
                         <td><?php echo $shoppingCart->getTotalPriceForProduct($product->product_id); ?></td>
                     </tr>
@@ -41,7 +46,7 @@
                         <div class="accordion-heading">
 
                             <a href="#collapseOne" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
-                                <h3>Apply discount code</h3>
+                                <h5>Apply discount code</h5>
                             </a>
                         </div>
                         <div class="accordion-body collapse in" id="collapseOne">
@@ -60,7 +65,7 @@
                     <div class="accordion-group">
                         <div class="accordion-heading">
                             <a href="#collapseTwo" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
-                                <h3>Use gift voucher</h3>
+                                <h5>Use gift voucher</h5>
                             </a>
                         </div>
                         <div class="accordion-body collapse" id="collapseTwo">
@@ -81,15 +86,12 @@
                     
                 </div>
 
-                <div class="row-fluid">
-                    <div class="span5">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </div>		  
-                    <div class="span2">
-                        <button type="submit" class="btn btn-primary">Continue shopping</button>
+                <div class="row-fluid">	  
+                    <div class="offset5 span2">
+                        <a class="btn btn-primary" href="<?php echo $this->createUrl('/site/index'); ?>"><?php echo Yii::t('shoppingCart', 'Continue shopping'); ?></a>
                     </div>		  
                     <div class="span5">
-                        <a class="btn btn-primary pull-right" href="checkout.html">Checkout</a>
+                        <a class="btn btn-primary pull-right" href="<?php echo $this->createUrl('checkout'); ?>"><?php echo Yii::t('shoppingCart', 'Checkout'); ?></a>
                     </div>
                 </div>
             </fieldset>

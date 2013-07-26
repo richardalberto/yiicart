@@ -29,5 +29,15 @@ class ShoppingCartController extends Controller {
             }
         }
     }
+    
+    public function actionUpdate($product_id, $quantity){
+        $product = Product::model()->findByPk($product_id);
+        if (!is_null($product)) {
+            $shoppingCart = Yii::app()->user->getShoppingCart();
+            $shoppingCart->add($product->product_id, intval($quantity));
+
+            $this->redirect(array('index'));
+        }
+    }
 
 }
