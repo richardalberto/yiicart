@@ -17,8 +17,11 @@
                 <?php foreach ($shoppingCart->findAllProducts() as $product): ?>
                     <tr>
                         <td class=""><input type="checkbox" id="optionsCheckbox" value="option1"></td>
-                        <td class="muted center_text"><a href="product.html"><img src="<?php echo $product->getImageWithSize(47, 47); ?>"></a></td>
-                        <td><?php echo $product->description->name; ?></td>
+                        <td class="muted center_text"><a href="<?php echo $this->createUrl('/product/view', array('id'=>$product->product_id)); ?>"><img src="<?php echo $product->getImageWithSize(47, 47); ?>"></a></td>
+                        <td>
+                            <a href="<?php echo $this->createUrl('/product/view', array('id'=>$product->product_id)); ?>"><?php echo $product->description->name; ?></a>
+                            <?php if($product->hasReward()): ?><br /><small><?php echo Yii::t('products', 'Reward Points'); ?>: <?php echo $product->reward->points; ?></small><?php endif; ?>
+                        </td>
                         <td><?php echo $product->model; ?></td>
                         <td>
                             <input type="text" class="input-mini" value="<?php echo $shoppingCart->getQuantity($product->product_id); ?>" placeholder="<?php echo $shoppingCart->getQuantity($product->product_id); ?>"></td>
@@ -72,6 +75,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="row-fluid">
+                    
                 </div>
 
                 <div class="row-fluid">

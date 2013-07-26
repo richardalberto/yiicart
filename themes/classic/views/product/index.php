@@ -58,8 +58,8 @@
                 <form class="form-inline">
                     <div class="span3 no_margin_left">
                         <label>Qty:</label>
-                        <input type="text" placeholder="1" class="span1">
-                        <button type="submit" class="btn btn-primary">Add to cart</button>
+                        <input id="quantity" type="text" value="1" class="span1">
+                        <button type="button" onclick="addToCart(<?php echo $product->product_id; ?>, $('#quantity').val())" class="btn btn-primary">Add to cart</button>
                     </div>	
                     
                     <div class="span1">

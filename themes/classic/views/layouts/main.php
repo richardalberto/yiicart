@@ -118,16 +118,17 @@
             <footer>
                 <hr />
                 <div class="row well no_margin_left">
-
+                    
+                    <?php if(count($this->informations) > 0): ?>
                     <div class="span3">
-                        <h4>Information</h4>
+                        <h4><?php echo Yii::t('informations', 'Information'); ?></h4>
                         <ul>
-                            <li><a href="two-column.html">About Us</a></li>
-                            <li><a href="typography.html">Delivery Information</a></li>
-                            <li><a href="typography.html">Privacy Policy</a></li>
-                            <li><a href="typography.html">Terms &amp; Conditions</a></li>
+                            <?php foreach($this->informations as $information): ?>
+                            <li><a href="<?php echo $this->createUrl('/information/view', array('id'=>$information->information_id)); ?>"><?php echo $information->description->title; ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
+                    <?php endif; ?>
                     <div class="span3">
                         <h4>Customer Service</h4>
                         <ul>

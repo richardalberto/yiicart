@@ -111,6 +111,8 @@ class Product extends CActiveRecord {
             'stores' => array(self::MANY_MANY, 'Store', 'product_to_store(product_id, store_id)'),
             'downloads' => array(self::MANY_MANY, 'Download', 'product_to_download(product_id, download_id)'),
             'relatedProducts' => array(self::MANY_MANY, 'Product', 'product_related(product_id, related_id)'),
+            // TODO: add customer group id
+            'reward' => array(self::HAS_ONE, 'ProductReward', 'product_id', 'condition'=>'customer_group_id=1'),
         );
     }
 
@@ -191,6 +193,10 @@ class Product extends CActiveRecord {
         UrlAlias::model()->deleteAll("query='product_id={$this->cacheId}'");
 
         parent::afterDelete();
+    }
+    
+    public function hasReward(){
+        return !is_null($this->reward) ? true : false;
     }
     
     public function hasAttributes() {
