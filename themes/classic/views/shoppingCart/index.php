@@ -6,43 +6,28 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Remove</th>
-                <th>Image</th>
+                <th style="width: 1px;">&nbsp;</th>
+                <th style="width: 47px;">Image</th>
                 <th>Product Name</th>
-                <th>Model</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total</th>
+                <th style="width: 150px;">Model</th>
+                <th style="width: 100px;">Quantity</th>
+                <th style="width: 100px;">Unit Price</th>
+                <th style="width: 100px;">Total</th>
             </tr>
         </thead>
         <tbody>
+            <?php foreach($shoppingCart->findAllProducts() as $product): ?>
             <tr>
                 <td class=""><input type="checkbox" id="optionsCheckbox" value="option1"></td>
-                <td class="muted center_text"><a href="product.html"><img src="css/images/macbook-pro.jpg"></a></td>
-                <td>MacBook Pro</td>
-                <td>Product 18</td>
-                <td><input type="text" class="input-mini" placeholder="1"></td>
-                <td>$2,350.00</td>
-                <td>$2,350.00</td>
-            </tr>			  
-            <tr>
-                <td class=""><input type="checkbox" id="optionsCheckbox" value="option1"></td>
-                <td class="muted center_text"><a href="product.html"><img src="css/images/macbook-pro.jpg"></a></td>
-                <td>MacBook Pro</td>
-                <td>Product 18</td>
-                <td><input type="text" class="input-mini" placeholder="1"></td>
-                <td>$2,350.00</td>
-                <td>$2,350.00</td>
-            </tr>				 
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td><strong>$4,700.00</strong></td>
-            </tr>		  
+                <td class="muted center_text"><a href="product.html"><img src="<?php echo $product->getImageWithSize(47,47); ?>"></a></td>
+                <td><?php echo $product->description->name; ?></td>
+                <td><?php echo $product->model; ?></td>
+                <td>
+                    <input type="text" class="input-mini" value="<?php echo $shoppingCart->getQuantity($product->product_id); ?>" placeholder="<?php echo $shoppingCart->getQuantity($product->product_id); ?>"></td>
+                <td><?php echo $product->getFormattedPrice(); ?></td>
+                <td><?php echo $shoppingCart->getTotalPriceForProduct($product->product_id); ?></td>
+            </tr>
+            <?php endforeach; ?>		  
         </tbody>
     </table>
 

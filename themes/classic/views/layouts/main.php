@@ -89,34 +89,27 @@
                 <div class="span12">
                     <div class="navbar">
                         <div class="navbar-inner">
-                            <div class="container" style="width: auto;">
-                                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </a>
-                                <div class="nav-collapse">
-                                    <ul class="nav">
-                                        <?php $categories = Category::model()->firstLevel()->onTop()->active()->orderBySortOrder()->findAll(); ?>
-                                        <?php foreach ($categories as $category): ?>
-                                            <?php if (!$category->hasProducts())
-                                                continue; ?>
-                                            <li class="dropdown">
-                                                <?php if ($category->hasChildCategories()): ?>
-                                                    <a href="<?php echo $this->createUrl('/category/view', array('id' => $category->category_id)); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category->description->name; ?> <i class="icon-caret-down"></i></a>
-                                                    <ul class="dropdown-menu">
-                                                        <?php foreach ($category->childCategories as $childCategory): ?>
-                                                            <li><a href="<?php echo $this->createUrl('/category/view', array('id'=>$childCategory->category_id)); ?>"><?php echo $childCategory->description->name; ?></a></li>
+                            <div class="nav-collapse">
+                                <ul class="nav">
+                                    <?php $categories = Category::model()->firstLevel()->onTop()->active()->orderBySortOrder()->findAll(); ?>
+                                    <?php foreach ($categories as $category): ?>
+                                        <?php if (!$category->hasProducts())
+                                            continue; ?>
+                                        <li class="dropdown">
+                                            <?php if ($category->hasChildCategories()): ?>
+                                                <a href="<?php echo $this->createUrl('/category/view', array('id' => $category->category_id)); ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category->description->name; ?> <i class="icon-caret-down"></i></a>
+                                                <ul class="dropdown-menu">
+                                                    <?php foreach ($category->childCategories as $childCategory): ?>
+                                                        <li><a href="<?php echo $this->createUrl('/category/view', array('id' => $childCategory->category_id)); ?>"><?php echo $childCategory->description->name; ?></a></li>
                                                     <?php endforeach; ?>
-                                                    </ul>
-                                                <?php else: ?>
-                                                    <a href="<?php echo $this->createUrl('/category/view', array('id' => $category->category_id)); ?>"><?php echo $category->description->name; ?></a>
+                                                </ul>
+                                            <?php else: ?>
+                                                <a href="<?php echo $this->createUrl('/category/view', array('id' => $category->category_id)); ?>"><?php echo $category->description->name; ?></a>
                                             <?php endif; ?>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div><!-- /.nav-collapse -->
-                            </div>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div><!-- /.nav-collapse -->
                         </div><!-- /navbar-inner -->
                     </div><!-- /navbar -->
                 </div>
