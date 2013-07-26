@@ -66,11 +66,11 @@
                     <br />
                     <div class="row">
                         <div class="links pull-right">
-                            <a href="<?php echo $this->createUrl('/'); ?>">Home</a> |
-                            <a href="<?php echo $this->createUrl('/account'); ?>">My Account</a> |
-                            <a href="<?php echo $this->createUrl('/shoppingCart'); ?>">Shopping Cart</a> |
-                            <a href="<?php echo $this->createUrl('/site/about'); ?>">About</a> |
-                            <a href="<?php echo $this->createUrl('/site/contact'); ?>">Contact</a>
+                            <a href="<?php echo $this->createUrl('/'); ?>"><?php echo Yii::t('main', 'Home'); ?></a> |
+                            <a href="<?php echo $this->createUrl('/site/about'); ?>"><?php echo Yii::t('main', 'Wish List'); ?></a> |
+                            <a href="<?php echo $this->createUrl('/account'); ?>"><?php echo Yii::t('main', 'My Account'); ?></a> |
+                            <a href="<?php echo $this->createUrl('/shoppingCart'); ?>"><?php echo Yii::t('main', 'Shopping Cart'); ?></a> |
+                            <a href="<?php echo $this->createUrl('/site/contact'); ?>"><?php echo Yii::t('main', 'Checkout'); ?></a>
                         </div>
 
                     </div>

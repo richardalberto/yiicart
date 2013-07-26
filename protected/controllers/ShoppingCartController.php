@@ -10,6 +10,14 @@ class ShoppingCartController extends Controller {
             'shoppingCart' => $shoppingCart
         ));
     }
+    
+    public function actionCheckout(){
+        $shoppingCart = Yii::app()->user->getShoppingCart();
+        
+        $this->render('checkout', array(
+            'shoppingCart' => $shoppingCart
+        ));
+    }
 
     public function actionAdd() {
         if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
