@@ -113,13 +113,8 @@
                         </div><!-- /navbar-inner -->
                     </div><!-- /navbar -->
                 </div>
-            </div><!-- end nav -->	
-            <div class="row">
-                <div class="span12">
-                    <div id="notification"></div>
-                    <?php echo $content; ?>
-                </div>
-            </div>
+            </div><!-- end nav -->
+            <?php echo $content; ?>
             <footer>
                 <hr />
                 <div class="row well no_margin_left">

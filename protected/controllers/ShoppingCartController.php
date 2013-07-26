@@ -2,10 +2,8 @@
 
 class ShoppingCartController extends Controller {
 
-    /**
-     * This is the default 'index' action that is invoked
-     * when an action is not explicitly requested by users.
-     */
+    public $layout='//layouts/column1';
+    
     public function actionIndex() {
         $shoppingCart = Yii::app()->user->getShoppingCart();
         $this->render('index', array(

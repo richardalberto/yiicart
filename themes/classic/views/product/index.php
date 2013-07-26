@@ -1,3 +1,4 @@
+<div class="row">
 <div class="span9">
     <ul class="breadcrumb">
         <li>
@@ -21,7 +22,7 @@
 
     <div class="row">
         <div class="span3">
-            <img src="<?php echo $product->getImageWithSize(220, 220); ?>" alt="">
+            <img src="<?php echo $product->getImageWithSize(228, 228); ?>" alt="<?php echo $product->description->name; ?>" title="<?php echo $product->description->name; ?>">
             <?php if ($product->hasAdditionalImages()): ?>
                 <ul class="thumbnails">
                     <?php foreach ($product->additionalImages as $image): ?>
@@ -60,15 +61,15 @@
                         <input type="text" placeholder="1" class="span1">
                         <button type="submit" class="btn btn-primary">Add to cart</button>
                     </div>	
-                    <!--
+                    
                     <div class="span1">
                         - OR -
                     </div>	
                     <div class="span2">
                         <p><a href="#">Add to Wish List</a></p>
-                        <p><a href="compare.html">Add to Compare</a></p>
+                        <p><a href="#">Add to Compare</a></p>
                     </div>	
-                    -->
+                    
                 </form>
             </div>	
 
@@ -96,62 +97,59 @@
         <div class="span9">
             <div class="tabbable">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#1">Description</a></li>
-                    <!--<li><a data-toggle="tab" href="#2">Reviews</a></li>
-                    <li><a data-toggle="tab" href="#3">Related products</a></li>-->
+                    <li class="active"><a data-toggle="tab" href="#description"><?php echo Yii::t('products', 'Description'); ?></a></li>
+                    <?php if($product->hasAttributes()): ?><li><a data-toggle="tab" href="#specification"><?php echo Yii::t('products', 'Specification'); ?></a></li><?php endif; ?>
+                    <li><a data-toggle="tab" href="#reviews"><?php echo Yii::t('products', 'Reviews'); ?></a></li>
+                    <?php if($product->hasRelatedProducts()): ?><li><a data-toggle="tab" href="#related"><?php echo Yii::t('products', 'Related products'); ?></a></li><?php endif; ?>
                 </ul>
                 <div class="tab-content">
-                    <div id="1" class="tab-pane active">
+                    <div id="description" class="tab-pane fade in active">
                         <?php echo $product->description->getDescription(); ?>
                     </div>
-                    <div id="2" class="tab-pane">
+                    <?php if($product->hasAttributes()): ?>
+                    <div id="specification" class="tab-pane fade">
+                        <?php foreach($groups as $groupId => $group): ?>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th><?php echo $group['name']; ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($group['attributes'] as $attributeId => $attribute): ?>
+                                <tr>
+                                    <th style="width: 200px; text-align: right;"><?php echo $attribute['name']; ?></th>
+                                    <td><?php echo $attribute['text']; ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif; ?>
+                    <div id="reviews" class="tab-pane fade">
                         <p>There are no reviews for this product.</p>
                     </div>    
-                    <div id="3" class="tab-pane">
+                    <?php if($product->hasRelatedProducts()): ?>
+                    <div id="related" class="tab-pane fade">
                         <ul class="thumbnails related_products">
-
+                            <?php foreach($product->relatedProducts as $related): ?>
                             <li class="span2">
                                 <div class="thumbnail">
-                                    <a href="product.html"><img src="http://placehold.it/220x180" alt=""></a>
+                                    <a href="<?php echo $this->createUrl('product/view', array('id'=>$related->product_id)); ?>"><img src="<?php echo $related->getImageWithSize(220, 180); ?>" alt=""></a>
                                     <div class="caption">
-                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
+                                        <a href="<?php echo $this->createUrl('product/view', array('id'=>$related->product_id)); ?>"> <h5><?php echo $related->description->name; ?></h5></a>  <?php echo Yii::t('products', 'Price'); ?>: <?php echo $related->getFormattedprice(); ?><br><br>
                                     </div>
                                 </div>
                             </li>
-
-                            <li class="span2">
-                                <div class="thumbnail">
-                                    <a href="product.html"><img src="http://placehold.it/220x180" alt=""></a>
-                                    <div class="caption">
-                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="span2">
-                                <div class="thumbnail">
-                                    <a href="product.html"><img src="http://placehold.it/220x180" alt=""></a>
-                                    <div class="caption">
-                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="span2">
-                                <div class="thumbnail">
-                                    <a href="product.html"><img src="http://placehold.it/220x180" alt=""></a>
-                                    <div class="caption">
-                                        <a href="product.html"> <h5>iPod Touch</h5></a>  Price: $50.00<br><br>
-                                    </div>
-                                </div>
-                            </li>
-
-
+                            <?php endforeach; ?>
                         </ul>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
         </div>
     </div>
+</div>
 </div>

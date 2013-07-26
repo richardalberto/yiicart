@@ -1,5 +1,8 @@
 <?php $this->beginContent('//layouts/main'); ?>	
 <div class="row">
+    <div class="span12"><div id="notification"></div></div>
+</div>
+<div class="row">
     <?php echo $this->renderPartial('/common/leftMenu'); ?>
     <div class="span9">
         <?php if (isset($this->breadcrumbs) && count($this->breadcrumbs)): ?>

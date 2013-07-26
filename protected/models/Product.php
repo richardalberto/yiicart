@@ -192,7 +192,15 @@ class Product extends CActiveRecord {
 
         parent::afterDelete();
     }
-
+    
+    public function hasAttributes() {
+        return count($this->attributes) > 0 ? true : false;
+    }
+    
+    public function hasRelatedProducts() {
+        return count($this->relatedProducts) > 0 ? true : false;
+    }
+    
     public function hasAdditionalImages() {
         return count($this->additionalImages) > 0 ? true : false;
     }
