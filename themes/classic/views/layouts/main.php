@@ -58,17 +58,9 @@
                             <a href="#">EUR</a>
                             -->
                         </div>
-                        <div class="span2">
-                            <!--
-                            <a href="cart.html"><h4>Shopping Cart (3)</h4></a>
-                            <a href="cart.html">2 item(s) - $40.00</a>
-                            -->
-                        </div>					
-                        <div class="span3 customer_service">
-                            <!--
-                            <h4>FREE delivery on ALL orders</h4>
-                            <h4><small>Customer service: 0800 8475 548</small></h4>
-                            -->
+                        <div class="span2">                          
+                            <h4><?php echo Yii::t('shoppingCart', 'Shopping Cart'); ?></h4>
+                            <a href="<?php echo $this->createUrl('/shoppingCart'); ?>" id="cart-total"><?php echo Yii::app()->user->getShoppingCart()->countProducts(); ?> <?php echo Yii::t('shoppingCart', 'item(s)'); ?> - <?php echo Yii::app()->user->getShoppingCart()->getTotalPrice(); ?></a>                            
                         </div>
                     </div>
                     <br />

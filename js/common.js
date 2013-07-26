@@ -20,11 +20,11 @@ function addToCart(product_id, quantity) {
             }
 			
             if (json['success']) {
-                $('#notification').html('<div class="alert alert-success">' + json['success'] + '</div>');
+                $('#notification').html('<div class="alert alert-success">' + json['success'] + '<button data-dismiss="alert" class="close" type="button">×</button></div>');
 				
-                //$('.success').fadeIn('slow');
+                //$('.alert-success').fadeIn('slow');
 				
-                //$('#cart-total').html(json['total']);
+                $('#cart-total').html(json['total']);
 				
                 $('html, body').animate({
                     scrollTop: 0

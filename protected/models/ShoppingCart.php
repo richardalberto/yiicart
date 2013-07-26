@@ -13,18 +13,22 @@ class ShoppingCart{
             return null;
     }
     
-    public function getTotalPriceForProduct($productId){
+    public function getTotalPriceForProduct($productId, $formatted = true){
         if(!is_null($this->getQuantity($productId))){
             $product = $this->findProduct($productId);
             if(!is_null($product)){
-                // TODO: format price according to store settings
-                return "$" . sprintf("%.2f", $product->price * $this->getQuantity($productId));
+                $total = $product->price * $this->getQuantity($productId);
+                if($formatted){
+                    // TODO: format price according to store settings
+                    return "$" . sprintf("%.2f", $total);
+                }
+                else
+                    return $total;
             }
         }
         
         return 0;
     }
-    
     public function findProduct($productId){
         $product = Product::model()->findByPk($productId);            
         return $product;
@@ -38,6 +42,23 @@ class ShoppingCart{
                 $products[] = $product;
         }        
         return $products;
+    }
+    
+    
+    public function countProducts(){
+        return count($this->_products);
+    }
+    
+    public function getTotalPrice($formatted = true){
+        $total = 0;
+        foreach($this->_products as $productId => $quantity){
+            $total += $this->getTotalPriceForProduct($productId, false);
+        }
+        
+        if($formatted)
+            return "$" . sprintf("%.2f", $total);
+        else
+            return $total;
     }
 }
 ?>
