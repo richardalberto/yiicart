@@ -18,7 +18,7 @@ class ShoppingCartController extends Controller {
             $shoppingCart = Yii::app()->user->getShoppingCart();
             $shoppingCart->add($_POST['product_id'], $_POST['quantity']);
             
-            echo CJSON::encode(array('success'=>Yii::t('shoppingcart', '<b>Success:</b> You have added iPhone to your shopping cart!')));
+            echo CJSON::encode(array('success'=>Yii::t('shoppingcart', '<b>Success:</b> You have added <a href="' . Yii::app()->createUrl('/product/view', array('id'=>$_POST['product_id'])) . '">iPhone</a> to your <a href="' . Yii::app()->createUrl('/shoppingCart') . '">shopping cart</a>!')));
         }
     }
 

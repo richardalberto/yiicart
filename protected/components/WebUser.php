@@ -7,6 +7,8 @@ class WebUser extends CWebUser {
         }
         else
             $shoppingCart = $this->getState('shoppingCart');
+        
+        return $shoppingCart;
     }
 }
 ?>

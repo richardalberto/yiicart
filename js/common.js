@@ -2,15 +2,13 @@ $(document).ready(function() {
     $('#checkall').on('click', function(){        
         $("table tr td:nth-child(1) input[type=checkbox]").prop("checked", this.checked);
     });
-    
-    alert(aaaa);
 });
 
 function addToCart(product_id, quantity) {
     quantity = typeof(quantity) != 'undefined' ? quantity : 1;
 
     $.ajax({
-        url: 'index.php/ShoppingCart/add',
+        url: urls['cartUrl'] + '/add',
         type: 'post',
         data: 'product_id=' + product_id + '&quantity=' + quantity,
         dataType: 'json',
@@ -37,7 +35,7 @@ function addToCart(product_id, quantity) {
 }
 function addToWishList(product_id) {
     $.ajax({
-        url: 'index.php/wishlist/add',
+        url: urls['wishlistUrl'] + '/add',
         type: 'post',
         data: 'product_id=' + product_id,
         dataType: 'json',
@@ -61,7 +59,7 @@ function addToWishList(product_id) {
 
 function addToCompare(product_id) { 
     $.ajax({
-        url: 'index.php/compare/add',
+        url: urls['compareUrl'] + '/add',
         type: 'post',
         data: 'product_id=' + product_id,
         dataType: 'json',

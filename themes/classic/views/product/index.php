@@ -1,4 +1,3 @@
-<?php echo $this->renderPartial('/common/leftMenu'); ?>
 <div class="span9">
     <ul class="breadcrumb">
         <li>

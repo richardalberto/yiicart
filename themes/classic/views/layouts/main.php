@@ -1,3 +1,21 @@
+<?php
+    $vars = array(
+        'cartUrl' => $this->createUrl('/shoppingCart'),
+        'wishlistUrl' => $this->createUrl('/wishlist'),
+        'compareUrl' => $this->createUrl('/compare'),
+    );
+    
+    Yii::app()->clientScript->registerScript('vars', 'var urls = ' . CJavaScript::encode($vars) .';', CClientScript::POS_END);
+    Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/jquery.min.js", CClientScript::POS_END);
+    Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/bootstrap.min.js", CClientScript::POS_END);
+    Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/common.js", CClientScript::POS_END);
+    
+    Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/bootstrap.min.css");
+    Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/bootstrap-responsive.min.css");
+    Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/font-awesome.min.css");
+    Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/jquery.rating.css");
+    Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/style.css");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,18 +25,11 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <!-- Le styles -->
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-responsive.min.css" rel="stylesheet" />
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/jquery.rating.css" rel="stylesheet" />
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" rel="stylesheet" />
-
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="<?php echo Yii::app()->baseUrl; ?>/js/html5shiv.js"></script>
         <![endif]-->
 		
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/font-awesome.min.css">
         <!--[if IE 7]>
           <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/font-awesome-ie7.min.css">
         <![endif]-->
@@ -159,13 +170,5 @@
             </footer>
 
         </div> <!-- /container -->
-
-
-        <!-- Le javascript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.min.js"></script>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/bootstrap.min.js"></script>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/common.js"></script>
     </body>
 </html>
