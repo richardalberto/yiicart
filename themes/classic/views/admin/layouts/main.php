@@ -114,9 +114,9 @@
                                         <li><a href="<?php echo $this->createUrl('/admin/currencies'); ?>">Currencies</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/stockStatuses'); ?>">Stock Statuses</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/orderStatuses'); ?>">Order Statuses</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/returnsStatuses'); ?>">Return Statuses</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/returnsActions'); ?>">Return Actions</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/returnsReasons'); ?>">Return Reasons</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/returnStatuses'); ?>">Return Statuses</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/returnActions'); ?>">Return Actions</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/returnReasons'); ?>">Return Reasons</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/countries'); ?>">Countries</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/zonez'); ?>">Zones</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/geoZones'); ?>">Geo Zones</a></li>
