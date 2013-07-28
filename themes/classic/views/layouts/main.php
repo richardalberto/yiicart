@@ -60,7 +60,7 @@
                         </div>
                         <div class="span2">                          
                             <h4><?php echo Yii::t('shoppingCart', 'Shopping Cart'); ?></h4>
-                            <a href="<?php echo $this->createUrl('/shoppingCart'); ?>" id="cart-total"><?php echo Yii::app()->user->getShoppingCart()->countProducts(); ?> <?php echo Yii::t('shoppingCart', 'item(s)'); ?> - <?php echo Yii::app()->user->getShoppingCart()->getTotalPrice(); ?></a>                            
+                            <a href="<?php echo $this->createUrl('/shoppingCart'); ?>" id="cart-total"><?php echo Yii::app()->customer->getShoppingCart()->countProducts(); ?> <?php echo Yii::t('shoppingCart', 'item(s)'); ?> - <?php echo Yii::app()->customer->getShoppingCart()->getTotalPrice(); ?></a>                            
                         </div>
                     </div>
                     <br />

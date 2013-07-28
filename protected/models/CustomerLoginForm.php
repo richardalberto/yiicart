@@ -1,13 +1,13 @@
 <?php
 
 /**
- * LoginForm class.
- * LoginForm is the data structure for keeping
- * user login form data. It is used by the 'login' action of 'SiteController'.
+ * CustomerLoginForm class.
+ * CustomerLoginForm is the data structure for keeping
+ * customer login form data. It is used by the 'login' action of 'SiteController'.
  */
-class LoginForm extends CFormModel {
+class CustomerLoginForm extends CFormModel {
 
-    public $username;
+    public $email;
     public $password;
     private $_identity;
 
@@ -39,7 +39,7 @@ class LoginForm extends CFormModel {
      */
     public function authenticate($attribute, $params) {
         if (!$this->hasErrors()) {
-            $this->_identity = new UserIdentity($this->username, $this->password);
+            $this->_identity = new CustomerIdentity($this->email, $this->password);
             if (!$this->_identity->authenticate())
                 $this->addError('password', 'Incorrect username or password.');
         }
@@ -51,12 +51,12 @@ class LoginForm extends CFormModel {
      */
     public function login() {
         if ($this->_identity === null) {
-            $this->_identity = new UserIdentity($this->username, $this->password);
+            $this->_identity = new CustomerIdentity($this->email, $this->password);
             $this->_identity->authenticate();
         }
         if ($this->_identity->errorCode === UserIdentity::ERROR_NONE) {
             $duration = 0; // 0 until next restart
-            Yii::app()->user->login($this->_identity, $duration);
+            Yii::app()->customer->login($this->_identity, $duration);
             return true;
         }
         else

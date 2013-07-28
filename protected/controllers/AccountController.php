@@ -7,7 +7,7 @@ class AccountController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        if(!Yii::app()->user->isGuest)
+        if(!Yii::app()->customer->isGuest)
             $this->render('index');
         else
             $this->redirect('site/login');

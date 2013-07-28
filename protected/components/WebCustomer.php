@@ -1,5 +1,5 @@
 <?php
-class WebUser extends CWebUser {
+class WebCustomer extends CWebUser {
     function getShoppingCart(){
         if(is_null($this->getState('shoppingCart'))){
             $shoppingCart = new ShoppingCart;
