@@ -18,6 +18,9 @@
  * @property string $date_added
  */
 class User extends CActiveRecord {
+    
+    const STATUS_PENDING = 0;
+    const STATUS_APPROVED = 1;
 
     /**
      * Returns the static model of the specified AR class.
@@ -39,8 +42,6 @@ class User extends CActiveRecord {
      * @return array validation rules for model attributes.
      */
     public function rules() {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
         return array(
             array('user_group_id, username, password, salt, firstname, lastname, email, code, ip, status', 'required'),
             array('user_group_id, status', 'numerical', 'integerOnly' => true),
@@ -50,9 +51,6 @@ class User extends CActiveRecord {
             array('firstname, lastname', 'length', 'max' => 32),
             array('email', 'length', 'max' => 96),
             array('date_added', 'safe'),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('user_id, user_group_id, username, password, salt, firstname, lastname, email, code, ip, status, date_added', 'safe', 'on' => 'search'),
         );
     }
 
@@ -60,8 +58,6 @@ class User extends CActiveRecord {
      * @return array relational rules.
      */
     public function relations() {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
         return array(
         );
     }
@@ -86,8 +82,22 @@ class User extends CActiveRecord {
         );
     }
     
-    public static function encryptPassword($password, $salt){
-        return sha1($salt . sha1($salt . sha1 ($password) ) );
+    public function getStatus(){
+        if($this->status == self::STATUS_PENDING)
+            return Yii::t('common', 'Disabled');
+        else
+            return Yii::t('common', 'Enabled');
+    }
+    
+    public function getDateAdded($withTime = false){
+        if($withTime)
+            return date('Y-m-d h:i:s', strtotime($this->date_added));
+        else
+            return date('Y-m-d', strtotime($this->date_added));
+    }
+    
+    public static function encryptPassword($password, $salt) {
+        return sha1($salt . sha1($salt . sha1($password)));
     }
 
 }
