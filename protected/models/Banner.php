@@ -9,6 +9,8 @@
  * @property integer $status
  */
 class Banner extends CActiveRecord {
+    const STATUS_DISABLED = 0;
+    const STATUS_ENABLED = 1;
 
     /**
      * Returns the static model of the specified AR class.
@@ -30,15 +32,10 @@ class Banner extends CActiveRecord {
      * @return array validation rules for model attributes.
      */
     public function rules() {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
         return array(
             array('name, status', 'required'),
             array('status', 'numerical', 'integerOnly' => true),
             array('name', 'length', 'max' => 64),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('banner_id, name, status', 'safe', 'on' => 'search'),
         );
     }
 
@@ -72,6 +69,13 @@ class Banner extends CActiveRecord {
 
     public function hasImages() {
         return count($this->images) > 0 ? true : false;
+    }
+    
+    public function getStatus(){
+        if($this->status == self::STATUS_DISABLED)
+            return Yii::t('common', 'Disabled');
+        else
+            return Yii::t('common', 'Enabled');
     }
 
 }
