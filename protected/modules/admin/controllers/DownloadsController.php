@@ -1,6 +1,14 @@
 <?php
 
 class DownloadsController extends BackendController {
+    
+    public function actionIndex() {
+        $downloads = Download::model()->findAll();
+        
+        $this->render('index', array(
+            'downloads'=>$downloads            
+        ));
+    }
 
     public function actionAutocomplete($query){     
         $json = array();
