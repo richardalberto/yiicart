@@ -92,8 +92,8 @@
                                         <li class="nav-header"><?php echo Yii::t('giftVouchers', 'Gift Vouchers'); ?></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/giftVouchers'); ?>"><?php echo Yii::t('giftVouchers', 'Gift Vouchers'); ?></a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/giftVoucherThemes'); ?>"><?php echo Yii::t('giftVouchers', 'Voucher Themes'); ?></a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/mail'); ?>">Mail</a></li>
+                                        <!--<li class="divider"></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/mail'); ?>">Mail</a></li>-->
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -102,7 +102,7 @@
                                         <li><a href="<?php echo $this->createUrl('/admin/settings'); ?>">Settings</a></li>
                                         <li class="divider"></li>
                                         <li class="nav-header"><?php echo Yii::t('design', 'Design'); ?></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/layouts'); ?>">Layouts</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/designLayouts'); ?>">Layouts</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/banners'); ?>">Banners</a></li>
                                         <li class="divider"></li>
                                         <li class="nav-header"><?php echo Yii::t('users', 'Users'); ?></li>
