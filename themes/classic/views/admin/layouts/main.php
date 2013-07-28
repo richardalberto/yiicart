@@ -84,7 +84,7 @@
                                         <li class="nav-header"><?php echo Yii::t('customers', 'Customers'); ?></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/customers'); ?>">Customers</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/customerGroups'); ?>">Customer Groups</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/banIP'); ?>">Banned IP</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/customerBanIP'); ?>">Banned IP</a></li>
                                         <li class="divider"></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/affiliates'); ?>">Affiliates</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/coupons'); ?>">Coupons</a></li>
