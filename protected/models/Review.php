@@ -15,9 +15,10 @@
  * @property string $date_modified
  */
 class Review extends CActiveRecord {
-
+    
     const STATUS_PENDING = 0;
     const STATUS_APPROVED = 1;
+
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -51,6 +52,7 @@ class Review extends CActiveRecord {
      */
     public function relations() {
         return array(
+            'product' => array(self::BELONGS_TO, 'Product', 'product_id'),
         );
     }
 
@@ -69,6 +71,20 @@ class Review extends CActiveRecord {
             'date_added' => 'Date Added',
             'date_modified' => 'Date Modified',
         );
+    }
+    
+    public function getStatus(){
+        if($this->status == self::STATUS_PENDING)
+            return Yii::t('common', 'Disabled');
+        else
+            return Yii::t('common', 'Enabled');
+    }
+    
+    public function getDateAdded($withTime = false){
+        if($withTime)
+            return date('Y-m-d h:i:s', strtotime($this->date_added));
+        else
+            return date('Y-m-d', strtotime($this->date_added));
     }
 
 }

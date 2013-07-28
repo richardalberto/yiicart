@@ -22,9 +22,10 @@ $this->breadcrumbs = array(
         <tr>
             <th style="width: 1px;"><?php echo CHtml::checkBox('checkall', false); ?></th>
             <th><?php echo Yii::t('reviews', 'Product'); ?></th>
+            <th style="width: 80px;"><?php echo Yii::t('reviews', 'Author'); ?></th>
             <th style="width: 80px;"><?php echo Yii::t('reviews', 'Rating'); ?></th>
             <th style="width: 80px;"><?php echo Yii::t('reviews', 'Status'); ?></th>
-            <th style="width: 80px;"><?php echo Yii::t('reviews', 'Date Added'); ?></th>
+            <th style="width: 90px;"><?php echo Yii::t('reviews', 'Date Added'); ?></th>
             <th style="width: 80px;"><?php echo Yii::t('reviews', 'Action'); ?></th>
         </tr>
     </thead>
