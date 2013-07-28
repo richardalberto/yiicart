@@ -63,8 +63,8 @@
  * @property string $date_added
  * @property string $date_modified
  */
-class Order extends CActiveRecord {    
-    
+class Order extends CActiveRecord {
+
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -108,9 +108,9 @@ class Order extends CActiveRecord {
         return array(
             'products' => array(self::HAS_MANY, 'OrderProduct', 'order_id'),
             // TODO: add locale
-            'status' => array(self::BELONGS_TO, 'OrderStatus', 'order_status_id', 'condition'=>'language_id=1'),
+            'status' => array(self::BELONGS_TO, 'OrderStatus', 'order_status_id', 'condition' => 'language_id=1'),
             'histories' => array(self::HAS_MANY, 'OrderHistory', 'order_id'),
-            'customerGroup'=> array(self::BELONGS_TO, 'CustomerGroup', 'customer_group_id'),         
+            'customerGroup' => array(self::BELONGS_TO, 'CustomerGroup', 'customer_group_id'),
         );
     }
 
@@ -179,54 +179,54 @@ class Order extends CActiveRecord {
             'date_modified' => 'Date Modified',
         );
     }
-    
-    public function getCustomerFullname(){
-        return "{$this->firstname} {$this->lastname}"; 
+
+    public function getCustomerFullname() {
+        return "{$this->firstname} {$this->lastname}";
     }
-    
-    public function getPaymentCustomerFullname(){
-        return "{$this->payment_firstname} {$this->payment_lastname}"; 
+
+    public function getPaymentCustomerFullname() {
+        return "{$this->payment_firstname} {$this->payment_lastname}";
     }
-    
-    public function getShippingTotal(){
+
+    public function getShippingTotal() {
         // TODO: retrieve shipping total
         $shippingTotal = 0;
-        
+
         // TODO: format total according to store settings
-        return "$" . sprintf("%.2f", "{$shippingTotal}"); 
+        return "$" . sprintf("%.2f", "{$shippingTotal}");
     }
-    
-    public function getSubTotal(){
+
+    public function getSubTotal() {
         $subTotal = 0;
-        foreach($this->products as $product){
+        foreach ($this->products as $product) {
             $subTotal += ($product->total * $product->quantity);
         }
-        
+
         // TODO: format total according to store settings
-        return "$" . sprintf("%.2f", "{$subTotal}"); 
+        return "$" . sprintf("%.2f", "{$subTotal}");
     }
-    
-    public function getTotal(){
+
+    public function getTotal() {
         // TODO: format total according to store settings
-        return "$" . sprintf("%.2f", "{$this->total}"); 
+        return "$" . sprintf("%.2f", "{$this->total}");
     }
-    
-    public function getDateAdded($withTime = false){
+
+    public function getDateAdded($withTime = false) {
         // TODO: format date according to localization settings
         return date(($withTime ? 'Y-m-d h:i:s' : 'Y-m-d'), strtotime($this->date_added));
     }
-    
-    public function getDateModified($withTime = false){
+
+    public function getDateModified($withTime = false) {
         // TODO: format date according to localization settings
         return date(($withTime ? 'Y-m-d h:i:s' : 'Y-m-d'), strtotime($this->date_modified));
     }
-    
-    public static function getOrdersTotal(){
+
+    public static function getOrdersTotal() {
         $order = Order::model()->findAll();
         $total = 0;
-        foreach($order as $o) 
+        foreach ($order as $o)
             $total += $o->total;
-        
+
         return $total;
     }
 

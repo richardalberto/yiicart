@@ -25,10 +25,12 @@
  * @property string $date_added
  */
 class Customer extends CActiveRecord {
-
-    const APPROVED = 1;
-    const PENDING = 0;
+    const STATUS_DISABLED = 0;
+    const STATUS_ENABLED = 1;
     
+    const APPROVED_NO = 0;
+    const APPROVED_YES = 1;
+
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -49,8 +51,6 @@ class Customer extends CActiveRecord {
      * @return array validation rules for model attributes.
      */
     public function rules() {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
         return array(
             array('firstname, lastname, email, telephone, fax, password, salt, customer_group_id, status, approved, token', 'required'),
             array('store_id, newsletter, address_id, customer_group_id, status, approved', 'numerical', 'integerOnly' => true),
@@ -60,9 +60,6 @@ class Customer extends CActiveRecord {
             array('salt', 'length', 'max' => 9),
             array('token', 'length', 'max' => 255),
             array('cart, wishlist, date_added', 'safe'),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('customer_id, store_id, firstname, lastname, email, telephone, fax, password, salt, cart, wishlist, newsletter, address_id, customer_group_id, ip, status, approved, token, date_added', 'safe', 'on' => 'search'),
         );
     }
 
@@ -70,9 +67,8 @@ class Customer extends CActiveRecord {
      * @return array relational rules.
      */
     public function relations() {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
         return array(
+            'group' => array(self::BELONGS_TO, 'CustomerGroup', 'customer_group_id')
         );
     }
 
@@ -103,39 +99,29 @@ class Customer extends CActiveRecord {
         );
     }
 
-    /**
-     * Retrieves a list of models based on the current search/filter conditions.
-     * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-     */
-    public function search() {
-        // Warning: Please modify the following code to remove attributes that
-        // should not be searched.
+    public function getFullname() {
+        return "{$this->firstname} {$this->lastname}";
+    }
 
-        $criteria = new CDbCriteria;
-
-        $criteria->compare('customer_id', $this->customer_id);
-        $criteria->compare('store_id', $this->store_id);
-        $criteria->compare('firstname', $this->firstname, true);
-        $criteria->compare('lastname', $this->lastname, true);
-        $criteria->compare('email', $this->email, true);
-        $criteria->compare('telephone', $this->telephone, true);
-        $criteria->compare('fax', $this->fax, true);
-        $criteria->compare('password', $this->password, true);
-        $criteria->compare('salt', $this->salt, true);
-        $criteria->compare('cart', $this->cart, true);
-        $criteria->compare('wishlist', $this->wishlist, true);
-        $criteria->compare('newsletter', $this->newsletter);
-        $criteria->compare('address_id', $this->address_id);
-        $criteria->compare('customer_group_id', $this->customer_group_id);
-        $criteria->compare('ip', $this->ip, true);
-        $criteria->compare('status', $this->status);
-        $criteria->compare('approved', $this->approved);
-        $criteria->compare('token', $this->token, true);
-        $criteria->compare('date_added', $this->date_added, true);
-
-        return new CActiveDataProvider($this, array(
-                    'criteria' => $criteria,
-                ));
+    public function getStatus() {
+        if ($this->status == self::STATUS_DISABLED)
+            return Yii::t('common', 'Disabled');
+        else
+            return Yii::t('common', 'Enabled');
+    }
+    
+    public function getApproved() {
+        if ($this->approved == self::APPROVED_NO)
+            return Yii::t('common', 'No');
+        else
+            return Yii::t('common', 'Yes');
+    }
+    
+    public function getDateAdded($withTime = false){
+        if($withTime)
+            return date('Y-m-d h:i:s', strtotime($this->date_added));
+        else
+            return date('Y-m-d', strtotime($this->date_added));
     }
 
 }
