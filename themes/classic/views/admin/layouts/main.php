@@ -91,7 +91,7 @@
                                         <li class="divider"></li>
                                         <li class="nav-header"><?php echo Yii::t('giftVouchers', 'Gift Vouchers'); ?></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/giftVouchers'); ?>"><?php echo Yii::t('giftVouchers', 'Gift Vouchers'); ?></a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/vouchersThemes'); ?>"><?php echo Yii::t('giftVouchers', 'Voucher Themes'); ?></a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/giftVoucherThemes'); ?>"><?php echo Yii::t('giftVouchers', 'Voucher Themes'); ?></a></li>
                                         <li class="divider"></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/mail'); ?>">Mail</a></li>
                                     </ul>
