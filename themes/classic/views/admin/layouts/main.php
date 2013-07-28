@@ -50,19 +50,19 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->createUrl('/admin/categories'); ?>">Categories</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/products'); ?>">Products</a></li>
-                                        <!--<li><a href="<?php echo $this->createUrl('/admin/filters'); ?>">Filters</a></li>-->
+                                        <li><a href="<?php echo $this->createUrl('/admin/filters'); ?>">Filters</a></li>
                                         <li class="divider"></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/attributes'); ?>">Attributes</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/attributeGroups'); ?>">Attributes Groups</a></li>
                                         <li class="divider"></li>
-                                        <!--<li><a href="<?php echo $this->createUrl('/admin/options'); ?>">Options</a></li>-->
+                                        <li><a href="<?php echo $this->createUrl('/admin/options'); ?>">Options</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/manufacturers'); ?>">Manufacturers</a></li>
-                                        <!--<li><a href="<?php echo $this->createUrl('/admin/downloads'); ?>">Downloads</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/downloads'); ?>">Downloads</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/reviews'); ?>">Reviews</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/information'); ?>">Information</a></li>-->
+                                        <li><a href="<?php echo $this->createUrl('/admin/information'); ?>">Information</a></li>
                                     </ul>
                                 </li>
-                                <!--<li class="dropdown">
+                                <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Extensions <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->createUrl('/admin/modules'); ?>">Modules</a></li>
@@ -71,20 +71,20 @@
                                         <li><a href="<?php echo $this->createUrl('/admin/totals'); ?>">Order totals</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/feeds'); ?>">Product Feeds</a></li>
                                     </ul>
-                                </li>-->
+                                </li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo Yii::t('admin', 'Sales'); ?> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->createUrl('/admin/orders'); ?>">Orders</a></li>
-                                        <!--<li><a href="<?php echo $this->createUrl('/admin/returns'); ?>">Returns</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/returns'); ?>">Returns</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/customers'); ?>">Customers</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/affiliates'); ?>">Affiliates</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/coupons'); ?>">Coupons</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/giftVouchers'); ?>">Gift Vouches</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/mail'); ?>">Mail</a></li>-->
+                                        <li><a href="<?php echo $this->createUrl('/admin/mail'); ?>">Mail</a></li>
                                     </ul>
                                 </li>
-                                <!--<li class="dropdown">
+                                <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">System <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->createUrl('/admin/settings'); ?>">Settings</a></li>
@@ -103,7 +103,7 @@
                                         <li><a href="<?php echo $this->createUrl('/admin/reports/customers'); ?>">Customers</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/reports/affiliates'); ?>">Affiliates</a></li>
                                     </ul>
-                                </li>-->
+                                </li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo Yii::t('help', 'Help'); ?> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
