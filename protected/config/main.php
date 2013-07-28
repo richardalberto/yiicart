@@ -27,6 +27,13 @@ return CMap::mergeArray(
                 'class' => 'WebUser', 
                 'allowAutoLogin' => false,
             ),
+            'customer' => array(
+                'class' => 'WebCustomer', 
+                'allowAutoLogin' => false,
+            ),
+            'settings' => array(
+                'class' => 'SettingsManager'
+            ),
             'urlManager' => array(
                 'urlFormat' => 'path',
                 'rules' => array(
