@@ -89,7 +89,10 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->createUrl('/admin/settings'); ?>">Settings</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/design'); ?>">Design</a></li>
+                                        <li class="divider"></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/users'); ?>">Users</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/userGroups'); ?>">User Groups</a></li>
+                                        <li class="divider"></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/localization'); ?>">Localization</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/logs'); ?>">Error logs</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/backup'); ?>">Backup / Restore</a></li>
