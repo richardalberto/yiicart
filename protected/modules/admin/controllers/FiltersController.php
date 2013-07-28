@@ -1,6 +1,14 @@
 <?php
 
 class FiltersController extends BackendController {
+    
+    public function actionIndex() {
+        $filterGroups = FilterGroup::model()->findAll();
+        
+        $this->render('index', array(
+            'filterGroups'=>$filterGroups            
+        ));
+    }
 
     public function actionAutocomplete($query){
         $json = array();
