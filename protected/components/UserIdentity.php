@@ -1,18 +1,18 @@
 <?php
 
 /**
- * CustomerIdentity represents the data needed to identity a customer.
+ * UserIdentity represents the data needed to identity a user.
  * It contains the authentication method that checks if the provided
  * data can identity the user.
  */
-class CustomerIdentity extends CUserIdentity {
+class UserIdentity extends CUserIdentity {
 
     /**
      * Authenticates a user.
      * @return boolean whether authentication succeeds.
      */
     public function authenticate() {
-        $user = Customer::model()->findByAttributes(array('email' => $this->username, 'status'=>1));
+        $user = User::model()->findByAttributes(array('username' => $this->username, 'status'=>1));
 
         if (is_null($user))
             $this->errorCode = self::ERROR_USERNAME_INVALID;
