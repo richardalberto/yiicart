@@ -118,7 +118,7 @@
                                         <li><a href="<?php echo $this->createUrl('/admin/returnActions'); ?>">Return Actions</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/returnReasons'); ?>">Return Reasons</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/countries'); ?>">Countries</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/zonez'); ?>">Zones</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/zones'); ?>">Zones</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/geoZones'); ?>">Geo Zones</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/taxClasses'); ?>">Tax Classes</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/taxRates'); ?>">Tax Rates</a></li>

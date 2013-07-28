@@ -45,6 +45,7 @@ class Zone extends CActiveRecord {
      */
     public function relations() {
         return array(
+            'country' => array(self::BELONGS_TO, 'Country', 'country_id')
         );
     }
 
