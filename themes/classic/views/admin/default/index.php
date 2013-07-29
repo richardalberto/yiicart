@@ -54,7 +54,7 @@
                 </tr>
                 <tr>
                     <th><?php echo Yii::t('dashboard', 'Customers Awaiting Approval'); ?>:</th>
-                    <td><?php echo Customer::model()->countByAttributes(array('approved'=>Customer::PENDING)); ?></td>
+                    <td><?php echo Customer::model()->countByAttributes(array('approved'=>Customer::APPROVED_NO)); ?></td>
                 </tr>
                 <tr>
                     <th><?php echo Yii::t('dashboard', 'Reviews Awaiting Approval'); ?>:</th>
