@@ -122,7 +122,7 @@
                                         <li><a href="<?php echo $this->createUrl('/admin/geoZones'); ?>">Geo Zones</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/taxClasses'); ?>">Tax Classes</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/taxRates'); ?>">Tax Rates</a></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/lenghtClasses'); ?>">Lenght Classes</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/lengthClasses'); ?>">Length Classes</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/weightClasses'); ?>">Weight Classes</a></li>
                                         <li class="divider"></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/logs'); ?>">Error logs</a></li>
