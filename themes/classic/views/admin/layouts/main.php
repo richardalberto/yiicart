@@ -125,7 +125,7 @@
                                         <li><a href="<?php echo $this->createUrl('/admin/lengthClasses'); ?>">Length Classes</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/weightClasses'); ?>">Weight Classes</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="<?php echo $this->createUrl('/admin/logs'); ?>">Error logs</a></li>
+                                        <li><a href="<?php echo $this->createUrl('/admin/errorLogs'); ?>">Error logs</a></li>
                                         <li><a href="<?php echo $this->createUrl('/admin/backup'); ?>">Backup / Restore</a></li>
                                     </ul>
                                 </li>
