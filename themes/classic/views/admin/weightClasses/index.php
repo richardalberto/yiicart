@@ -32,6 +32,8 @@ $this->breadcrumbs = array(
         <tr>
             <td><?php echo CHtml::checkBox('selected[]', false, array('value'=>$weightClass->weight_class_id)); ?></td>
             <td><?php echo $weightClass->description->title; ?></td>
+            <td><?php echo $weightClass->description->unit; ?></td>
+            <td><?php echo $weightClass->value; ?></td>
             <td><a class="btn btn-success btn-mini" href="<?php echo $this->createUrl('update', array('id'=>$weightClass->weight_class_id)); ?>"><?php echo Yii::t('common', 'Edit'); ?></button></td>
         </tr>
         <?php endforeach; ?>
