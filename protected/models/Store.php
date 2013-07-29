@@ -62,14 +62,21 @@ class Store extends CActiveRecord {
         $stores = parent::findAll($condition, $params);
         
         // add default store
+        $default = self::getDefaultStore();
+        array_unshift($stores, $default);
+        
+        return $stores;
+    }
+    
+    public static function getDefaultStore(){
+        // add default store
         $default = new Store;
         $default->name = Yii::app()->settings->getValue('config_title');
         $default->url = Yii::app()->baseUrl;
         $default->ssl = Yii::app()->baseUrl;
         $default->store_id = 0;
-        array_unshift($stores, $default);
         
-        return $stores;
+        return $default;
     }
 
 }
