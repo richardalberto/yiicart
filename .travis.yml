@@ -7,3 +7,6 @@ php:
   
 before_script:
   - composer self-update && composer --version
+  
+script:
+  script: phpunit protected/tests/functional

@@ -6,10 +6,10 @@
     "keywords": ["yii", "opencart"],
     "homepage": "https://github.com/damnpoet/yiicart",
     "authors": [
-        {
-            "name": "Richard González Alberto",
-            "email": "damnpoet@gmail.com",
-        }
+    {
+        "name": "Richard González Alberto",
+        "email": "damnpoet@gmail.com",
+    }
     ],
     "support": {
         "issues": "https://github.com/damnpoet/yiicart/issues",
