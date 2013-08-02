@@ -8,6 +8,7 @@ php:
 before_script:
   - composer self-update && composer --version
   - cd protected/tests
+  - pear channel-discover pear.phpunit.de
   - pear install phpunit/PHPUnit_Selenium
   
 script:
