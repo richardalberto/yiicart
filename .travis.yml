@@ -8,6 +8,7 @@ php:
 before_script:
   - composer self-update && composer --version
   - cd protected/tests
+  - pear install phpunit/PHPUnit_Selenium
   
 script:
   - phpunit functional
