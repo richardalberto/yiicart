@@ -3,10 +3,18 @@
 class ProductsController extends BackendController {
 
     public function actionIndex() {
-        $products = Product::model()->findAll();
+        $criteria = new CDbCriteria();
+        $count = Product::model()->count($criteria);
+        $pages = new CPagination($count);
+
+        // results per page
+        $pages->pageSize = Yii::app()->settings->getValue('config_admin_limit');
+        $pages->applyLimit($criteria);
+        $products = Product::model()->findAll($criteria);
         
         $this->render('index', array(
-            'products'=>$products            
+            'products'=>$products,
+            'pages' => $pages
         ));
     }
     

@@ -46,6 +46,10 @@ $this->breadcrumbs = array(
     </tbody>
 </table>
 
+<?php $this->widget('CLinkPager', array(
+    'pages' => $pages,
+)) ?>
+
 <script>
     $(document).ready(function() {
         $('#btnDeleteAll').on('click', function(){   
