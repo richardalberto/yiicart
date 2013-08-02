@@ -1,0 +1,33 @@
+{
+    "name": "damnpoet/yiicart",
+    "description": "A Yii based shopping cart",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["yii", "opencart"],
+    "homepage": "https://github.com/damnpoet/yiicart",
+    "authors": [
+        {
+            "name": "Richard González Alberto",
+            "email": "damnpoet@gmail.com",
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/damnpoet/yiicart/issues",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "https://github.com/damnpoet/yiicart/wiki",
+        "source": "https://github.com/damnpoet/yiicart"
+    },
+    "require": {
+        "php":">=5.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "ncuesta/pinocchio": "dev-master",
+        "phploc/phploc": "*",
+        "sebastian/phpcpd": "*",
+        "squizlabs/php_codesniffer": "1.*",
+        "ardem/yii-coding-standard": "dev-master",
+        "mayflower/php-codebrowser": "1.0.*@dev"
+    },
+    "minimum-stability": "dev"
+}
