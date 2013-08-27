@@ -19,7 +19,7 @@
             "url": "https://github.com/damnpoet/yiicart/blob/master/LICENSE"
         }
     ],
-    "devDependencies": {
-        "yii": "~1.1.13"
+    "dependencies": {
+        "yii": "https://github.com/yiisoft/yii/tarball/master"
     }
 }
