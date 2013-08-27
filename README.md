@@ -1,4 +1,4 @@
-## YiiCart [![Build Status](https://secure.travis-ci.org/damnpoet/yiicart.png)](https://travis-ci.org/damnpoet/yiicart) [![Dependency Status](https://david-dm.org/damnpoet/yiicart.png)](https://david-dm.org/damnpoet/yiicart)
+## YiiCart [![Build Status](https://secure.travis-ci.org/damnpoet/yiicart.png)](https://travis-ci.org/damnpoet/yiicart)
 
 YiiCart is based on Open Cart Shopping Cart but built over Yii PHP Framework and Twitter Bootstrap CSS Framework.
 
