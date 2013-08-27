@@ -27,5 +27,17 @@ class OrdersController extends BackendController {
             'orderStatuses'=>$orderStatuses
         ));
     }
+    
+    public function actionDelete($ids){
+        $ids = explode(',', $ids);
+        if(count($ids) > 0){
+            foreach($ids as $id){
+                $order = Order::model()->findByPk($id);
+                $order->delete();
+            }
+        }
+        
+        $this->redirect(array('index'));
+    }
 
 }
