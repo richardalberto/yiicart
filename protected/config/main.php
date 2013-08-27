@@ -18,6 +18,9 @@ return CMap::mergeArray(
         'modules' => array(
             'admin' => array(
                 'class' => 'application.modules.admin.AdminModule',
+            ),
+            'install' => array(
+                'class' => 'application.modules.install.InstallModule',
             )
         ),
         

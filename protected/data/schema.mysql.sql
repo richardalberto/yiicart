@@ -7,20 +7,10 @@
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `yiicart`
 --
-CREATE DATABASE IF NOT EXISTS `yiicart` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `yiicart`;
 
 -- --------------------------------------------------------
 
@@ -46,13 +36,6 @@ CREATE TABLE IF NOT EXISTS `address` (
   PRIMARY KEY (`address_id`),
   KEY `customer_id` (`customer_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `address`
---
-
-INSERT INTO `address` (`address_id`, `customer_id`, `firstname`, `lastname`, `company`, `company_id`, `tax_id`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`) VALUES
-(1, 1, 'Richard', 'Gonzalez Alberto', '', '', '', 'calle 37', '', 'Cienfuegos', '', 54, 870);
 
 -- --------------------------------------------------------
 
@@ -3330,7 +3313,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_group_id`, `username`, `password`, `salt`, `firstname`, `lastname`, `email`, `code`, `ip`, `status`, `date_added`) VALUES
-(1, 1, 'admin', 'e59c8cb76bf6b561ea7a1ea614961ca1fe6e8c1a', 'fb5981af6', '', '', 'admin@gmail.com', '', '::1', 1, '2013-06-26 08:15:56');
+(1, 1, :username, :password, :salt, '', '', :email, '', '::1', 1, NOW());
 
 -- --------------------------------------------------------
 
