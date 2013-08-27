@@ -9,9 +9,4 @@ index-dev.php
 /protected/config/dev.php
 
 
-# runtime logs and cache directories
-/assets/*
-/protected/runtime/*.log
-
-
 
