@@ -2,23 +2,21 @@
 // This is the main YiiCart configuration.
 return array(
     'name' => 'Yii Cart',
-    'language'=>'en',
-    'theme'=>'classic',
-
+    'language' => 'en',
+    'theme' => 'classic',
     // application components
     'components' => array(
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=dname',
+            'connectionString' => 'mysql:host=localhost;dbname=yiicart',
             'emulatePrepare' => true,
-            'username' => 'username',
-            'password' => 'password',
+            'username' => '',
+            'password' => '',
             'charset' => 'utf8',
         ),
     ),
-
     // global params
     'params' => array(
-        'imagePath' => '/var/www/yiicart/image',
+        'imagePath' => '/var/www/YiiCart/image/',
     ),
 );
 ?>
