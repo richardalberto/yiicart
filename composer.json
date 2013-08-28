@@ -1,0 +1,25 @@
+{
+    "name": "damnpoet/yiicart",
+    "description": "A Yii based shopping cart.",
+    "version": "0.0.1",
+    "keywords": ["yii", "cart", "shopping"],
+    "homepage": "http://jolicode.com",
+    "time": "2013-08-28",
+    "license": "GPL v2",
+    "authors": [
+        {
+            "name": "Richard González Alberto",
+            "email": "damnpoet@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "damnpoet@gmail.com",
+        "issues": "https://github.com/damnpoet/yiicart/issues/",
+        "wiki": "https://github.com/damnpoet/yiicart/wiki",
+        "source": "https://github.com/damnpoet/yiicart"
+    },
+    "require": {
+        "yiisoft/yii": "1.1.*",
+    },
+}
