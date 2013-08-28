@@ -20,6 +20,7 @@
         "source": "https://github.com/damnpoet/yiicart"
     },
     "require": {
+        "php": ">=5.3.0",
         "yiisoft/yii": "1.1.*",
     },
 }
