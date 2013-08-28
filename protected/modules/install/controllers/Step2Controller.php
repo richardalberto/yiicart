@@ -5,10 +5,10 @@ class Step2Controller extends InstallController {
     public function actionIndex() {   
         $configFile = Yii::getPathOfAlias('webroot') . '/config.php';
         
-        $assetsPath = Yii::getPathOfAlias('webroot.assets') . '/';
-        $runtimePath = Yii::getPathOfAlias('webroot.protected.runtime') . '/';
-        $imagesPath = Yii::app()->params['imagePath'];
-        $imagesDataPath = $imagesPath . 'data/';
+        $assetsPath     = Yii::getPathOfAlias('webroot.assets') . '/';
+        $runtimePath    = Yii::getPathOfAlias('webroot.protected.runtime') . '/';
+        $imagesPath     = Yii::getPathOfAlias('webroot.image');
+        $imagesDataPath = Yii::getPathOfAlias('webroot.image.data');
         
         $this->render('index', array(
             'configFile'=>$configFile,
@@ -82,5 +82,3 @@ class Step2Controller extends InstallController {
     }
 
 }
-
-?>

@@ -27,7 +27,7 @@ return CMap::mergeArray(
         // application components
         'components' => array(
             'user' => array(
-                'class' => 'WebUser', 
+                'class' => 'WebCustomer', 
                 'allowAutoLogin' => false,
             ),
             'customer' => array(
