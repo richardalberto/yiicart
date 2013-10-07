@@ -58,6 +58,13 @@ class Store extends CActiveRecord {
         );
     }
     
+    public function findByPk($pk, $condition = '', $params = array()) {
+        if($pk === 0)
+            return self::getDefaultStore();
+        else
+            return parent::findByPk($pk, $condition, $params);
+    }
+    
     public function findAll($condition = '', $params = array()) {
         $stores = parent::findAll($condition, $params);
         
