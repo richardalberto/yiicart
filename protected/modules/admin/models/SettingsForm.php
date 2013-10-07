@@ -8,16 +8,28 @@
 class SettingsForm extends CFormModel {
 
     public $id;
+    
+    /*
+     *  General
+     */
     public $name;
     public $owner;
     public $address;
     public $email;
     public $telephone;
     public $fax;
+    
+    /*
+     * Store
+     */
     public $title;
     public $metaTagDescription;
     public $template;
     public $defaultLayout;
+    
+    /*
+     * Local
+     */
     public $country;
     public $state;
     public $language;
@@ -26,6 +38,10 @@ class SettingsForm extends CFormModel {
     public $updateCurrency;
     public $lengthClass;
     public $weightClass;
+    
+    /*
+     * Option
+     */
     public $itemsPerPageCatalog;
     public $itemsPerPageAdmin;
     public $categoryProductCount;
@@ -56,8 +72,82 @@ class SettingsForm extends CFormModel {
     public $affiliateCommission;
     public $returnTerms;
     public $returnStatus;
+    
+    /*
+     *  Image
+     */
+    public $storeLogo;
+    public $icon;
+    public $categoryImageSizeWidth;
+    public $categoryImageSizeheight;
+    public $productImageThumbSizeWidth;
+    public $productImageThumbSizeHeight;
+    public $productImagePopupSizeWidth;
+    public $productImagePopupSizeHeight;
+    public $productImageListSizeWidth;
+    public $productImageListSizeHeight;
+    public $additionalProductImageSizeWidth;
+    public $additionalProductImageSizeHeight;
+    public $relatedProductImageSizeWidth;
+    public $relatedProductImageSizeHeight;
+    public $compareImageSizeWidth;
+    public $compareImageSizeHeight;
+    public $wishListImageSizeWidth;
+    public $wishListImageSizeHeight;
+    public $cartImageSizeWidth;
+    public $cartImageSizeHeight;
+    
+    /*
+     * FTP
+     */
+    public $ftpHost;
+    public $ftpPort;
+    public $ftpUsername;
+    public $ftpPassword;
+    public $ftpRoot;
+    public $ftpEnabled;
+    
+    /*
+     * Mail
+     */
+    public $mailProtocol;
+    public $mailParameters;
+    public $smtpHost;
+    public $smtpUsername;
+    public $smtpPassword;
+    public $smptPort;
+    public $smptTimeout;
+    public $newOrderAlertMail;
+    public $newAccountAlertMail;
+    public $additionalAlertMails;
+    
+    /*
+     * Fraud
+     */
+    public $useMaxMindFraudDetectionSystem;
+    public $maxMindLicenseKey;
+    public $maxMindRiskScore;
+    public $maxMindFraudOrderStatus;
+    
+    /*
+     * Server
+     */
+    public $useSSL;
+    public $useSharedSessions;
+    public $robots;
+    public $useSEOUrls;
+    public $allowedFileExtensions;
+    public $allowedFileMimetypes;
+    public $maintenanceMode;
+    public $allowForgottenPassword;
+    public $encryptionKey;
+    public $outputCompressionLevel;
+    public $displayErrors;
+    public $logErrors;
+    public $errorLogFilename;
+    public $googleAnalyticsCode;
 
-            /**
+    /**
      * Declares the validation rules.
      */
     public function rules() {
@@ -159,12 +249,13 @@ class SettingsForm extends CFormModel {
     }
     
     public function save(){
+        // Save store
         $store = Store::model()->findByPk($this->id);
         if(is_null($store)) // is insert   
-            $store = new Manufacturer;
+            $store = new Store;
         
         $store->name = $this->name;   
-        $manufacturer->save();
+        $store->save();
     }
 
 }
