@@ -245,6 +245,11 @@ class SettingsForm extends CFormModel {
             $this->fax = Yii::app()->settings->getValue('config_fax', $store->store_id);
             $this->title = Yii::app()->settings->getValue('config_title', $store->store_id);
             $this->metaTagDescription = Yii::app()->settings->getValue('config_meta_description', $store->store_id);
+            $this->template = Yii::app()->settings->getValue('config_template', $store->store_id);
+            $this->defaultLayout = Yii::app()->settings->getValue('config_layout_id', $store->store_id);
+            $this->country = Yii::app()->settings->getValue('config_country_id', $store->store_id);
+            $this->state = Yii::app()->settings->getValue('config_zone_id', $store->store_id);
+            $this->language = Yii::app()->settings->getValue('config_language', $store->store_id);
         }
     }
     
@@ -254,7 +259,7 @@ class SettingsForm extends CFormModel {
         if(is_null($store)) // is insert   
             $store = new Store;
         
-        $store->name = $this->name;   
+        $store->name = $this->name;
         $store->save();
     }
 

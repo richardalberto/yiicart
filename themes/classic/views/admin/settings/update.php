@@ -20,4 +20,9 @@ $this->breadcrumbs = array(
 
 <?php $this->renderPartial('_form', array(
     'model'=>$model,
+    'themes'=>$themes,
+    'layouts'=>$layouts,
+    'countries'=>$countries,
+    'zones'=>$zones,
+    'languages'=>$languages
 )); ?>

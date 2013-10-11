@@ -75,6 +75,14 @@ class Store extends CActiveRecord {
         return $stores;
     }
     
+    public function save($runValidation = true, $attributes = null) {
+        if($this->store_id) {
+            
+        }
+        else
+            parent::save($runValidation, $attributes);
+    }
+    
     public static function getDefaultStore(){
         // add default store
         $default = new Store;

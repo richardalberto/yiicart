@@ -77,13 +77,13 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'template', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'template', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'template', $themes, array('class' => 'span4')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'defaultLayout', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'defaultLayout', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'defaultLayout', $layouts, array('class' => 'span4')); ?>
             </div>
         </div>
     </div>
@@ -91,19 +91,19 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'country', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'country', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'country', $countries, array('class' => 'span4')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'state', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'state', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'state', $zones, array('class' => 'span4')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'language', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'language', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'language', $languages, array('class' => 'span4')); ?>
             </div>
         </div>
         <div class="control-group">
