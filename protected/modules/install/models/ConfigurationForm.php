@@ -87,7 +87,7 @@ class ConfigurationForm extends CFormModel {
     }
 
     private function saveConfigFile() {
-        $imagePath = Yii::getPathOfAlias('webroot.image');
+        $imagePath = Yii::getPathOfAlias('webroot.image') . '/';
         $config[] = "<?php
             // This is the main YiiCart configuration.
             return array(

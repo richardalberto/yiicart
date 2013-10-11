@@ -19,7 +19,7 @@ class CustomerLoginForm extends CFormModel {
     public function rules() {
         return array(
             // username and password are required
-            array('username, password', 'required'),
+            array('email, password', 'required'),
             // password needs to be authenticated
             array('password', 'authenticate'),
         );

@@ -5,14 +5,14 @@ class ShoppingCartController extends Controller {
     public $layout = '//layouts/column1';
 
     public function actionIndex() {
-        $shoppingCart = Yii::app()->user->getShoppingCart();
+        $shoppingCart = Yii::app()->customer->getShoppingCart();
         $this->render('index', array(
             'shoppingCart' => $shoppingCart
         ));
     }
     
     public function actionCheckout(){
-        $shoppingCart = Yii::app()->user->getShoppingCart();
+        $shoppingCart = Yii::app()->customer->getShoppingCart();
         
         $this->render('checkout', array(
             'shoppingCart' => $shoppingCart
@@ -23,7 +23,7 @@ class ShoppingCartController extends Controller {
         if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
             $product = Product::model()->findByPk($_POST['product_id']);
             if (!is_null($product)) {
-                $shoppingCart = Yii::app()->user->getShoppingCart();
+                $shoppingCart = Yii::app()->customer->getShoppingCart();
                 $shoppingCart->add($product->product_id, intval($_POST['quantity']));
 
                 echo CJSON::encode(array(
@@ -32,7 +32,7 @@ class ShoppingCartController extends Controller {
                         ':productname' => $product->description->name,
                         ':urlcart' => Yii::app()->createUrl('/shoppingCart'),
                     )),
-                    'total' => Yii::app()->user->getShoppingCart()->countProducts() . " " . Yii::t('shoppingCart', 'item(s)') . " - " . Yii::app()->user->getShoppingCart()->getTotalPrice()
+                    'total' => Yii::app()->customer->getShoppingCart()->countProducts() . " " . Yii::t('shoppingCart', 'item(s)') . " - " . Yii::app()->customer->getShoppingCart()->getTotalPrice()
                 ));
             }
         }
@@ -41,7 +41,7 @@ class ShoppingCartController extends Controller {
     public function actionUpdate($product_id, $quantity){
         $product = Product::model()->findByPk($product_id);
         if (!is_null($product)) {
-            $shoppingCart = Yii::app()->user->getShoppingCart();
+            $shoppingCart = Yii::app()->customer->getShoppingCart();
             $shoppingCart->add($product->product_id, intval($quantity));
 
             $this->redirect(array('index'));
