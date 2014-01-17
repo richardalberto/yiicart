@@ -121,7 +121,7 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'updateCurrency', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->dropDownList($model, 'updateCurrency', $autoUpdateCurrency, array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'updateCurrency', $autoUpdateCurrencyOptions, array('class' => 'span4')); ?>
             </div>
         </div>
         <div class="control-group">
