@@ -2,6 +2,7 @@
 Thumbs.db
 *.DS_Store
 *.empty
+*.idea
 
 # ignore local config files
 config-dev.php
