@@ -109,19 +109,19 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'adminLanguage', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'adminLanguage', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'adminLanguage', $languages, array('class' => 'span4')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'currency', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'currency', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'currency', $currencies, array('class' => 'span4')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'updateCurrency', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'updateCurrency', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'updateCurrency', $autoUpdateCurrency, array('class' => 'span4')); ?>
             </div>
         </div>
         <div class="control-group">

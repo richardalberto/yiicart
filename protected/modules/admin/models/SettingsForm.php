@@ -181,7 +181,7 @@ class SettingsForm extends CFormModel {
             'language'=>Yii::t('settings', 'Language'),
             'adminLanguage'=>Yii::t('settings', 'Admin Language'),
             'currency'=>Yii::t('settings', 'Currency'),
-            'updateCurrency'=>Yii::t('settings', 'Update Currency'),
+            'updateCurrency'=>Yii::t('settings', 'Auto Update Currency'),
             'lengthClass'=>Yii::t('settings', 'Length Class'),
             'weightClass'=>Yii::t('settings', 'Weight Class'),
             'itemsPerPageCatalog'=>Yii::t('settings', 'Default Items Per Page (Catalog)'),
@@ -250,6 +250,8 @@ class SettingsForm extends CFormModel {
             $this->country = Yii::app()->settings->getValue('config_country_id', $store->store_id);
             $this->state = Yii::app()->settings->getValue('config_zone_id', $store->store_id);
             $this->language = Yii::app()->settings->getValue('config_language', $store->store_id);
+            $this->adminLanguage = Yii::app()->settings->getValue('config_admin_language', $store->store_id);
+            $this->currency = Yii::app()->settings->getValue('config_currency_auto', $store->store_id);
         }
     }
     

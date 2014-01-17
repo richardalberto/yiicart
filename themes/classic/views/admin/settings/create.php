@@ -24,5 +24,6 @@ $this->breadcrumbs = array(
     'layouts'=>$layouts,
     'countries'=>$countries,
     'zones'=>$zones,
-    'languages'=>$languages
+    'languages'=>$languages,
+    'currencies'=>$currencies
 )); ?>
