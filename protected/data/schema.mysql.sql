@@ -1056,12 +1056,6 @@ CREATE TABLE IF NOT EXISTS `customer` (
   PRIMARY KEY (`customer_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`customer_id`, `store_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `password`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `customer_group_id`, `ip`, `status`, `approved`, `token`, `date_added`) VALUES
-(1, 0, 'Richard', 'Gonzalez Alberto', 'damnpoet@gmail.com', '+5352959106', '', '8961b777fa1c363e7f122bc4110bc29b20120e80', 'e7a84e537', 'a:0:{}', 'a:0:{}', 0, 1, 1, '::1', 1, 1, '', '2013-06-26 16:21:18');
 
 -- --------------------------------------------------------
 
@@ -1509,7 +1503,7 @@ INSERT INTO `information_description` (`information_id`, `language_id`, `title`,
 (5, 2, 'Terms &amp; Conditions', '&lt;p&gt;\r\n	Terms &amp;amp; Conditions&lt;/p&gt;\r\n'),
 (3, 2, 'Privacy Policy', '&lt;p&gt;\r\n	Privacy Policy&lt;/p&gt;\r\n'),
 (6, 2, 'Delivery Information', '&lt;p&gt;\r\n	Delivery Information&lt;/p&gt;\r\n'),
-(4, 2, '關於我們 /ABOUT US', '&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;http://localhost/shopping.com.tw/image/data/about-us-1.png&quot; style=&quot;width: 211px; height: 292px; float: left; margin-right: 10px;&quot; /&gt;&lt;img alt=&quot;&quot; src=&quot;http://localhost/shopping.com.tw/image/data/about-us-title.png&quot; style=&quot;width: 412px; height: 74px;&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;font-size:15px; line-height: 38px;&quot;&gt;平時在網路上或者是賣場上，購物採買價錢都由經銷商所訂製。大盤商經過一手，中盤商在抽。消費者都處於弱勢。難道我們只能像似被宰的肥羊？都不能反抗這消費模式？因為這樣，創辦人建設此網站。不為利益，只為消費者權益著想。由廠商直接給於價碼，以及若由消費者來幫廠商代理有多少利益。全部透明化！&lt;br /&gt;\r\n台灣的景氣這幾年變得愈來愈差，貧富差異可以說是典型的M型社會，創辦人覺得網路行銷這個通路這麼的好，為何都是有品牌的網站所佔據? 根據統計透過網路行銷真的有賺到比原先收入還多的%數不到二成， 真的是&quot;花錢燒時間的多，真正賺錢的卻沒有幾個&lt;/p&gt;\r\n\r\n&lt;hr /&gt;\r\n&lt;p style=&quot;font-size:15px; line-height: 38px; color:#a40000;&quot;&gt;&lt;strong&gt;&lt;img alt=&quot;&quot; src=&quot;http://localhost/shopping.com.tw/image/data/about-us-2.png&quot; style=&quot;width: 358px; height: 361px; float: right; margin-left: 10px;&quot; /&gt;我們不相信網路購物這一個通路就應該被慢慢壟斷，這是不公平的!!&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;font-size:15px; line-height: 38px;&quot;&gt;有一股強烈的意念不斷由內心深處湧出，如果我們可以提供一個擁有多元化產品、&lt;br /&gt;\r\n免費客服、價格優勢的平台與想創業或兼職的你巧妙結合的話， 我想能夠在不景氣&lt;br /&gt;\r\n的環境中開創另一個全新的商機。&lt;/p&gt;\r\n\r\n&lt;p style=&quot;font-size:15px; line-height: 38px; color:#a40000;&quot;&gt;&lt;strong&gt;我們不相信消費者是肥羊，這是不公平的!!&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;font-size:15px; line-height: 38px;&quot;&gt;每一個人都應該擁有他所想要的幸福、健康與財富才對!&lt;br /&gt;\r\n我們自行選擇供應商，自行挑選我們要的服務&lt;br /&gt;\r\n我們自行主宰買賣，拒當肥羊！&lt;/p&gt;\r\n\r\n&lt;p style=&quot;font-size:15px; line-height: 38px; color:#a40000;&quot;&gt;&lt;strong&gt;所以消費者我最大要提供給大家一個這樣的網路購物平台!&lt;/strong&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;font-size:15px; line-height: 38px;&quot;&gt;你可以在消費者我最大用最實在的價格購買到你想要的產品， 你不需要多花一毛錢購買你不需要的產品， 商城裡的產品都是廠商們競價以及由消費者評估過可行的廠商。 你不必再強迫自己改變消費習慣，我們也不用再教育消費者， 因為商品都是經過認證以及保固的產品。 你不用再擔心因為有紅利分享而低價高賣。&lt;/p&gt;\r\n\r\n&lt;p style=&quot;font-size:15px; line-height: 38px; color:#a40000;&quot;&gt;我們敢說比別人便宜!也是最有保固的產品!!&lt;/p&gt;\r\n'),
+(4, 2, '關於我們 /ABOUT US', '&lt;p&gt;\r\n	About Us&lt;/p&gt;\r\n'),
 (4, 1, 'About Us', '&lt;p&gt;About Us&lt;/p&gt;\r\n');
 
 -- --------------------------------------------------------
