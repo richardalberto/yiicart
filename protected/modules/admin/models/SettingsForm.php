@@ -153,9 +153,9 @@ class SettingsForm extends CFormModel {
     public function rules() {
         return array(
             array('name, owner, address, email, telephone, title', 'required'),
-            array('id, country, state, language, adminLanguage, currency, updateCurrency, lengthClass, weightClass, itemsPerPageCatalog, itemsPerPageAdmin, categoryProductCount, allowReviews, allowDownloads, voucherMin, voucherMax, displayPricesWithTax, vatNumberValidate, useStoreTaxAddress, useCustomTaxAddress, customersOnline, customerGroup, loginDisplayPrices, accountTerms, displayWeightOnCart, guestCheckout, checkoutTerms, orderEditing, orderStatus, completeOrderStatus, displayStock, showOutOfStockWarning, stockCheckout, outOfStockStatus, affiliateTerms, affiliateCommission, returnTerms, returnStatus', 'numerical'),
+            array('id, country, state, language, adminLanguage, currency, updateCurrency, lengthClass, weightClass, itemsPerPageCatalog, itemsPerPageAdmin, categoryProductCount, allowReviews, allowDownloads, voucherMin, voucherMax, displayPricesWithTax, vatNumberValidate, customersOnline, customerGroup, loginDisplayPrices, accountTerms, displayWeightOnCart, guestCheckout, checkoutTerms, orderEditing, orderStatus, completeOrderStatus, displayStock, showOutOfStockWarning, stockCheckout, outOfStockStatus, affiliateTerms, affiliateCommission, returnTerms, returnStatus', 'numerical'),
             array('email', 'email'),
-            array('fax, metaTagDescription, template, defaultLayout, invoicePrefix', 'safe')
+            array('fax, metaTagDescription, template, defaultLayout, invoicePrefix, useStoreTaxAddress, useCustomTaxAddress', 'safe')
         );
     }
 
@@ -344,12 +344,14 @@ class SettingsForm extends CFormModel {
     
     public function save(){
         // Save store
-        $store = Store::model()->findByPk($this->id);
+        $store = Store::model()->findByPk((int)$this->id);
         if(is_null($store)) // is insert   
             $store = new Store;
-        
+
+        // fields to save
         $store->name = $this->name;
-        $store->save();
+
+        return $store->save();
     }
 
 }

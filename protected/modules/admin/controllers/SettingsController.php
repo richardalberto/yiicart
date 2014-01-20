@@ -14,8 +14,7 @@ class SettingsController extends BackendController {
         $model = new SettingsForm;
         if (isset($_POST['SettingsForm'])) {
             $model->attributes = $_POST['SettingsForm'];
-            if ($model->validate()) {
-                $model->save();
+            if ($model->validate() && $model->save()) {
                 $this->redirect(array('index'));
             }
         }
@@ -90,8 +89,7 @@ class SettingsController extends BackendController {
         $model = new SettingsForm;
         if (isset($_POST['SettingsForm'])) {
             $model->attributes = $_POST['SettingsForm'];
-            if ($model->validate()) {
-                $model->save();
+            if ($model->validate() && $model->save()) {
                 $this->redirect(array('index'));
             }
         }
