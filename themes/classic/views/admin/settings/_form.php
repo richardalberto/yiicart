@@ -452,5 +452,44 @@ $form = $this->beginWidget('CActiveForm', array(
             </div>
         </div>
     </div>
+    <div id="ftp" class="tab-pane fade">
+        <div class="control-group">
+            <?php echo $form->label($model, 'ftpHost', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'ftpHost', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'ftpPort', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'ftpPort', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'ftpUsername', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'ftpUsername', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'ftpPassword', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->passwordField($model, 'ftpPassword', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'ftpRoot', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'ftpRoot', array('class' => 'span2')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "The directory your yiicart installation is stored by default in 'public_html/'."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'ftpEnabled', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'ftpEnabled', $yesNoOptions, array('class' => 'span1')); ?>
+            </div>
+        </div>
+    </div>
 </div>
 <?php $this->endWidget(); ?>
