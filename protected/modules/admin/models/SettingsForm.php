@@ -79,7 +79,7 @@ class SettingsForm extends CFormModel {
     public $storeLogo;
     public $icon;
     public $categoryImageSizeWidth;
-    public $categoryImageSizeheight;
+    public $categoryImageSizeHeight;
     public $productImageThumbSizeWidth;
     public $productImageThumbSizeHeight;
     public $productImagePopupSizeWidth;
@@ -137,7 +137,7 @@ class SettingsForm extends CFormModel {
     public $robots;
     public $useSEOUrls;
     public $allowedFileExtensions;
-    public $allowedFileMimetypes;
+    public $allowedFileMimeTypes;
     public $maintenanceMode;
     public $allowForgottenPassword;
     public $encryptionKey;

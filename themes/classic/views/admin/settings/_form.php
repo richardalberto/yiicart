@@ -358,5 +358,99 @@ $form = $this->beginWidget('CActiveForm', array(
             </div>
         </div>
     </div>
+    <div id="image" class="tab-pane fade">
+        <div class="control-group">
+            <?php echo $form->label($model, 'storeLogo', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <ul class="thumbnails">
+                    <li class="span2">
+                        <div class="thumbnail">
+                            <img id="thumb" alt="" src="...">
+                            <?php echo $form->hiddenField($model, 'storeLogo'); ?>
+                            <div class="caption">
+                                <p>
+                                    <a onclick="image_upload('SettingsFormForm_storeLogo', 'thumb');" class="btn btn-mini btn-primary" href="#">Browse</a>
+                                    <a onclick="image_clear('SettingsForm_storeLogo', 'thumb');" class="btn btn-mini" href="#">Clear</a>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'icon', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <ul class="thumbnails">
+                    <li class="span2">
+                        <div class="thumbnail">
+                            <img id="thumb" alt="" src="...">
+                            <?php echo $form->hiddenField($model, 'icon'); ?>
+                            <div class="caption">
+                                <p>
+                                    <a onclick="image_upload('SettingsFormForm_icon', 'thumb');" class="btn btn-mini btn-primary" href="#">Browse</a>
+                                    <a onclick="image_clear('SettingsForm_icon', 'thumb');" class="btn btn-mini" href="#">Clear</a>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'categoryImageSizeWidth', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'categoryImageSizeWidth', array('class' => 'span1')); ?> x <?php echo $form->textField($model, 'categoryImageSizeHeight', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'productImageThumbSizeWidth', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'productImageThumbSizeWidth', array('class' => 'span1')); ?> x <?php echo $form->textField($model, 'productImageThumbSizeHeight', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'productImagePopupSizeWidth', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'productImagePopupSizeWidth', array('class' => 'span1')); ?> x <?php echo $form->textField($model, 'productImagePopupSizeHeight', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'productImageListSizeWidth', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'productImageListSizeWidth', array('class' => 'span1')); ?> x <?php echo $form->textField($model, 'productImageListSizeHeight', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'additionalProductImageSizeWidth', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'additionalProductImageSizeWidth', array('class' => 'span1')); ?> x <?php echo $form->textField($model, 'additionalProductImageSizeHeight', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'relatedProductImageSizeWidth', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'relatedProductImageSizeWidth', array('class' => 'span1')); ?> x <?php echo $form->textField($model, 'relatedProductImageSizeHeight', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'compareImageSizeWidth', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'compareImageSizeWidth', array('class' => 'span1')); ?> x <?php echo $form->textField($model, 'compareImageSizeHeight', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'wishListImageSizeWidth', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'wishListImageSizeWidth', array('class' => 'span1')); ?> x <?php echo $form->textField($model, 'wishListImageSizeHeight', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'cartImageSizeWidth', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'cartImageSizeWidth', array('class' => 'span1')); ?> x <?php echo $form->textField($model, 'cartImageSizeHeight', array('class' => 'span1')); ?>
+            </div>
+        </div>
+    </div>
 </div>
 <?php $this->endWidget(); ?>
