@@ -556,5 +556,34 @@ $form = $this->beginWidget('CActiveForm', array(
             </div>
         </div>
     </div>
+    <div id="fraud" class="tab-pane fade">
+        <div class="control-group">
+            <?php echo $form->label($model, 'useMaxMindFraudDetectionSystem', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'useMaxMindFraudDetectionSystem', $yesNoOptions, array('class' => 'span1')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "MaxMind is a fraud detections service. If you don't have a license key you can <a href='http://www.maxmind.com/?rId=yiicart'>sign up here</a>. Once you have obtained a key copy and paste it into the field below."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'maxMindLicenseKey', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'maxMindLicenseKey', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'maxMindRiskScore', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'maxMindRiskScore', array('class' => 'span2')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "The higher the score the more likly the order is fraudulent. Set a score between 0 - 100."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'maxMindFraudOrderStatus', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'maxMindFraudOrderStatus', $orderStatuses, array('class' => 'span2')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Orders over your set score will be assigned this order status and will not be allowed to reach the complete status automatically."); ?></span>
+            </div>
+        </div>
+    </div>
 </div>
 <?php $this->endWidget(); ?>
