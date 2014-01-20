@@ -65,8 +65,8 @@ class UsersController extends BackendController {
         $ids = explode(',', $ids);
         if(count($ids) > 0){
             foreach($ids as $id){
-                $product = User::model()->findByPk($id);
-                $product->delete();
+                $user = User::model()->findByPk($id);
+                $user->delete();
             }
         }
 
