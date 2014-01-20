@@ -127,13 +127,13 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'lengthClass', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'lengthClass', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'lengthClass', $lengthClasses, array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'weightClass', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'weightClass', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'weightClass', $weightClasses, array('class' => 'span2')); ?>
             </div>
         </div>
     </div>

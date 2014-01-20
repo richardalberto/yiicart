@@ -86,7 +86,9 @@ class SettingsController extends BackendController {
             1=>Yii::t('settings', 'Yes')
         );
 
+        $lengthClasses = CHtml::listData(LengthClassDescription::model()->findAll(), 'length_class_id', 'title');
 
+        $weightClasses = CHtml::listData(WeightClassDescription::model()->findAll(), 'weight_class_id', 'title');
         
         $this->render('update', array(
             'model'=>$model,
@@ -96,7 +98,9 @@ class SettingsController extends BackendController {
             'zones'=>$zones,
             'languages'=>$languages,
             'currencies' =>$currencies,
-            'autoUpdateCurrencyOptions'=>$autoUpdateCurrencyOptions
+            'autoUpdateCurrencyOptions'=>$autoUpdateCurrencyOptions,
+            'lengthClasses'=>$lengthClasses,
+            'weightClasses'=>$weightClasses
         ));        
     }
 

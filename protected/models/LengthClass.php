@@ -34,9 +34,6 @@ class LengthClass extends CActiveRecord {
         return array(
             array('value', 'required'),
             array('value', 'length', 'max' => 15),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('length_class_id, value', 'safe', 'on' => 'search'),
         );
     }
 

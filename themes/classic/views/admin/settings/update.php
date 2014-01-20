@@ -26,5 +26,7 @@ $this->breadcrumbs = array(
     'zones'=>$zones,
     'languages'=>$languages,
     'currencies'=>$currencies,
-    'autoUpdateCurrencyOptions'=>$autoUpdateCurrencyOptions
+    'autoUpdateCurrencyOptions'=>$autoUpdateCurrencyOptions,
+    'lengthClasses'=>$lengthClasses,
+    'weightClasses'=>$weightClasses
 )); ?>
