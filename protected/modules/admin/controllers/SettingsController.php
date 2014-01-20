@@ -85,6 +85,8 @@ class SettingsController extends BackendController {
             0=>Yii::t('settings', 'No'),
             1=>Yii::t('settings', 'Yes')
         );
+
+
         
         $this->render('update', array(
             'model'=>$model,

@@ -91,37 +91,37 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'country', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->dropDownList($model, 'country', $countries, array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'country', $countries, array('class' => 'span3')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'state', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->dropDownList($model, 'state', $zones, array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'state', $zones, array('class' => 'span3')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'language', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->dropDownList($model, 'language', $languages, array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'language', $languages, array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'adminLanguage', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->dropDownList($model, 'adminLanguage', $languages, array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'adminLanguage', $languages, array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'currency', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->dropDownList($model, 'currency', $currencies, array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'currency', $currencies, array('class' => 'span2')); ?>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'updateCurrency', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->dropDownList($model, 'updateCurrency', $autoUpdateCurrencyOptions, array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'updateCurrency', $autoUpdateCurrencyOptions, array('class' => 'span1')); ?>
             </div>
         </div>
         <div class="control-group">
