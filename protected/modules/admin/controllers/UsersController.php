@@ -20,8 +20,8 @@ class UsersController extends BackendController {
         }
 
         $statusOptions = array(
-            0=>Yii::t('users', 'Disabled'),
-            1=>Yii::t('users', 'Enabled'),
+            0=>Yii::t('common', 'Disabled'),
+            1=>Yii::t('common', 'Enabled'),
         );
 
         $userGroups = CHtml::listData(UserGroup::model()->findAll(), "user_group_id", "name");
@@ -48,8 +48,8 @@ class UsersController extends BackendController {
         }
 
         $statusOptions = array(
-            0=>Yii::t('users', 'Disabled'),
-            1=>Yii::t('users', 'Enabled'),
+            0=>Yii::t('common', 'Disabled'),
+            1=>Yii::t('common', 'Enabled'),
         );
 
         $userGroups = CHtml::listData(UserGroup::model()->findAll(), "user_group_id", "name");
