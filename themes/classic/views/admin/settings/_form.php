@@ -208,14 +208,14 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'useStoreTaxAddress', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'useStoreTaxAddress', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'useStoreTaxAddress', $taxesOptions, array('class' => 'span2')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Use the store address to calculate taxes if no one is logged in. You can choose to use the store address for the customers shipping or payment address."); ?></span>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'useCustomerTaxAddress', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'useCustomTaxAddress', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'useCustomTaxAddress', $taxesOptions, array('class' => 'span2')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Use the customers default address when they login to calculate taxes. You can choose to use the default address for the customers shipping or payment address."); ?></span>
             </div>
         </div>
@@ -230,15 +230,8 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'customerGroup', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'customerGroup', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'customerGroup', $customerGroups, array('class' => 'span4')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Default customer group."); ?></span>
-            </div>
-        </div>
-        <div class="control-group">
-            <?php echo $form->label($model, 'customerGroups', array('class' => 'control-label')); ?>
-            <div class="controls">
-                <?php echo $form->textField($model, 'customerGroup', array('class' => 'span4')); ?>
-                <span class="help-block"><?php echo Yii::t("settings", "Display customer groups that new customers can select to use such as wholesale and business when signing up."); ?></span>
             </div>
         </div>
         <div class="control-group">
@@ -251,7 +244,7 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'accountTerms', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'accountTerms', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'accountTerms', $informations, array('class' => 'span4')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Forces people to agree to terms before an account can be created."); ?></span>
             </div>
         </div>
@@ -273,35 +266,35 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'checkoutTerms', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'checkoutTerms', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'checkoutTerms', $informations, array('class' => 'span4')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Forces people to agree to terms before an a customer can checkout."); ?></span>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'orderEditing', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'orderEditing', array('class' => 'span4')); ?>
+                <?php echo $form->textField($model, 'orderEditing', array('class' => 'span1')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Number of days allowed to edit an order. This is required because prices and discounts may change over time corrupting the order if it's edited."); ?></span>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'invoicePrefix', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'invoicePrefix', array('class' => 'span4')); ?>
+                <?php echo $form->textField($model, 'invoicePrefix', array('class' => 'span2')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Set the invoice prefix (e.g. INV-2011-00). Invoice ID's will start at 1 for each unique prefix."); ?></span>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'orderStatus', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'orderStatus', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'orderStatus', $orderStatuses, array('class' => 'span2')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Set the default order status when an order is processed."); ?></span>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'completeOrderStatus', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'completeOrderStatus', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'completeOrderStatus', $orderStatuses, array('class' => 'span2')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Set the order status the customers order must reach before they are allowed to access their downloadable products and gift vouchers."); ?></span>
             </div>
         </div>
@@ -330,7 +323,7 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'outOfStockStatus', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'outOfStockStatus', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'outOfStockStatus', $orderStatuses, array('class' => 'span2')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Set the default out of stock status selected in product edit."); ?></span>
             </div>
         </div>
@@ -338,14 +331,14 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'affiliateTerms', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'affiliateTerms', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'affiliateTerms', $informations, array('class' => 'span4')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Forces people to agree to terms before an affiliate account can be created."); ?></span>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'affiliateCommission', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'affiliateCommission', array('class' => 'span4')); ?>
+                <?php echo $form->textField($model, 'affiliateCommission', array('class' => 'span1')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "The default affiliate commission percentage."); ?></span>
             </div>
         </div>
@@ -353,14 +346,14 @@ $form = $this->beginWidget('CActiveForm', array(
         <div class="control-group">
             <?php echo $form->label($model, 'returnTerms', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'returnTerms', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'returnTerms', $informations, array('class' => 'span4')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Forces people to agree to terms before an return account can be created."); ?></span>
             </div>
         </div>
         <div class="control-group">
             <?php echo $form->label($model, 'returnStatus', array('class' => 'control-label')); ?>
             <div class="controls">
-                <?php echo $form->textField($model, 'returnStatus', array('class' => 'span4')); ?>
+                <?php echo $form->dropDownList($model, 'returnStatus', $returnStatuses, array('class' => 'span2')); ?>
                 <span class="help-block"><?php echo Yii::t("settings", "Set the default return status when an returns request is submitted."); ?></span>
             </div>
         </div>

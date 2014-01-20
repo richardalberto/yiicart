@@ -35,11 +35,31 @@ class SettingsController extends BackendController {
         $languages = CHtml::listData(Language::model()->findAll(), 'language_id', 'name');
         
         $currencies = CHtml::listData(Currency::model()->findAll(), 'currency_id', 'title');
-        
-        $autoUpdateCurrencyOptions = array(
+
+        $yesNoOptions = array(
             0=>Yii::t('settings', 'No'),
             1=>Yii::t('settings', 'Yes')
         );
+
+        $lengthClasses = CHtml::listData(LengthClassDescription::model()->findAll(), 'length_class_id', 'title');
+
+        $weightClasses = CHtml::listData(WeightClassDescription::model()->findAll(), 'weight_class_id', 'title');
+
+        $taxesOptions = array(
+            "" => Yii::t("settings", "--- None ---"),
+            "shipping" => Yii::t("settings", "Shipping Address"),
+            "payment" => Yii::t("settings", "Payment Address"),
+        );
+
+        $customerGroups = CHtml::listData(CustomerGroupDescription::model()->findAll(), 'customer_group_id', 'name');
+
+        $informations = CHtml::listData(InformationDescription::model()->findAll(), 'information_id', 'title');
+
+        // TODO: localisation
+        $orderStatuses = CHtml::listData(OrderStatus::model()->findAllByAttributes(array('language_id'=>1)), 'order_status_id', 'name');
+
+        // TODO: localisation
+        $returnStatuses = CHtml::listData(ReturnStatus::model()->findAllByAttributes(array('language_id'=>1)), 'return_status_id', 'name');
         
         $this->render('create', array(
             'model'=>$model,
@@ -49,7 +69,14 @@ class SettingsController extends BackendController {
             'zones'=>$zones,
             'languages'=>$languages,
             'currencies'=>$currencies,
-            'autoUpdateCurrencyOptions'=>$autoUpdateCurrencyOptions
+            'yesNoOptions'=>$yesNoOptions,
+            'lengthClasses'=>$lengthClasses,
+            'weightClasses'=>$weightClasses,
+            'taxesOptions'=>$taxesOptions,
+            'customerGroups'=>$customerGroups,
+            'informations'=>$informations,
+            'orderStatuses'=>$orderStatuses,
+            'returnStatuses'=>$returnStatuses
         ));
     }
     
@@ -89,6 +116,22 @@ class SettingsController extends BackendController {
         $lengthClasses = CHtml::listData(LengthClassDescription::model()->findAll(), 'length_class_id', 'title');
 
         $weightClasses = CHtml::listData(WeightClassDescription::model()->findAll(), 'weight_class_id', 'title');
+
+        $taxesOptions = array(
+            "" => Yii::t("settings", "--- None ---"),
+            "shipping" => Yii::t("settings", "Shipping Address"),
+            "payment" => Yii::t("settings", "Payment Address"),
+        );
+
+        $customerGroups = CHtml::listData(CustomerGroupDescription::model()->findAll(), 'customer_group_id', 'name');
+
+        $informations = array_merge(array(0=>Yii::t("settings", "--- None ---")), CHtml::listData(InformationDescription::model()->findAll(), 'information_id', 'title'));;
+
+        // TODO: localisation
+        $orderStatuses = CHtml::listData(OrderStatus::model()->findAllByAttributes(array('language_id'=>1)), 'order_status_id', 'name');
+
+        // TODO: localisation
+        $returnStatuses = CHtml::listData(ReturnStatus::model()->findAllByAttributes(array('language_id'=>1)), 'return_status_id', 'name');
         
         $this->render('update', array(
             'model'=>$model,
@@ -100,7 +143,12 @@ class SettingsController extends BackendController {
             'currencies' =>$currencies,
             'yesNoOptions'=>$yesNoOptions,
             'lengthClasses'=>$lengthClasses,
-            'weightClasses'=>$weightClasses
+            'weightClasses'=>$weightClasses,
+            'taxesOptions'=>$taxesOptions,
+            'customerGroups'=>$customerGroups,
+            'informations'=>$informations,
+            'orderStatuses'=>$orderStatuses,
+            'returnStatuses'=>$returnStatuses
         ));        
     }
 

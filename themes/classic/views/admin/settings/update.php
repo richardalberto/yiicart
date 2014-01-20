@@ -28,5 +28,10 @@ $this->breadcrumbs = array(
     'currencies'=>$currencies,
     'yesNoOptions'=>$yesNoOptions,
     'lengthClasses'=>$lengthClasses,
-    'weightClasses'=>$weightClasses
+    'weightClasses'=>$weightClasses,
+    'taxesOptions'=>$taxesOptions,
+    'customerGroups'=>$customerGroups,
+    'informations'=>$informations,
+    'orderStatuses'=>$orderStatuses,
+    'returnStatuses'=>$returnStatuses
 )); ?>
