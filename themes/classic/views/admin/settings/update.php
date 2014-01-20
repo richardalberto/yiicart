@@ -33,5 +33,6 @@ $this->breadcrumbs = array(
     'customerGroups'=>$customerGroups,
     'informations'=>$informations,
     'orderStatuses'=>$orderStatuses,
-    'returnStatuses'=>$returnStatuses
+    'returnStatuses'=>$returnStatuses,
+    'mailProtocols'=>$mailProtocols
 )); ?>

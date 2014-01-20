@@ -60,6 +60,11 @@ class SettingsController extends BackendController {
 
         // TODO: localisation
         $returnStatuses = CHtml::listData(ReturnStatus::model()->findAllByAttributes(array('language_id'=>1)), 'return_status_id', 'name');
+
+        $mailProtocols = array(
+            "mail" => Yii::t("settings", "Mail"),
+            "smtp" => Yii::t("settings", "SMTP")
+        );
         
         $this->render('create', array(
             'model'=>$model,
@@ -76,7 +81,8 @@ class SettingsController extends BackendController {
             'customerGroups'=>$customerGroups,
             'informations'=>$informations,
             'orderStatuses'=>$orderStatuses,
-            'returnStatuses'=>$returnStatuses
+            'returnStatuses'=>$returnStatuses,
+            'mailProtocols'=>$mailProtocols
         ));
     }
     
@@ -132,6 +138,11 @@ class SettingsController extends BackendController {
 
         // TODO: localisation
         $returnStatuses = CHtml::listData(ReturnStatus::model()->findAllByAttributes(array('language_id'=>1)), 'return_status_id', 'name');
+
+        $mailProtocols = array(
+            "mail" => Yii::t("settings", "Mail"),
+            "smtp" => Yii::t("settings", "SMTP")
+        );
         
         $this->render('update', array(
             'model'=>$model,
@@ -148,7 +159,8 @@ class SettingsController extends BackendController {
             'customerGroups'=>$customerGroups,
             'informations'=>$informations,
             'orderStatuses'=>$orderStatuses,
-            'returnStatuses'=>$returnStatuses
+            'returnStatuses'=>$returnStatuses,
+            'mailProtocols'=>$mailProtocols
         ));        
     }
 

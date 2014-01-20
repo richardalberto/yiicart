@@ -491,5 +491,70 @@ $form = $this->beginWidget('CActiveForm', array(
             </div>
         </div>
     </div>
+    <div id="mail" class="tab-pane fade">
+        <div class="control-group">
+            <?php echo $form->label($model, 'mailProtocol', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'mailProtocol', $mailProtocols, array('class' => 'span2')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Only choose 'Mail' unless your host has disabled the php mail function."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'mailParameters', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'mailParameters', array('class' => 'span2')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "When using 'Mail', additional mail parameters can be added here (e.g. \"-femail@storeaddress.com\")."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'smtpHost', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'smtpHost', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'smtpUsername', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'smtpUsername', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'smtpPassword', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->passwordField($model, 'smtpPassword', array('class' => 'span2')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'smptPort', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'smptPort', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'smptTimeout', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'smptTimeout', array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'newOrderAlertMail', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'newOrderAlertMail', $yesNoOptions, array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'newAccountAlertMail', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'newAccountAlertMail', $yesNoOptions, array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'additionalAlertMails', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textArea($model, 'additionalAlertMails', array('class' => 'span8')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Any additional emails you want to receive the alert email, in addition to the main store email. (comma separated)"); ?></span>
+            </div>
+        </div>
+    </div>
 </div>
 <?php $this->endWidget(); ?>
