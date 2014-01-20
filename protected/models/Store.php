@@ -79,11 +79,15 @@ class Store extends CActiveRecord {
         // Save default store
         if($this->store_id === 0) {
             Yii::app()->settings->setValue('config_title', $this->name);
+            //TODO: Add additional fields here
 
             return true;
         }
-        else
+        else {
             parent::save($runValidation, $attributes);
+
+            //TODO: Add additional config fields here
+        }
     }
     
     public static function getDefaultStore(){

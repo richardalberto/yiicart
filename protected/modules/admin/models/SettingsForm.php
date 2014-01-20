@@ -350,6 +350,7 @@ class SettingsForm extends CFormModel {
 
         // fields to save
         $store->name = $this->name;
+        //TODO: Add additional fields here
 
         return $store->save();
     }
