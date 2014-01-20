@@ -10,4 +10,67 @@ class UsersController extends BackendController {
         ));
     }
 
+    public function actionCreate(){
+        $model = new User;
+        if (isset($_POST['User'])) {
+            $model->attributes = $_POST['User'];
+            if ($model->validate() && $model->save()) {
+                $this->redirect(array('index'));
+            }
+        }
+
+        $statusOptions = array(
+            0=>Yii::t('users', 'Disabled'),
+            1=>Yii::t('users', 'Enabled'),
+        );
+
+        $userGroups = CHtml::listData(UserGroup::model()->findAll(), "user_group_id", "name");
+
+        $this->render('create', array(
+            'model'=>$model,
+            'statusOptions'=>$statusOptions,
+            'userGroups'=>$userGroups
+        ));
+    }
+
+    public function actionUpdate($id){
+        $model = User::model()->findByPk($id);
+        if(!is_object($model)) {
+            throw new CException("Specified user doesn't exists.");
+            return;
+        }
+
+        if (isset($_POST['User'])) {
+            $model->attributes = $_POST['User'];
+            if ($model->validate() && $model->save()) {
+                $this->redirect(array('index'));
+            }
+        }
+
+        $statusOptions = array(
+            0=>Yii::t('users', 'Disabled'),
+            1=>Yii::t('users', 'Enabled'),
+        );
+
+        $userGroups = CHtml::listData(UserGroup::model()->findAll(), "user_group_id", "name");
+
+        $this->render('update', array(
+            'model'=>$model,
+            'statusOptions'=>$statusOptions,
+            'userGroups'=>$userGroups
+        ));
+    }
+
+    public function actionDelete($ids){
+        $ids = explode(',', $ids);
+        if(count($ids) > 0){
+            foreach($ids as $id){
+                $product = User::model()->findByPk($id);
+                $product->delete();
+            }
+        }
+
+        $this->redirect(array('index'));
+    }
+
 }
