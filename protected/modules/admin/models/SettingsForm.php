@@ -251,7 +251,40 @@ class SettingsForm extends CFormModel {
             $this->state = Yii::app()->settings->getValue('config_zone_id', $store->store_id);
             $this->language = Yii::app()->settings->getValue('config_language', $store->store_id);
             $this->adminLanguage = Yii::app()->settings->getValue('config_admin_language', $store->store_id);
-            $this->currency = Yii::app()->settings->getValue('config_currency_auto', $store->store_id);
+            $this->currency = Yii::app()->settings->getValue('config_currency', $store->store_id);
+            $this->updateCurrency = Yii::app()->settings->getValue('config_currency_auto', $store->store_id);
+            $this->lengthClass = Yii::app()->settings->getValue('config_length_class_id', $store->store_id);
+            $this->weightClass = Yii::app()->settings->getValue('config_weight_class_id', $store->store_id);
+            $this->itemsPerPageAdmin = Yii::app()->settings->getValue('config_admin_limit', $store->store_id);
+            $this->itemsPerPageCatalog = Yii::app()->settings->getValue('config_catalog_limit', $store->store_id);
+            $this->categoryProductCount = Yii::app()->settings->getValue('config_product_count', $store->store_id);
+            $this->allowReviews = Yii::app()->settings->getValue('config_review_status', $store->store_id);
+            $this->allowDownloads = Yii::app()->settings->getValue('config_download', $store->store_id);
+            $this->voucherMin = Yii::app()->settings->getValue('config_voucher_min', $store->store_id);
+            $this->voucherMax = Yii::app()->settings->getValue('config_voucher_max', $store->store_id);
+            $this->displayPricesWithTax = Yii::app()->settings->getValue('config_tax', $store->store_id);
+            $this->vatNumberValidate = Yii::app()->settings->getValue('config_vat', $store->store_id);
+            $this->useStoreTaxAddress = Yii::app()->settings->getValue('config_tax_default', $store->store_id);
+            $this->useCustomTaxAddress = Yii::app()->settings->getValue('config_tax_customer', $store->store_id);
+            $this->customersOnline = Yii::app()->settings->getValue('config_customer_online', $store->store_id);
+            $this->customerGroup = Yii::app()->settings->getValue('config_customer_group_id', $store->store_id);
+            $this->loginDisplayPrices = Yii::app()->settings->getValue('config_customer_price', $store->store_id);
+            $this->accountTerms = Yii::app()->settings->getValue('config_account_id', $store->store_id);
+            $this->displayWeightOnCart = Yii::app()->settings->getValue('config_cart_weight', $store->store_id);
+            $this->guestCheckout = Yii::app()->settings->getValue('config_guest_checkout', $store->store_id);
+            $this->checkoutTerms = Yii::app()->settings->getValue('config_checkout_id', $store->store_id);
+            $this->orderEditing = Yii::app()->settings->getValue('config_order_edit', $store->store_id);
+            $this->invoicePrefix = Yii::app()->settings->getValue('config_invoice_prefix', $store->store_id);
+            $this->orderStatus = Yii::app()->settings->getValue('config_order_status_id', $store->store_id);
+            $this->completeOrderStatus = Yii::app()->settings->getValue('config_complete_status_id', $store->store_id);
+            $this->displayStock = Yii::app()->settings->getValue('config_stock_display', $store->store_id);
+            $this->showOutOfStockWarning = Yii::app()->settings->getValue('config_stock_warning', $store->store_id);
+            $this->stockCheckout = Yii::app()->settings->getValue('config_stock_checkout', $store->store_id);
+            $this->outOfStockStatus = Yii::app()->settings->getValue('config_stock_status_id', $store->store_id);
+            $this->affiliateTerms = Yii::app()->settings->getValue('config_affiliate_id', $store->store_id);
+            $this->affiliateCommission = Yii::app()->settings->getValue('config_commission', $store->store_id);
+            $this->returnTerms = Yii::app()->settings->getValue('config_return_id', $store->store_id);
+            $this->returnStatus = Yii::app()->settings->getValue('config_return_status_id', $store->store_id);
         }
     }
     

@@ -81,7 +81,7 @@ class SettingsController extends BackendController {
         
         $currencies = CHtml::listData(Currency::model()->findAll(), 'currency_id', 'title');
         
-        $autoUpdateCurrencyOptions = array(
+        $yesNoOptions = array(
             0=>Yii::t('settings', 'No'),
             1=>Yii::t('settings', 'Yes')
         );
@@ -98,7 +98,7 @@ class SettingsController extends BackendController {
             'zones'=>$zones,
             'languages'=>$languages,
             'currencies' =>$currencies,
-            'autoUpdateCurrencyOptions'=>$autoUpdateCurrencyOptions,
+            'yesNoOptions'=>$yesNoOptions,
             'lengthClasses'=>$lengthClasses,
             'weightClasses'=>$weightClasses
         ));        
