@@ -585,5 +585,108 @@ $form = $this->beginWidget('CActiveForm', array(
             </div>
         </div>
     </div>
+    <div id="server" class="tab-pane fade">
+        <div class="control-group">
+            <?php echo $form->label($model, 'useSSL', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'useSSL', $yesNoOptions, array('class' => 'span1')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "To use SSL check with your host if a SSL certificate is installed and added the SSL URL to the catalog and admin config files."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'useSharedSessions', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'useSharedSessions', $yesNoOptions, array('class' => 'span1')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Try to share the session cookie between stores so the cart can be passed between different domains."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'robots', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textArea($model, 'robots', array('class' => 'span2', 'rows'=>4)); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "A list of web crawler user agents that shared sessions will not be used with. Use separate lines for each user agent."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'useSEOUrls', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'useSEOUrls', $yesNoOptions, array('class' => 'span1')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "To use SEO URL's apache module mod-rewrite must be installed and you need to rename the htaccess.txt to .htaccess."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'allowedFileExtensions', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textArea($model, 'allowedFileExtensions', array('class' => 'span2', 'rows'=>4)); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Add which file extensions are allowed to be uploaded. Use a new line for each value."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'allowedFileMimeTypes', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textArea($model, 'allowedFileMimeTypes', array('class' => 'span2', 'rows'=>4)); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Add which file mime types are allowed to be uploaded. Use a new line for each value."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'maintenanceMode', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'maintenanceMode', $yesNoOptions, array('class' => 'span1')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Prevents customers from browsing your store. They will instead see a maintenance message. If logged in as admin, you will see the store as normal."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'allowForgottenPassword', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'allowForgottenPassword', $yesNoOptions, array('class' => 'span1')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Allow forgotten password to be used for the admin. This will be disabled automatically if the system detects a hack attempt."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'encryptionKey', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'encryptionKey', $yesNoOptions, array('class' => 'span3')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Please provide a secret key that will be used to encrypt private information when processing orders."); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'outputCompressionLevel', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'outputCompressionLevel', $yesNoOptions, array('class' => 'span3')); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "GZIP for more efficient transfer to requesting clients. Compression level must be between 0 - 9"); ?></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'displayErrors', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'displayErrors', $yesNoOptions, array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'logErrors', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'logErrors', $yesNoOptions, array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'logErrors', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->dropDownList($model, 'logErrors', $yesNoOptions, array('class' => 'span1')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'errorLogFilename', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textField($model, 'errorLogFilename', array('class' => 'span3')); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <?php echo $form->label($model, 'googleAnalyticsCode', array('class' => 'control-label')); ?>
+            <div class="controls">
+                <?php echo $form->textArea($model, 'googleAnalyticsCode', array('class' => 'span4', 'rows'=>4)); ?>
+                <span class="help-block"><?php echo Yii::t("settings", "Login to your <a href='http://www.google.com/analytics/'>Google Analytics</a> account and after creating your web site profile copy and paste the analytics code into this field."); ?></span>
+            </div>
+        </div>
+    </div>
 </div>
 <?php $this->endWidget(); ?>
