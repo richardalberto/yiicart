@@ -2183,21 +2183,6 @@ CREATE TABLE IF NOT EXISTS `order_total` (
   KEY `idx_orders_total_orders_id` (`order_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
---
--- Dumping data for table `order_total`
---
-
-INSERT INTO `order_total` (`order_total_id`, `order_id`, `code`, `title`, `text`, `value`, `sort_order`) VALUES
-(1, 1, 'sub_total', 'Sub-Total', '101 元', '101.0000', 1),
-(2, 1, 'shipping', 'Flat Shipping Rate', '5 元', '5.0000', 3),
-(3, 1, 'total', 'Total', '106 元', '106.0000', 9),
-(4, 2, 'sub_total', 'Sub-Total', '80 元', '80.0000', 1),
-(5, 2, 'shipping', 'Flat Shipping Rate', '5 元', '5.0000', 3),
-(6, 2, 'total', 'Total', '85 元', '85.0000', 9),
-(7, 3, 'sub_total', 'Sub-Total', '366 元', '366.0000', 1),
-(8, 3, 'shipping', 'Flat Shipping Rate', '5 元', '5.0000', 3),
-(9, 3, 'total', 'Total', '371 元', '371.0000', 9);
-
 -- --------------------------------------------------------
 
 --
