@@ -58,7 +58,9 @@ class ProductImage extends CActiveRecord {
         );
     }
 
-    public function getImageWithSize($width, $height) {
+    public function getImageWithSize($width=0, $height=0) {
+	    if($width===0 || $height===0)
+		    return Yii::app()->getBaseUrl().DIRECTORY_SEPARATOR.'image'.DIRECTORY_SEPARATOR.$this->image;
         if ($this->image && file_exists(Yii::app()->params['imagePath'] . $this->image)) {
             $_image = ImageTool::resize($this->image, $width, $height);
         } else {

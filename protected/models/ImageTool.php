@@ -2,7 +2,7 @@
 
 class ImageTool {
 
-    public static function resize($filename, $width, $height) {
+    public static function resize($filename, $width=0, $height=0) {
         if (!file_exists(Yii::app()->params['imagePath'] . $filename) || !is_file(Yii::app()->params['imagePath'] . $filename)) {
             return;
         }

@@ -4,40 +4,36 @@
         'wishlistUrl' => $this->createUrl('/wishlist'),
         'compareUrl' => $this->createUrl('/compare'),
     );
-    
-    Yii::app()->clientScript->registerScript('vars', 'var urls = ' . CJavaScript::encode($vars) .';', CClientScript::POS_END);
-    Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/jquery.min.js", CClientScript::POS_END);
-    Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/bootstrap.min.js", CClientScript::POS_END);
-    Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/common.js", CClientScript::POS_END);
-    
     Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/bootstrap.min.css");
     Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/bootstrap-responsive.min.css");
     Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/font-awesome.min.css");
     Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/jquery.rating.css");
     Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . "/css/style.css");
+
+	Yii::app()->clientScript->registerScript('vars', 'var urls = ' . CJavaScript::encode($vars) . ';',
+		CClientScript::POS_END);
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/jquery.min.js", CClientScript::POS_END);
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/bootstrap.min.js", CClientScript::POS_END);
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/common.js", CClientScript::POS_END);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title><?php echo $this->pageTitle; ?></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
+	<head>
+		<meta charset="utf-8">
+		<title><?php echo $this->pageTitle; ?></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="<?php echo Yii::app()->baseUrl; ?>/js/html5shiv.js"></script>
         <![endif]-->
-		
         <!--[if IE 7]>
           <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/font-awesome-ie7.min.css">
         <![endif]-->
-
         <!-- Fav icon -->
         <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/img/favicon.png">
     </head>
-
     <body>
         <div class="container">
             <div class="row"><!-- start header -->
@@ -58,9 +54,9 @@
                             <a href="#">EUR</a>
                             -->
                         </div>
-                        <div class="span2">                          
+                        <div class="span2">
                             <h4><?php echo Yii::t('shoppingCart', 'Shopping Cart'); ?></h4>
-                            <a href="<?php echo $this->createUrl('/shoppingCart'); ?>" id="cart-total"><?php echo Yii::app()->customer->getShoppingCart()->countProducts(); ?> <?php echo Yii::t('shoppingCart', 'item(s)'); ?> - <?php echo Yii::app()->customer->getShoppingCart()->getTotalPrice(); ?></a>                            
+                            <a href="<?php echo $this->createUrl('/shoppingCart'); ?>" id="cart-total"><?php echo Yii::app()->customer->getShoppingCart()->countProducts(); ?> <?php echo Yii::t('shoppingCart', 'item(s)'); ?> - <?php echo Yii::app()->customer->getShoppingCart()->getTotalPrice(); ?></a>
                         </div>
                     </div>
                     <br />
@@ -110,7 +106,7 @@
             <footer>
                 <hr />
                 <div class="row well no_margin_left">
-                    
+
                     <?php if(count($this->informations) > 0): ?>
                     <div class="span3">
                         <h4><?php echo Yii::t('footer', 'Information'); ?></h4>
@@ -147,9 +143,7 @@
                             <li><a href="<?php echo $this->createUrl('/newsletter'); ?>"><?php echo Yii::t('footer', 'Newsletter'); ?></a></li>
                         </ul>
                     </div>
-
             </footer>
-
         </div> <!-- /container -->
     </body>
 </html>

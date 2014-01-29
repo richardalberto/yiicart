@@ -1,3 +1,25 @@
+<?php
+	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl .
+		"/bootstrapImageGallery/css/blueimp-gallery.min.css");
+	Yii::app()->clientScript->RegisterScriptFile('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', CClientScript::POS_END);
+	Yii::app()->clientScript->RegisterScriptFile(Yii::app()->theme->baseUrl .
+		'/bootstrapImageGallery/js/bootstrap-image-gallery.min.js', CClientScript::POS_END);
+	Yii::app()->clientScript->RegisterScriptFile('http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js',
+		CClientScript::POS_END);
+	Yii::app()->clientScript->RegisterScriptFile('http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js',
+		CClientScript::POS_END);
+?>
+<br>
+<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+	<div class="slides"></div>
+	<h3 class="title"></h3>
+	<a class="prev">‹</a>
+	<a class="next">›</a>
+	<a class="close">×</a>
+	<a class="play-pause"></a>
+	<ol class="indicator"></ol>
+</div>
 <div class="row">
 <div class="span9">
     <ul class="breadcrumb">
@@ -11,34 +33,28 @@
             <a href="#">MP3 players</a>
         </li>
     </ul>
-
-
     <div class="row">
         <div class="span9">
             <h1><?php echo $product->description->name; ?></h1>
         </div>
     </div>
     <hr>
-
     <div class="row">
         <div class="span3">
-            <img src="<?php echo $product->getImageWithSize(228, 228); ?>" alt="<?php echo $product->description->name; ?>" title="<?php echo $product->description->name; ?>">
             <?php if ($product->hasAdditionalImages()): ?>
                 <ul class="thumbnails">
                     <?php foreach ($product->additionalImages as $image): ?>
                         <li class="span1">
-                            <a class="thumbnail" href="#">
-                                <img alt="" src="<?php echo $image->getImageWithSize(50, 50); ?>" />
+                            <a class="thumbnail" href="<?= $image->getImageWithSize() ?>" data-gallery="">
+                                <img alt="<?= $product->description->name?>"
+                                     src="<?php echo $image->getImageWithSize(50, 50); ?>" />
                             </a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
             <?php endif; ?>
-
-        </div>	 
-
+        </div>
         <div class="span6">
-
             <div class="span6">
                 <address>
                     <?php if (isset($product->manufacturer)): ?><strong>Brand:</strong> <span><?php echo $product->manufacturer->name; ?></span><br><?php endif; ?>
@@ -47,13 +63,11 @@
                     <strong>Availability:</strong> <span><?php echo $product->stockStatus->name; ?></span><br>
                 </address>
             </div>	
-
             <div class="span6">
                 <h2>
                     <strong>Price: <?php echo $product->getFormattedPrice(); ?></strong> <!--<small>Ex Tax: $500.00</small>--><br><br>
                 </h2>
             </div>	
-
             <div class="span6">
                 <form class="form-inline">
                     <div class="span3 no_margin_left">
@@ -69,10 +83,8 @@
                         <p><a href="#">Add to Wish List</a></p>
                         <p><a href="#">Add to Compare</a></p>
                     </div>	
-                    
                 </form>
             </div>	
-
             <div class="span6">
                 <!--
                 <p>
@@ -81,16 +93,11 @@
                     <input name="star1" type="radio" class="star"/>
                     <input name="star1" type="radio" class="star"/>
                     <input name="star1" type="radio" class="star"/>&nbsp;&nbsp;
-
                     <a href="#">0 reviews</a>  |  <a href="#">Write a review</a>
                 </p>
                 -->
             </div>	
-
-
-        </div>	
-
-
+        </div>
     </div>
     <hr>
     <div class="row">
@@ -148,7 +155,6 @@
                     <?php endif; ?>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
