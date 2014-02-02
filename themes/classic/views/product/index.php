@@ -1,9 +1,8 @@
 <?php
 	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl .
 		"/bootstrapImageGallery/css/blueimp-gallery.min.css");
-	Yii::app()->clientScript->RegisterScriptFile('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', CClientScript::POS_END);
-	Yii::app()->clientScript->RegisterScriptFile(Yii::app()->theme->baseUrl .
-		'/bootstrapImageGallery/js/bootstrap-image-gallery.min.js', CClientScript::POS_END);
+	Yii::app()->clientScript->RegisterScriptFile('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+		CClientScript::POS_END);
 	Yii::app()->clientScript->RegisterScriptFile('http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js',
 		CClientScript::POS_END);
 	Yii::app()->clientScript->RegisterScriptFile('http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js',
@@ -40,24 +39,36 @@
     </div>
     <hr>
     <div class="row">
-        <div class="span3">
+        <div class="span3" id="links">
             <?php if ($product->hasAdditionalImages()): ?>
-                <ul class="thumbnails">
-                    <?php foreach ($product->additionalImages as $image): ?>
-                        <li class="span1">
-                            <a class="thumbnail" href="<?= $image->getImageWithSize() ?>" data-gallery="">
-                                <img alt="<?= $product->description->name?>"
-                                     src="<?php echo $image->getImageWithSize(50, 50); ?>" />
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+	            <?php $numImages = count($product->additionalImages) ?>
+	            <?php foreach ($product->additionalImages as $i => $image): ?>
+		            <? if($i===0): ?>
+			            <a class="thumbnail" href="<?= $image->getImageWithSize() ?>" data-gallery="">
+				            <img alt="<?= $product->description->name?>"
+				                 src="<?php echo $image->getImageWithSize(260,160); ?>" />
+			            </a>
+			            <? continue ?>
+			            <? elseif($i === 1): ?>
+			                <ul class="thumbnails">
+			            <? endif ?>
+		                    <li class="span1">
+		                        <a class="thumbnail" href="<?= $image->getImageWithSize() ?>" data-gallery="">
+		                            <img alt="<?= $product->description->name?>"
+		                                src="<?php echo $image->getImageWithSize(50, 50); ?>" />
+		                        </a>
+		                    </li>
+			            <? if($i===$numImages): ?>
+		                    </ul>
+				        <? endif ?>
+	            <? endforeach ?>
             <?php endif; ?>
         </div>
         <div class="span6">
             <div class="span6">
                 <address>
-                    <?php if (isset($product->manufacturer)): ?><strong>Brand:</strong> <span><?php echo $product->manufacturer->name; ?></span><br><?php endif; ?>
+                    <?php if (isset($product->manufacturer)): ?><strong>Brand:</strong>
+	                <span><?php echo $product->manufacturer->name; ?></span><br><?php endif; ?>
                     <strong>Product Code:</strong> <span><?php echo $product->model; ?></span><br>
                     <!--<strong>Reward Points:</strong> <span>0</span><br>-->
                     <strong>Availability:</strong> <span><?php echo $product->stockStatus->name; ?></span><br>
@@ -65,7 +76,8 @@
             </div>	
             <div class="span6">
                 <h2>
-                    <strong>Price: <?php echo $product->getFormattedPrice(); ?></strong> <!--<small>Ex Tax: $500.00</small>--><br><br>
+                    <strong>Price: <?php echo $product->getFormattedPrice(); ?></strong>
+	                <!--<small>Ex Tax: $500.00</small>--><br><br>
                 </h2>
             </div>	
             <div class="span6">
@@ -73,7 +85,8 @@
                     <div class="span3 no_margin_left">
                         <label>Qty:</label>
                         <input id="quantity" type="text" value="1" class="span1">
-                        <button type="button" onclick="addToCart(<?php echo $product->product_id; ?>, $('#quantity').val())" class="btn btn-primary">Add to cart</button>
+                        <button type="button" onclick="addToCart(<?php echo $product->product_id; ?>,
+	                        $('#quantity').val())" class="btn btn-primary">Add to cart</button>
                     </div>	
                     
                     <div class="span1">
@@ -104,10 +117,13 @@
         <div class="span9">
             <div class="tabbable">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#description"><?php echo Yii::t('products', 'Description'); ?></a></li>
-                    <?php if($product->hasAttributes()): ?><li><a data-toggle="tab" href="#specification"><?php echo Yii::t('products', 'Specification'); ?></a></li><?php endif; ?>
+                    <li class="active"><a data-toggle="tab" href="#description"><?php echo Yii::t('products',
+						'Description'); ?></a></li>
+                    <?php if($product->hasAttributes()): ?><li><a data-toggle="tab" href="#specification"><?php
+						echo Yii::t('products', 'Specification'); ?></a></li><?php endif; ?>
                     <li><a data-toggle="tab" href="#reviews"><?php echo Yii::t('products', 'Reviews'); ?></a></li>
-                    <?php if($product->hasRelatedProducts()): ?><li><a data-toggle="tab" href="#related"><?php echo Yii::t('products', 'Related products'); ?></a></li><?php endif; ?>
+                    <?php if($product->hasRelatedProducts()): ?><li><a data-toggle="tab" href="#related"><?php
+						echo Yii::t('products', 'Related products'); ?></a></li><?php endif; ?>
                 </ul>
                 <div class="tab-content">
                     <div id="description" class="tab-pane fade in active">
@@ -141,14 +157,20 @@
                     <div id="related" class="tab-pane fade">
                         <ul class="thumbnails related_products">
                             <?php foreach($product->relatedProducts as $related): ?>
-                            <li class="span2">
-                                <div class="thumbnail">
-                                    <a href="<?php echo $this->createUrl('product/view', array('id'=>$related->product_id)); ?>"><img src="<?php echo $related->getImageWithSize(220, 180); ?>" alt=""></a>
-                                    <div class="caption">
-                                        <a href="<?php echo $this->createUrl('product/view', array('id'=>$related->product_id)); ?>"> <h5><?php echo $related->description->name; ?></h5></a>  <?php echo Yii::t('products', 'Price'); ?>: <?php echo $related->getFormattedprice(); ?><br><br>
-                                    </div>
-                                </div>
-                            </li>
+	                            <li class="span2">
+	                                <div class="thumbnail">
+	                                    <a href="<?php echo $this->createUrl('product/view',
+		                                    array('id'=>$related->product_id)); ?>"><img src="<?php echo
+		                                    $related->getImageWithSize(220, 180); ?>" alt=""></a>
+	                                    <div class="caption">
+	                                        <a href="<?php echo $this->createUrl('product/view',
+		                                        array('id'=>$related->product_id)); ?>"> <h5><?php echo
+			                                    $related->description->name; ?></h5></a>
+		                                        <?php echo Yii::t('products', 'Price'); ?>:
+		                                        <?php echo $related->getFormattedprice(); ?><br><br>
+	                                    </div>
+	                                </div>
+	                            </li>
                             <?php endforeach; ?>
                         </ul>
                     </div>

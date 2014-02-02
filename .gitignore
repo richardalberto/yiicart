@@ -8,6 +8,5 @@ Thumbs.db
 config-dev.php
 index-dev.php
 /protected/config/dev.php
-
-
-
+/protected/data/yiicart.sql
+/protected/extensions/lyiightbox
