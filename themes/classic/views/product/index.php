@@ -1,12 +1,11 @@
 <?php
 	Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl .
 		"/bootstrapImageGallery/css/blueimp-gallery.min.css");
-	Yii::app()->clientScript->RegisterScriptFile('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
-		CClientScript::POS_END);
-	Yii::app()->clientScript->RegisterScriptFile('http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js',
-		CClientScript::POS_END);
-	Yii::app()->clientScript->RegisterScriptFile('http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js',
-		CClientScript::POS_END);
+	Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/jquery.min.js", CClientScript::POS_END);
+	Yii::app()->clientScript->RegisterScriptFile(Yii::app()->theme->baseUrl .
+		'/bootstrapImageGallery/js/bootstrap.min.js', CClientScript::POS_END);
+	Yii::app()->clientScript->RegisterScriptFile(Yii::app()->theme->baseUrl .
+		'/bootstrapImageGallery/js/jquery.blueimp-gallery.min.js', CClientScript::POS_END);
 ?>
 <br>
 <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
@@ -39,32 +38,28 @@
     </div>
     <hr>
     <div class="row">
-        <div class="span3" id="links">
-            <?php if ($product->hasAdditionalImages()): ?>
+	    <?php if ($product->hasAdditionalImages()): ?>
+		    <div class="span3" id="links">
 	            <?php $numImages = count($product->additionalImages) ?>
 	            <?php foreach ($product->additionalImages as $i => $image): ?>
 		            <? if($i===0): ?>
-			            <a class="thumbnail" href="<?= $image->getImageWithSize() ?>" data-gallery="">
-				            <img alt="<?= $product->description->name?>"
-				                 src="<?php echo $image->getImageWithSize(260,160); ?>" />
-			            </a>
+			            <?= CHtml::link($image->render(260,160, $product->description->name),
+				            $image->getImageWithSize(), array('data-gallery'=>'')); ?>
 			            <? continue ?>
-			            <? elseif($i === 1): ?>
-			                <ul class="thumbnails">
-			            <? endif ?>
-		                    <li class="span1">
-		                        <a class="thumbnail" href="<?= $image->getImageWithSize() ?>" data-gallery="">
-		                            <img alt="<?= $product->description->name?>"
-		                                src="<?php echo $image->getImageWithSize(50, 50); ?>" />
-		                        </a>
-		                    </li>
-			            <? if($i===$numImages): ?>
-		                    </ul>
-				        <? endif ?>
+		            <? elseif($i === 1): ?>
+		                <ul class="thumbnails">
+		            <? endif ?>
+	                    <li class="span1">
+	                        <?= CHtml::link($image->render(50,50, $product->description->name),
+		                        $image->getImageWithSize(), array('class'=>'thumbnail','data-gallery'=>'')); ?>
+	                    </li>
+		            <? if($i===$numImages): ?>
+	                    </ul>
+			        <? endif ?>
 	            <? endforeach ?>
-            <?php endif; ?>
-        </div>
-        <div class="span6">
+            </div>
+	    <?php endif; ?>
+	    <div class="span6">
             <div class="span6">
                 <address>
                     <?php if (isset($product->manufacturer)): ?><strong>Brand:</strong>

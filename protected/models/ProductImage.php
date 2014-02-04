@@ -66,8 +66,12 @@ class ProductImage extends CActiveRecord {
         } else {
             $_image = ImageTool::resize('no_image.jpg', $width, $height);
         }
-
         return $_image;
     }
+
+	public function render($width=0, $height=0, $alt='', $htmlOptions=array()){
+		return CHtml::image($this->getImageWithSize($width,$height),$alt,
+			array_merge($htmlOptions,array('width'=>$width,'height'=>$height)));
+	}
 
 }

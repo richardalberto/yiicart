@@ -82,7 +82,7 @@ body {
 }
 
 .thumbnails {
-    margin-left: -5px;
+    margin-left: -20px;
     list-style: none;
     *zoom: 1;
 }
@@ -95,7 +95,7 @@ body {
 }
 .thumbnails > li {
     float: left;
-    margin: 18px 0px 0px 18px;
+    margin: 0 0 18px 20px;
 }
 .thumbnail {
     display: block;
