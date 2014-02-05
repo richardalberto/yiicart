@@ -211,13 +211,14 @@ class Product extends CActiveRecord {
         return count($this->additionalImages) > 0 ? true : false;
     }
 
-    public function getImageWithSize($width, $height) {
+    public function getImageWithSize($width=0, $height=0) {
+		if($width===0 || $height===0)
+			return Yii::app()->getBaseUrl().DIRECTORY_SEPARATOR.'image'.DIRECTORY_SEPARATOR.$this->image;
         if ($this->image && file_exists(Yii::app()->params['imagePath'] . $this->image)) {
             $_image = ImageTool::resize($this->image, $width, $height);
         } else {
             $_image = ImageTool::resize('no_image.jpg', $width, $height);
         }
-
         return $_image;
     }
 
@@ -230,7 +231,6 @@ class Product extends CActiveRecord {
         if (isset($this->manufacturer)) {
             return $this->manufacturer->name;
         }
-
         return null;
     }
 
