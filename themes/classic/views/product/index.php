@@ -3,8 +3,6 @@
 		"/bootstrapImageGallery/css/blueimp-gallery.min.css");
 	Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/jquery.min.js", CClientScript::POS_END);
 	Yii::app()->clientScript->RegisterScriptFile(Yii::app()->theme->baseUrl .
-		'/bootstrapImageGallery/js/bootstrap.min.js', CClientScript::POS_END);
-	Yii::app()->clientScript->RegisterScriptFile(Yii::app()->theme->baseUrl .
 		'/bootstrapImageGallery/js/jquery.blueimp-gallery.min.js', CClientScript::POS_END);
 ?>
 <br>
