@@ -3088,7 +3088,7 @@ INSERT INTO `setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `seria
 (576, 0, 'config', 'config_title', 'Default Store', 0),
 (575, 0, 'config', 'config_fax', '', 0),
 (574, 0, 'config', 'config_telephone', '', 0),
-(573, 0, 'config', 'config_email', :email, 0),
+(573, 0, 'config', 'config_email', 'yasenpetrov@gmail.com', 0),
 (572, 0, 'config', 'config_address', 'Address 1', 0),
 (571, 0, 'config', 'config_owner', 'Owner name', 0),
 (570, 0, 'config', 'config_name', 'Default Store', 0),

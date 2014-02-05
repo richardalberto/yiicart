@@ -14,8 +14,8 @@
  *
  * @author Simone Gentili <sensorario@gmail.com>
  */
-class ConfigWidget extends CWidget {
-
+class ConfigWidget extends CWidget
+{
     private $scripts = null;
     private $css = null;
     private $assetsFolder = null;
@@ -23,17 +23,20 @@ class ConfigWidget extends CWidget {
     private $baseUrl = null;
 
     /* @todo: user patter singleton */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    private function populateCssArrayFiles() {
+    private function populateCssArrayFiles()
+    {
         $this->css = array(
             '/css/lightbox.css'
         );
     }
 
-    private function populateJsarrayScripts() {
+    private function populateJsarrayScripts()
+    {
         $this->scripts = array(
             '/js/prototype.js',
             '/js/scriptaculous.js?load=effects,builder',
@@ -41,28 +44,33 @@ class ConfigWidget extends CWidget {
         );
     }
 
-    private function loadAllJsScript() {
+    private function loadAllJsScript()
+    {
         $this->populateJsarrayScripts();
 
         Yii::app()->getClientScript()->registerScript('_', 'lyiightboxAssetUrl = "' . (Yii::app()->getAssetManager()->publish($this->assetsFolder)) . '";', CClientScript::POS_HEAD);
 
-        foreach ($this->scripts as $filename)
+        foreach ($this->scripts as $filename) {
             Yii::app()->getClientScript()->registerScriptFile($this->baseUrl . $filename, CClientScript::POS_END);
+        }
     }
 
-    private function loadAllCssScripts() {
+    private function loadAllCssScripts()
+    {
         $this->populateCssArrayFiles();
-        foreach ($this->css as $filename)
+        foreach ($this->css as $filename) {
             Yii::app()->getClientScript()->registerCssFile($this->baseUrl . $filename);
+        }
     }
 
-    private function setAssetsFolder() {
+    private function setAssetsFolder()
+    {
         $this->assetsFolder = dirname(__FILE__) . DIRECTORY_SEPARATOR . $this->assetsFolderName;
         $this->baseUrl = CHtml::asset($this->assetsFolder);
     }
 
-    protected function config() {
-
+    protected function config()
+    {
         $this->setAssetsFolder();
         $this->loadAllJsScript();
         $this->loadAllCssScripts();

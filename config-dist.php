@@ -18,7 +18,7 @@ return array(
 
     // global params
     'params' => array(
-        'imagePath' => '/var/www/yiicart/image',
+        'imagePath' => '/yiicart/image',
     ),
 );
 ?>
