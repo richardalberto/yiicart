@@ -16,4 +16,12 @@ class InstallController extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+    public function init()
+    {
+        // Check if system is installed
+        if(Yii::app()->isInstalled()) {
+            $this->redirect(array("/site/index"));
+        }
+    }
 }

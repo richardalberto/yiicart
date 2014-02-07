@@ -25,12 +25,17 @@ class Controller extends CController
 	 */        
         public $informations = array();
         
-        public function init()
+    public function init()
 	{
-            // TODO: filter by store
-            $criteria = new CDbCriteria;
-            $criteria->condition = 'bottom=1 AND status=1'; // only active and bottom informations
-            $criteria->order = 'sort_order ASC'; 
-            $this->informations = Information::model()->findAll($criteria);
+        // Check if system is installed
+        if(!Yii::app()->isInstalled()) {
+            $this->redirect(array("/install"));
+        }
+
+        // TODO: filter by store
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'bottom=1 AND status=1'; // only active and bottom informations
+        $criteria->order = 'sort_order ASC';
+        $this->informations = Information::model()->findAll($criteria);
 	}
 }

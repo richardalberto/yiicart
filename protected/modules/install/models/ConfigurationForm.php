@@ -91,6 +91,7 @@ class ConfigurationForm extends CFormModel {
         $config[] = "<?php
             // This is the main YiiCart configuration.
             return array(
+                'installed' => true,
                 'name' => 'Yii Cart',
                 'language'=>'en',
                 'theme'=>'classic',
