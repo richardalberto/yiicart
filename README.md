@@ -7,7 +7,7 @@ YiiCart is based on Open Cart Shopping Cart but built over Yii PHP Framework and
 To install go to install module located at:
 
 ```
-http://[server.ip or server.name]/yiicart/index.php/install
+http://[server.ip or server.name]/yiicart/install
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ http://[server.ip or server.name]/yiicart/
 Backend may be found at:
 
 ```
-http://[server.ip or server.name]/yiicart/index.php/admin/
+http://[server.ip or server.name]/yiicart/admin/
 ```
 
 
