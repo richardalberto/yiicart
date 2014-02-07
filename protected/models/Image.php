@@ -16,7 +16,7 @@ class Image {
                 'width' => $info[0],
                 'height' => $info[1],
                 'bits' => $info['bits'],
-                'mime' => $info['mime']
+                'mime' => $info['mime'],
             );
 
             $this->image = $this->create($file);
@@ -60,9 +60,9 @@ class Image {
      * 	@param width 
      * 	@param height
      * 	@param default char [default, w, h]
-     * 				   default = scale with white space, 
-     * 				   w = fill according to width, 
-     * 				   h = fill according to height
+     * 	default = scale with white space,
+     * 	w = fill according to width,
+     * 	h = fill according to height
      * 	
      */
     public function resize($width = 0, $height = 0, $default = '') {
@@ -95,6 +95,8 @@ class Image {
         $ypos = (int) (($height - $new_height) / 2);
 
         $image_old = $this->image;
+	    $width = $width === 0 ? $this->info['width'] : $width;
+	    $height = $height === 0 ? $this->info['height'] : $height;
         $this->image = imagecreatetruecolor($width, $height);
 
         if (isset($this->info['mime']) && $this->info['mime'] == 'image/png') {

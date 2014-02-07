@@ -58,14 +58,20 @@ class ProductImage extends CActiveRecord {
         );
     }
 
-    public function getImageWithSize($width, $height) {
+    public function getImageWithSize($width=0, $height=0) {
+	    if($width===0 || $height===0)
+		    return Yii::app()->getBaseUrl().DIRECTORY_SEPARATOR.'image'.DIRECTORY_SEPARATOR.$this->image;
         if ($this->image && file_exists(Yii::app()->params['imagePath'] . $this->image)) {
             $_image = ImageTool::resize($this->image, $width, $height);
         } else {
             $_image = ImageTool::resize('no_image.jpg', $width, $height);
         }
-
         return $_image;
     }
+
+	public function render($width=0, $height=0, $alt='', $htmlOptions=array()){
+		return CHtml::image($this->getImageWithSize($width,$height),$alt,
+			array_merge($htmlOptions,array('width'=>$width,'height'=>$height)));
+	}
 
 }

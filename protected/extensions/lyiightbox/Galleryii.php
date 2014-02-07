@@ -2,6 +2,7 @@
 
 /* @todo use __DIR__ if php5.3 */
 include_once dirname(__FILE__) . '/ConfigWidget.php';
+include_once dirname(__FILE__) . '/LyiightBox2.php';
 
 /**
  * Galleryii class file.
@@ -17,15 +18,16 @@ include_once dirname(__FILE__) . '/ConfigWidget.php';
  *
  * @author Simone Gentili <sensorario@gmail.com>
  */
-class Galleryii extends ConfigWidget {
-
+class Galleryii extends ConfigWidget
+{
     public $rootFolder;
     public $baseFolder = '/images/galleryii';
     public $thumbnails = '/thumbnails';
     public $images = '/images';
     public $thumbSide = 120;
 
-    private function showHelpPage() {
+    private function showHelpPage()
+    {
         echo ""
         . "<div class=\"form\"><div class=\"errorMessage\">"
         . "Galleryii is not correctly configured.<br />"
@@ -36,7 +38,8 @@ class Galleryii extends ConfigWidget {
         . "</div></div>";
     }
 
-    private function showNumberOfFolder() {
+    private function showNumberOfFolder()
+    {
         echo ""
         . "<div class=\"form\"><div class=\"errorMessage\">"
         . "I've found a folder for Galleryii's widget. But I've not found folders <strong>{$this->thumbnails}</strong> and <strong>{$this->images}</strong>.<br />"
@@ -44,7 +47,8 @@ class Galleryii extends ConfigWidget {
         . "</div></div>";
     }
 
-    private function showThumbnails() {
+    private function showThumbnails()
+    {
         $path = dirname(__FILE__) . '/../../..' . $this->baseFolder . $this->thumbnails;
         $dirHandle = opendir($path);
         $countImages = 0;
@@ -54,7 +58,8 @@ class Galleryii extends ConfigWidget {
         closedir($dirHandle);
     }
 
-    private function countfiles() {
+    private function countfiles()
+    {
         $path = dirname(__FILE__) . '/../../..' . $this->baseFolder;
         $dirHandle = opendir($path);
         $dirToFound = array(
@@ -71,7 +76,8 @@ class Galleryii extends ConfigWidget {
         closedir($dirHandle);
     }
 
-    private function countImages() {
+    private function countImages()
+    {
         $root = dirname(__FILE__) . '/../../..';
         $path = $root . $this->baseFolder;
         if (is_dir($path)) {
@@ -81,11 +87,13 @@ class Galleryii extends ConfigWidget {
         }
     }
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function init() {
+    public function init()
+    {
         parent::config();
         $this->countImages();
     }

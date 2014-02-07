@@ -41,7 +41,7 @@ class LyiightBox2 extends ConfigWidget {
         . 'rel="lightbox[_' . $this->group . ']" '
         . 'title="' . $this->title . '"'
         . '>'
-        . $this->title
+        . $this->printImage()
         . '</a>';
     }
 

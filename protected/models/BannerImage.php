@@ -70,7 +70,6 @@ class BannerImage extends CActiveRecord {
         } else {
             $_image = ImageTool::resize('no_image.jpg', $width, $height);
         }
-
         return $_image;
     }
 
