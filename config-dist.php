@@ -1,6 +1,7 @@
 <?php
 // This is the main YiiCart configuration.
 return array(
+    'installed' => false,
     'name' => 'Yii Cart',
     'language'=>'en',
     'theme'=>'classic',
