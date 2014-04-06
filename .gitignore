@@ -5,6 +5,7 @@ Thumbs.db
 *.idea
 
 # ignore local config files
+config.php
 config-dev.php
 index-dev.php
 /protected/config/dev.php
